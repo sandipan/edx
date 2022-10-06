@@ -1,0 +1,132 @@
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() set() {'James'}
+0.008852852828160005
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'Harry'} {'James'}
+0.008852852828160005
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'James'} {'James'}
+6.054665760000009e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'Lily'} {'James'}
+1.164240000000002e-07
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'Harry', 'James'} {'James'}
+6.054665760000009e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'Harry', 'Lily'} {'James'}
+1.164240000000002e-07
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'James', 'Lily'} {'James'}
+7.80404625000001e-06
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'Harry', 'James', 'Lily'} {'James'}
+7.80404625000001e-06
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry'} set() {'James'}
+0.008852852828160005
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry'} {'James'} {'James'}
+6.054665760000009e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry'} {'Lily'} {'James'}
+1.164240000000002e-07
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry'} {'James', 'Lily'} {'James'}
+7.80404625000001e-06
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'James'} set() {'James'}
+0.007824491136
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'James'} {'Harry'} {'James'}
+0.007824491136
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'James'} {'Lily'} {'James'}
+1.0187100000000003e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'James'} {'Harry', 'Lily'} {'James'}
+1.0187100000000003e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Lily'} set() {'James'}
+2.7878400000000034e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Lily'} {'Harry'} {'James'}
+2.7878400000000034e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Lily'} {'James'} {'James'}
+1.8876000000000004e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Lily'} {'Harry', 'James'} {'James'}
+1.8876000000000004e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry', 'James'} set() {'James'}
+0.007824491136
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry', 'James'} {'Lily'} {'James'}
+1.0187100000000003e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry', 'Lily'} set() {'James'}
+2.7878400000000034e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry', 'Lily'} {'James'} {'James'}
+1.8876000000000004e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'James', 'Lily'} set() {'James'}
+4.878719999999997e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'James', 'Lily'} {'Harry'} {'James'}
+4.878719999999997e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry', 'James', 'Lily'} set() {'James'}
+4.878719999999997e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() set() {'Harry', 'James'}
+0.008852852828160005
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'Harry'} {'Harry', 'James'}
+0.008852852828160005
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'James'} {'Harry', 'James'}
+6.054665760000009e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'Lily'} {'Harry', 'James'}
+1.164240000000002e-07
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'Harry', 'James'} {'Harry', 'James'}
+6.054665760000009e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'Harry', 'Lily'} {'Harry', 'James'}
+1.164240000000002e-07
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'James', 'Lily'} {'Harry', 'James'}
+7.80404625000001e-06
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} set() {'Harry', 'James', 'Lily'} {'Harry', 'James'}
+7.80404625000001e-06
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry'} set() {'Harry', 'James'}
+0.008852852828160005
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry'} {'James'} {'Harry', 'James'}
+6.054665760000009e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry'} {'Lily'} {'Harry', 'James'}
+1.164240000000002e-07
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry'} {'James', 'Lily'} {'Harry', 'James'}
+7.80404625000001e-06
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'James'} set() {'Harry', 'James'}
+0.007824491136
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'James'} {'Harry'} {'Harry', 'James'}
+0.007824491136
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'James'} {'Lily'} {'Harry', 'James'}
+1.0187100000000003e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'James'} {'Harry', 'Lily'} {'Harry', 'James'}
+1.0187100000000003e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Lily'} set() {'Harry', 'James'}
+2.7878400000000034e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Lily'} {'Harry'} {'Harry', 'James'}
+2.7878400000000034e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Lily'} {'James'} {'Harry', 'James'}
+1.8876000000000004e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Lily'} {'Harry', 'James'} {'Harry', 'James'}
+1.8876000000000004e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry', 'James'} set() {'Harry', 'James'}
+0.007824491136
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry', 'James'} {'Lily'} {'Harry', 'James'}
+1.0187100000000003e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry', 'Lily'} set() {'Harry', 'James'}
+2.7878400000000034e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry', 'Lily'} {'James'} {'Harry', 'James'}
+1.8876000000000004e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'James', 'Lily'} set() {'Harry', 'James'}
+4.878719999999997e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'James', 'Lily'} {'Harry'} {'Harry', 'James'}
+4.878719999999997e-05
+{'Harry': {'name': 'Harry', 'mother': 'Lily', 'father': 'James', 'trait': None}, 'James': {'name': 'James', 'mother': None, 'father': None, 'trait': True}, 'Lily': {'name': 'Lily', 'mother': None, 'father': None, 'trait': False}} {'Harry', 'James', 'Lily'} set() {'Harry', 'James'}
+4.878719999999997e-05
+Harry:
+  Gene:
+    2: 0.3333
+    1: 0.3333
+    0: 0.3333
+  Trait:
+    True: 0.5000
+    False: 0.5000
+James:
+  Gene:
+    2: 0.1976
+    1: 0.5106
+    0: 0.2918
+  Trait:
+    True: 1.0000
+    False: 0.0000
+Lily:
+  Gene:
+    2: 0.0013
+    1: 0.0062
+    0: 0.9925
+  Trait:
+    True: 0.0000
+    False: 1.0000

@@ -1,0 +1,10 @@
+What are the types of supervised learning?
+When was Python 3.0 released?
+How do neurons connect in a neural network?
+What is generalization in machine learning?
+How are statistics and machine learning different?
+How is deep learning used in computer vision and NLP?
+Is ML a subfield of AI?
+Is python a compiled or an interpreted language?
+What is the difference between stochastic and batch gradient descent?
+What is Occam's razor?
