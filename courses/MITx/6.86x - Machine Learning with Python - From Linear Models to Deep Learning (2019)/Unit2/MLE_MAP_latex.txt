@@ -1,0 +1,6 @@
+Just extending to multidimensional data, when we have datapoints $(X_i,Y_i)_{i=1\ldots n}$
+
+For ridge regression, we have,  $Y = X\beta + \epsilon$, where $\epsilon\sim\mathcal{N}(0,\sigma^2I)$ and  $Y\sim\mathcal{N}(X\beta,\sigma^2I)$, with prior on $\beta\sim\mathcal{N}(0,\lambda^{-1})$, s.t., $p(Y) \propto \frac{1}{\sigma} e^{-(Y-X\beta)^T(Y-X\beta)/\sigma^2}$ and $p(\beta) \propto e^{-\lambda\beta^T\beta}$,
+
+$\hat{\beta}_{MAP} = \underset{\beta}{\operatorname{argmax}}log(\prod_{i=1}^{n}p(X_i,Y_i|\beta,\sigma^2).p(\beta))
+=\underset{\beta}{\operatorname{argmax}}\sum_{i=1}^{n}(-(Y_i-X_i\beta)^2-\lambda\beta^T\beta)=\underset{\beta}{\operatorname{argmin}}\sum_{i=1}^{n}(Y_i-X_i\beta)^2+\lambda\|\beta\|^2$
