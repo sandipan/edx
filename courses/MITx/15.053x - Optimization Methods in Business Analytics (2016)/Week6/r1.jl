@@ -1,0 +1,5 @@
+Pkg.add("NLopt")
+yourModelVariable=Model(solver=NLoptSolver(algorithm=:LD_MMA))
+@NLobjective(yourModelVariable, Max/Min, Function)
+@NLconstraint(yourModelVariable, Inequality))
+setvalue(variable, initialValue)

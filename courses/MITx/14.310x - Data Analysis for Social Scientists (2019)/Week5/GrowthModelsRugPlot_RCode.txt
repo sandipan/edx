@@ -1,0 +1,879 @@
+## Valerie Hyde
+## February 7, 2006
+## Growth Models Rug Plot
+
+
+
+## Loads Palm Data
+setwd("C:/Research/Data/Palm Pilot All Length")
+data<-read.csv("LiveBidPalmAllLengthData.csv",skip=0,header=T,sep=",")
+
+names(data)
+# [1] "auctid"         "winningbid"     "startbid"       "length"        
+# [5] "bidderid"       "bidderrating"   "bid"            "startdate"     
+# [9] "biddate"        "enddate"        "tbid"           "startfrombegin"
+#[13] "bidfrombegin"   "endfrombegin"   "livebid" 
+
+##gets rid of funny auctions
+data<-data[data$auctid!="3021836029",]
+data<-data[data$auctid!="3025598698",]
+
+##this command keeps subset of data
+data<-data[data$endfrombegin<=46.84103,]
+
+## Only Keep Auctions With More Than One Bid
+
+## Keeping auctions with more than 1 bid
+auctid<-aggregate(data$auctid,list(data$auctid),length)$Group.1
+NumBids<-aggregate(data$auctid,list(data$auctid),length)$x
+AuctNumBids<-data.frame(auctid,NumBids)
+Auctsgt2<-AuctNumBids[AuctNumBids$NumBids>=2,]
+
+newdata<-merge(data,Auctsgt2,all.x=F)
+rm(auctid,NumBids,AuctNumBids,Auctsgt2)
+
+
+data7<-newdata[newdata$length==7,]
+data3<-newdata[newdata$length==3,]
+data5<-newdata[newdata$length==5,]
+data10<-newdata[newdata$length==10,]
+
+##set modeling parameters
+num.mod<-4  ##number of models I'm investigating
+w.x<-.5
+w.y<-.5  ##note w.x+w.y=1
+
+
+
+
+
+######################################################################################################################################
+## 7 Day Auctions
+######################################################################################################################################
+attach(data7)
+
+duration<-unique(length)
+
+sLive <- split(livebid,auctid)
+sTime <- split(tbid,auctid)
+
+#create variables with opening and closing bid added
+numauct<-length(sLive)
+sLiveEnds<-list(0); length(sLiveEnds)<-numauct
+sTimeEnds<-list(0); length(sTimeEnds)<-numauct
+sLiveStart<-list(0); length(sLiveStart)<-numauct
+sTimeStart<-list(0); length(sTimeStart)<-numauct
+sTimeEndsTemp<-list(0); length(sTimeStart)<-numauct
+sTimeStartTemp<-list(0); length(sTimeStartTemp)<-numauct
+for (j in 1:numauct){
+     sLiveEnds[[j]]<-c(min(sLive[[j]]),sLive[[j]],max(sLive[[j]]))
+     sTimeEnds[[j]]<-c(0,sTime[[j]],duration)
+     sLiveStart[[j]]<-c(min(sLive[[j]]),sLive[[j]])
+     sTimeStart[[j]]<-c(0,sTime[[j]])
+     sTimeEndsTemp[[j]]<-c(0.000001,sTime[[j]],duration)
+     sTimeStartTemp[[j]]<-c(0.000001,sTime[[j]])
+     }
+
+delta<- 0.01
+epsilon<-0.000001
+
+
+########################
+##SSE for Diffent Models
+########################
+n<-length(sLive)  ##number of auctions I'm looking at 
+wSSE.range<-array(0,c(n,num.mod))  
+wSSE.var<-array(0,c(n,num.mod))  
+models.range<-array(0,n)
+models.var<-array(0,n)
+
+for (i in 1:n){
+
+## Exponential Growth, Start and End Prices Added (Model 1)
+###########################################################
+x<-seq(0,duration,by=.01)
+reg1<-lm(log(sLiveEnds[[i]])~ sTimeEnds[[i]])
+fit1y<-exp(as.vector(reg1$coefficients)[1])*exp(as.vector(reg1$coefficients)[2]*sTimeEnds[[i]])
+fit1x<-log(sLiveEnds[[i]]/exp(as.vector(reg1$coefficients)[1]))/as.vector(reg1$coefficients)[2]
+fit1.SSEy<- sum((fit1y-sLiveEnds[[i]])^2)
+fit1.SSEx<- sum((fit1x-sTimeEnds[[i]])^2)
+wSSE.range[i,1]<- (w.y*fit1.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit1.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,1]<- (w.y*fit1.SSEy)/var(sLive[[i]]) + (w.x*fit1.SSEx)/var(sTimeEnds[[i]])
+
+## Exponential Growth, Reflected, Start and End Prices Added (Model 2) 
+######################################################################
+x<-seq(0,max(sLive[[i]]),by=.1)
+reg2<-lm(log(sTimeEndsTemp[[i]])~ sLiveEnds[[i]])
+fit2y<-log(sTimeEndsTemp[[i]]/exp(as.vector(reg2$coefficients)[1]))  /as.vector(reg2$coefficients)[2]
+fit2x<-exp(as.vector(reg2$coefficients)[1]) * exp(as.vector(reg2$coefficients)[2]*sLiveEnds[[i]])
+fit2.SSEy<- sum((fit2y-sLiveEnds[[i]])^2)
+fit2.SSEx<- sum((fit2x-sTimeEnds[[i]])^2)
+wSSE.range[i,2]<- (w.y*fit2.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit2.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,2]<- (w.y*fit2.SSEy)/var(sLive[[i]]) + (w.x*fit2.SSEx)/var(sTimeEnds[[i]])
+
+## Logistic Growth (Model 3) 
+############################
+x<-seq(0,duration,by=.01)
+reg3<- lm( log((max(sLiveStart[[i]])+delta)/sLiveStart[[i]]-1) ~ sTimeStart[[i]] )
+fit3y<- (max(sLiveEnds[[i]])+delta)/(1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*sTimeEnds[[i]]))
+fit3x<- (log( (max(sLiveEnds[[i]])+delta)/sLiveEnds[[i]] - 1) - log (exp(as.vector(reg3$coefficients)[1])))/as.vector(reg3$coefficients)[2]
+fit3.SSEy<- sum((fit3y-sLiveEnds[[i]])^2)
+fit3.SSEx<- sum((fit3x-sTimeEnds[[i]])^2)
+wSSE.range[i,3]<- (w.y*fit3.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit3.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,3]<- (w.y*fit3.SSEy)/var(sLive[[i]]) + (w.x*fit3.SSEx)/var(sTimeEnds[[i]])
+
+## Logistic Growth, Reflected, Start and End Prices Added (Model 4)
+###################################################################
+x<-seq(0,max(sLive[[i]]),by=.1)
+reg4<- lm( log((duration+epsilon)/sTimeEndsTemp[[i]]-1) ~ sLiveEnds[[i]])
+fit4y<- (log(((duration+epsilon)/sTimeEndsTemp[[i]])-1) - as.vector(reg4$coefficients)[1]) /as.vector(reg4$coefficients)[2]
+fit4x<- (duration+epsilon)/(1+exp(as.vector(reg4$coefficients)[1])*exp(as.vector(reg4$coefficients)[2]*sLiveEnds[[i]]))
+fit4.SSEy<- sum((fit4y-sLiveEnds[[i]])^2)
+fit4.SSEx<- sum((fit4x-sTimeEnds[[i]])^2)
+wSSE.range[i,4]<- (w.y*fit4.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit4.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,4]<- (w.y*fit4.SSEy)/var(sLive[[i]]) + (w.x*fit4.SSEx)/var(sTimeEnds[[i]])
+
+}
+
+
+############################
+##Choosing Model for Auction
+############################
+for (k in 1:n){
+     wSSE.range[k,][wSSE.range[k,]=="NaN"]=(min(na.omit(wSSE.range[k,])+1))
+     wSSE.var[k,][wSSE.var[k,]=="NaN"]=(min(na.omit(wSSE.var[k,])+1))
+     models.range[k]<-(1:num.mod)[min(wSSE.range[k,])==wSSE.range[k,]]
+     models.var[k]<-(1:num.mod)[min(wSSE.var[k,])==wSSE.var[k,]]
+}
+(1:n)[models.range!=models.var]  ##this locates auctions where SSE gave different "best" model
+table(models.range)
+table(models.var)
+
+################################################################
+##Creating Fitted Data Based on Selected (by SSE criteria) Model
+################################################################
+## Matrix of data
+numauct<-length(sLive)
+x<-seq(0,duration,by=.1)
+x[1]<-min(x)+.001
+x[length(x)]<-max(x)-.01
+numplot<-length(x)
+ypred7 <- yfdpred7 <- ysdpred7 <- array(0,c(numauct,numplot))
+
+models7<- models<- models.range   ###IMPT: THIS IS THE SSE CRITERIA THAT I AM USING (either models.range or models.var)
+
+
+for (i in 1:n){
+
+## Exponential Growth, Start and End Prices Added (Model 1)
+###########################################################
+if (models[i]==1){
+reg1<-lm(log(sLiveEnds[[i]])~ sTimeEnds[[i]])
+ypred7[i,]<-exp(as.vector(reg1$coefficients)[1])*exp(as.vector(reg1$coefficients)[2]*x)
+yfdpred7[i,]<-exp(as.vector(reg1$coefficients)[1])*as.vector(reg1$coefficients)[2]*exp(as.vector(reg1$coefficients)[2]*x)
+ysdpred7[i,]<-exp(as.vector(reg1$coefficients)[1])*(as.vector(reg1$coefficients)[2])^2*exp(as.vector(reg1$coefficients)[2]*x)
+}
+
+## Exponential Growth, Reflected, Start and End Prices Added (Model 2) 
+######################################################################
+if (models[i]==2){
+reg2<-lm(log(sTimeEndsTemp[[i]])~ sLiveEnds[[i]])
+ypred7[i,]<-log(x/exp(as.vector(reg2$coefficients)[1]))  /as.vector(reg2$coefficients)[2]
+yfdpred7[i,]<-1/(as.vector(reg2$coefficients)[2]*x)
+ysdpred7[i,]<- -1/(as.vector(reg2$coefficients)[2]*x^2)
+}
+
+## Logistic Growth (Model 3) 
+############################
+if (models[i]==3){
+reg3<- lm( log((max(sLiveStart[[i]])+delta)/sLiveStart[[i]]-1) ~ sTimeStart[[i]] )
+ypred7[i,]<- (max(sLive[[i]])+delta)/(1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))
+yfdpred7[i,]<- -(max(sLive[[i]])+delta)*exp(as.vector(reg3$coefficients)[1])*as.vector(reg3$coefficients)[2]*exp(as.vector(reg3$coefficients)[2]*x)/
+	  (1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))^2
+ysdpred7[i,]<- -(max(sLive[[i]])+delta)*exp(as.vector(reg3$coefficients)[1])*(as.vector(reg3$coefficients)[2])^2*exp(as.vector(reg3$coefficients)[2]*x)*
+           (1-exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))/
+	   (1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))^3
+}
+
+## Logistic Growth, Reflected, Start and End Prices Added (Model 4)
+###################################################################
+if (models[i]==4){
+reg4<- lm( log((duration+epsilon)/sTimeEndsTemp[[i]]-1) ~ sLiveEnds[[i]])
+ypred7[i,]<- (log(((duration+epsilon)/x)-1) - as.vector(reg4$coefficients)[1]) /as.vector(reg4$coefficients)[2]
+yfdpred7[i,]<- -(duration+epsilon)/(as.vector(reg4$coefficients)[2]*(x^2)*(((duration+epsilon)/x)-1))
+ysdpred7[i,]<- ((duration+epsilon)*((duration+epsilon)-2*x))/(as.vector(reg4$coefficients)[2]*(x^4)*(((duration+epsilon)/x)-1)^2)
+}
+}
+
+
+plot(x,ypred7[1,],type="l",xlim=c(0,7),ylim=c(0,max(ypred7)),xlab="Time",ylab="Price")
+for (i in 2:numauct)
+lines(x,ypred7[i,])
+
+########### Changing the Time Points to Calendar Time #############
+AuctCalTime<-startfrombegin[!duplicated(auctid)]
+CalTime7<-matrix(0,numauct,length(x))
+CalTime7<-matrix(rep(AuctCalTime,length(x)),numauct,length(x),byrow=F) + matrix(rep(x,numauct),numauct,length(x),byrow=T)
+
+AuctEndFromBegin7<-endfrombegin[!duplicated(auctid)]
+
+detach(data7)
+
+
+
+
+
+
+
+######################################################################################################################################
+## 3 Day Auctions
+######################################################################################################################################
+attach(data3)
+
+duration<-unique(length)
+
+sLive <- split(livebid,auctid)
+sTime <- split(tbid,auctid)
+
+#create variables with opening and closing bid added
+numauct<-length(sLive)
+sLiveEnds<-list(0); length(sLiveEnds)<-numauct
+sTimeEnds<-list(0); length(sTimeEnds)<-numauct
+sLiveStart<-list(0); length(sLiveStart)<-numauct
+sTimeStart<-list(0); length(sTimeStart)<-numauct
+sTimeEndsTemp<-list(0); length(sTimeStart)<-numauct
+sTimeStartTemp<-list(0); length(sTimeStartTemp)<-numauct
+for (j in 1:numauct){
+     sLiveEnds[[j]]<-c(min(sLive[[j]]),sLive[[j]],max(sLive[[j]]))
+     sTimeEnds[[j]]<-c(0,sTime[[j]],duration)
+     sLiveStart[[j]]<-c(min(sLive[[j]]),sLive[[j]])
+     sTimeStart[[j]]<-c(0,sTime[[j]])
+     sTimeEndsTemp[[j]]<-c(0.000001,sTime[[j]],duration)
+     sTimeStartTemp[[j]]<-c(0.000001,sTime[[j]])
+     }
+
+delta<- 0.01
+epsilon<-0.000001
+
+
+########################
+##SSE for Diffent Models
+########################
+n<-length(sLive)  ##number of auctions I'm looking at 
+wSSE.range<-array(0,c(n,num.mod))  
+wSSE.var<-array(0,c(n,num.mod))  
+models.range<-array(0,n)
+models.var<-array(0,n)
+
+for (i in 1:n){
+
+## Exponential Growth, Start and End Prices Added (Model 1)
+###########################################################
+x<-seq(0,duration,by=.01)
+reg1<-lm(log(sLiveEnds[[i]])~ sTimeEnds[[i]])
+fit1y<-exp(as.vector(reg1$coefficients)[1])*exp(as.vector(reg1$coefficients)[2]*sTimeEnds[[i]])
+fit1x<-log(sLiveEnds[[i]]/exp(as.vector(reg1$coefficients)[1]))/as.vector(reg1$coefficients)[2]
+fit1.SSEy<- sum((fit1y-sLiveEnds[[i]])^2)
+fit1.SSEx<- sum((fit1x-sTimeEnds[[i]])^2)
+wSSE.range[i,1]<- (w.y*fit1.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit1.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,1]<- (w.y*fit1.SSEy)/var(sLive[[i]]) + (w.x*fit1.SSEx)/var(sTimeEnds[[i]])
+
+## Exponential Growth, Reflected, Start and End Prices Added (Model 2) 
+######################################################################
+x<-seq(0,max(sLive[[i]]),by=.1)
+reg2<-lm(log(sTimeEndsTemp[[i]])~ sLiveEnds[[i]])
+fit2y<-log(sTimeEndsTemp[[i]]/exp(as.vector(reg2$coefficients)[1]))  /as.vector(reg2$coefficients)[2]
+fit2x<-exp(as.vector(reg2$coefficients)[1]) * exp(as.vector(reg2$coefficients)[2]*sLiveEnds[[i]])
+fit2.SSEy<- sum((fit2y-sLiveEnds[[i]])^2)
+fit2.SSEx<- sum((fit2x-sTimeEnds[[i]])^2)
+wSSE.range[i,2]<- (w.y*fit2.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit2.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,2]<- (w.y*fit2.SSEy)/var(sLive[[i]]) + (w.x*fit2.SSEx)/var(sTimeEnds[[i]])
+
+## Logistic Growth (Model 3) 
+############################
+x<-seq(0,duration,by=.01)
+reg3<- lm( log((max(sLiveStart[[i]])+delta)/sLiveStart[[i]]-1) ~ sTimeStart[[i]] )
+fit3y<- (max(sLiveEnds[[i]])+delta)/(1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*sTimeEnds[[i]]))
+fit3x<- (log( (max(sLiveEnds[[i]])+delta)/sLiveEnds[[i]] - 1) - log (exp(as.vector(reg3$coefficients)[1])))/as.vector(reg3$coefficients)[2]
+fit3.SSEy<- sum((fit3y-sLiveEnds[[i]])^2)
+fit3.SSEx<- sum((fit3x-sTimeEnds[[i]])^2)
+wSSE.range[i,3]<- (w.y*fit3.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit3.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,3]<- (w.y*fit3.SSEy)/var(sLive[[i]]) + (w.x*fit3.SSEx)/var(sTimeEnds[[i]])
+
+## Logistic Growth, Reflected, Start and End Prices Added (Model 4)
+###################################################################
+x<-seq(0,max(sLive[[i]]),by=.1)
+reg4<- lm( log((duration+epsilon)/sTimeEndsTemp[[i]]-1) ~ sLiveEnds[[i]])
+fit4y<- (log(((duration+epsilon)/sTimeEndsTemp[[i]])-1) - as.vector(reg4$coefficients)[1]) /as.vector(reg4$coefficients)[2]
+fit4x<- (duration+epsilon)/(1+exp(as.vector(reg4$coefficients)[1])*exp(as.vector(reg4$coefficients)[2]*sLiveEnds[[i]]))
+fit4.SSEy<- sum((fit4y-sLiveEnds[[i]])^2)
+fit4.SSEx<- sum((fit4x-sTimeEnds[[i]])^2)
+wSSE.range[i,4]<- (w.y*fit4.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit4.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,4]<- (w.y*fit4.SSEy)/var(sLive[[i]]) + (w.x*fit4.SSEx)/var(sTimeEnds[[i]])
+
+}
+
+
+############################
+##Choosing Model for Auction
+############################
+for (k in 1:n){
+     wSSE.range[k,][wSSE.range[k,]=="NaN"]=(min(na.omit(wSSE.range[k,])+1))
+     wSSE.var[k,][wSSE.var[k,]=="NaN"]=(min(na.omit(wSSE.var[k,])+1))
+     models.range[k]<-(1:num.mod)[min(wSSE.range[k,])==wSSE.range[k,]]
+     models.var[k]<-(1:num.mod)[min(wSSE.var[k,])==wSSE.var[k,]]
+}
+(1:n)[models.range!=models.var]  ##this locates auctions where SSE gave different "best" model
+table(models.range)
+table(models.var)
+
+################################################################
+##Creating Fitted Data Based on Selected (by SSE criteria) Model
+################################################################
+## Matrix of data
+numauct<-length(sLive)
+x<-seq(0,duration,by=.1)
+x[1]<-min(x)+.01
+x[length(x)]<-max(x)-.01
+numplot<-length(x)
+ypred3 <- yfdpred3 <- ysdpred3 <- array(0,c(numauct,numplot))
+
+models3<- models<- models.range   ###IMPT: THIS IS THE SSE CRITERIA THAT I AM USING (either models.range or models.var)
+
+
+for (i in 1:n){
+
+## Exponential Growth, Start and End Prices Added (Model 1)
+###########################################################
+if (models[i]==1){
+reg1<-lm(log(sLiveEnds[[i]])~ sTimeEnds[[i]])
+ypred3[i,]<-exp(as.vector(reg1$coefficients)[1])*exp(as.vector(reg1$coefficients)[2]*x)
+yfdpred3[i,]<-exp(as.vector(reg1$coefficients)[1])*as.vector(reg1$coefficients)[2]*exp(as.vector(reg1$coefficients)[2]*x)
+ysdpred3[i,]<-exp(as.vector(reg1$coefficients)[1])*(as.vector(reg1$coefficients)[2])^2*exp(as.vector(reg1$coefficients)[2]*x)
+}
+
+## Exponential Growth, Reflected, Start and End Prices Added (Model 2) 
+######################################################################
+if (models[i]==2){
+reg2<-lm(log(sTimeEndsTemp[[i]])~ sLiveEnds[[i]])
+ypred3[i,]<-log(x/exp(as.vector(reg2$coefficients)[1]))  /as.vector(reg2$coefficients)[2]
+yfdpred3[i,]<-1/(as.vector(reg2$coefficients)[2]*x)
+ysdpred3[i,]<- -1/(as.vector(reg2$coefficients)[2]*x^2)
+}
+
+## Logistic Growth (Model 3) 
+############################
+if (models[i]==3){
+reg3<- lm( log((max(sLiveStart[[i]])+delta)/sLiveStart[[i]]-1) ~ sTimeStart[[i]] )
+ypred3[i,]<- (max(sLive[[i]])+delta)/(1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))
+yfdpred3[i,]<- -(max(sLive[[i]])+delta)*exp(as.vector(reg3$coefficients)[1])*as.vector(reg3$coefficients)[2]*exp(as.vector(reg3$coefficients)[2]*x)/
+	  (1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))^2
+ysdpred3[i,]<- -(max(sLive[[i]])+delta)*exp(as.vector(reg3$coefficients)[1])*(as.vector(reg3$coefficients)[2])^2*exp(as.vector(reg3$coefficients)[2]*x)*
+           (1-exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))/
+	   (1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))^3
+}
+
+## Logistic Growth, Reflected, Start and End Prices Added (Model 4)
+###################################################################
+if (models[i]==4){
+reg4<- lm( log((duration+epsilon)/sTimeEndsTemp[[i]]-1) ~ sLiveEnds[[i]])
+ypred3[i,]<- (log(((duration+epsilon)/x)-1) - as.vector(reg4$coefficients)[1]) /as.vector(reg4$coefficients)[2]
+yfdpred3[i,]<- -(duration+epsilon)/(as.vector(reg4$coefficients)[2]*(x^2)*(((duration+epsilon)/x)-1))
+ysdpred3[i,]<- ((duration+epsilon)*((duration+epsilon)-2*x))/(as.vector(reg4$coefficients)[2]*(x^4)*(((duration+epsilon)/x)-1)^2)
+}
+}
+
+
+plot(x,ypred3[1,],type="l",xlim=c(0,3),ylim=c(0,max(ypred3)),xlab="Time",ylab="Price")
+for (i in 2:numauct)
+lines(x,ypred3[i,])
+
+########### Changing the Time Points to Calendar Time #############
+AuctCalTime<-startfrombegin[!duplicated(auctid)]
+CalTime3<-matrix(0,numauct,length(x))
+CalTime3<-matrix(rep(AuctCalTime,length(x)),numauct,length(x),byrow=F) + matrix(rep(x,numauct),numauct,length(x),byrow=T)
+
+AuctEndFromBegin3<-endfrombegin[!duplicated(auctid)]
+
+detach(data3)
+
+
+
+
+
+
+######################################################################################################################################
+## 5 Day Auctions
+######################################################################################################################################
+attach(data5)
+
+duration<-unique(length)
+
+sLive <- split(livebid,auctid)
+sTime <- split(tbid,auctid)
+
+#create variables with opening and closing bid added
+numauct<-length(sLive)
+sLiveEnds<-list(0); length(sLiveEnds)<-numauct
+sTimeEnds<-list(0); length(sTimeEnds)<-numauct
+sLiveStart<-list(0); length(sLiveStart)<-numauct
+sTimeStart<-list(0); length(sTimeStart)<-numauct
+sTimeEndsTemp<-list(0); length(sTimeStart)<-numauct
+sTimeStartTemp<-list(0); length(sTimeStartTemp)<-numauct
+for (j in 1:numauct){
+     sLiveEnds[[j]]<-c(min(sLive[[j]]),sLive[[j]],max(sLive[[j]]))
+     sTimeEnds[[j]]<-c(0,sTime[[j]],duration)
+     sLiveStart[[j]]<-c(min(sLive[[j]]),sLive[[j]])
+     sTimeStart[[j]]<-c(0,sTime[[j]])
+     sTimeEndsTemp[[j]]<-c(0.000001,sTime[[j]],duration)
+     sTimeStartTemp[[j]]<-c(0.000001,sTime[[j]])
+     }
+
+delta<- 0.01
+epsilon<-0.000001
+
+
+########################
+##SSE for Diffent Models
+########################
+n<-length(sLive)  ##number of auctions I'm looking at 
+wSSE.range<-array(0,c(n,num.mod))  
+wSSE.var<-array(0,c(n,num.mod))  
+models.range<-array(0,n)
+models.var<-array(0,n)
+
+for (i in 1:n){
+
+## Exponential Growth, Start and End Prices Added (Model 1)
+###########################################################
+x<-seq(0,duration,by=.01)
+reg1<-lm(log(sLiveEnds[[i]])~ sTimeEnds[[i]])
+fit1y<-exp(as.vector(reg1$coefficients)[1])*exp(as.vector(reg1$coefficients)[2]*sTimeEnds[[i]])
+fit1x<-log(sLiveEnds[[i]]/exp(as.vector(reg1$coefficients)[1]))/as.vector(reg1$coefficients)[2]
+fit1.SSEy<- sum((fit1y-sLiveEnds[[i]])^2)
+fit1.SSEx<- sum((fit1x-sTimeEnds[[i]])^2)
+wSSE.range[i,1]<- (w.y*fit1.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit1.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,1]<- (w.y*fit1.SSEy)/var(sLive[[i]]) + (w.x*fit1.SSEx)/var(sTimeEnds[[i]])
+
+## Exponential Growth, Reflected, Start and End Prices Added (Model 2) 
+######################################################################
+x<-seq(0,max(sLive[[i]]),by=.1)
+reg2<-lm(log(sTimeEndsTemp[[i]])~ sLiveEnds[[i]])
+fit2y<-log(sTimeEndsTemp[[i]]/exp(as.vector(reg2$coefficients)[1]))  /as.vector(reg2$coefficients)[2]
+fit2x<-exp(as.vector(reg2$coefficients)[1]) * exp(as.vector(reg2$coefficients)[2]*sLiveEnds[[i]])
+fit2.SSEy<- sum((fit2y-sLiveEnds[[i]])^2)
+fit2.SSEx<- sum((fit2x-sTimeEnds[[i]])^2)
+wSSE.range[i,2]<- (w.y*fit2.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit2.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,2]<- (w.y*fit2.SSEy)/var(sLive[[i]]) + (w.x*fit2.SSEx)/var(sTimeEnds[[i]])
+
+## Logistic Growth (Model 3) 
+############################
+x<-seq(0,duration,by=.01)
+reg3<- lm( log((max(sLiveStart[[i]])+delta)/sLiveStart[[i]]-1) ~ sTimeStart[[i]] )
+fit3y<- (max(sLiveEnds[[i]])+delta)/(1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*sTimeEnds[[i]]))
+fit3x<- (log( (max(sLiveEnds[[i]])+delta)/sLiveEnds[[i]] - 1) - log (exp(as.vector(reg3$coefficients)[1])))/as.vector(reg3$coefficients)[2]
+fit3.SSEy<- sum((fit3y-sLiveEnds[[i]])^2)
+fit3.SSEx<- sum((fit3x-sTimeEnds[[i]])^2)
+wSSE.range[i,3]<- (w.y*fit3.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit3.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,3]<- (w.y*fit3.SSEy)/var(sLive[[i]]) + (w.x*fit3.SSEx)/var(sTimeEnds[[i]])
+
+## Logistic Growth, Reflected, Start and End Prices Added (Model 4)
+###################################################################
+x<-seq(0,max(sLive[[i]]),by=.1)
+reg4<- lm( log((duration+epsilon)/sTimeEndsTemp[[i]]-1) ~ sLiveEnds[[i]])
+fit4y<- (log(((duration+epsilon)/sTimeEndsTemp[[i]])-1) - as.vector(reg4$coefficients)[1]) /as.vector(reg4$coefficients)[2]
+fit4x<- (duration+epsilon)/(1+exp(as.vector(reg4$coefficients)[1])*exp(as.vector(reg4$coefficients)[2]*sLiveEnds[[i]]))
+fit4.SSEy<- sum((fit4y-sLiveEnds[[i]])^2)
+fit4.SSEx<- sum((fit4x-sTimeEnds[[i]])^2)
+wSSE.range[i,4]<- (w.y*fit4.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit4.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,4]<- (w.y*fit4.SSEy)/var(sLive[[i]]) + (w.x*fit4.SSEx)/var(sTimeEnds[[i]])
+
+}
+
+
+############################
+##Choosing Model for Auction
+############################
+for (k in 1:n){
+     wSSE.range[k,][wSSE.range[k,]=="NaN"]=(min(na.omit(wSSE.range[k,])+1))
+     wSSE.var[k,][wSSE.var[k,]=="NaN"]=(min(na.omit(wSSE.var[k,])+1))
+     models.range[k]<-(1:num.mod)[min(wSSE.range[k,])==wSSE.range[k,]]
+     models.var[k]<-(1:num.mod)[min(wSSE.var[k,])==wSSE.var[k,]]
+}
+(1:n)[models.range!=models.var]  ##this locates auctions where SSE gave different "best" model
+table(models.range)
+table(models.var)
+
+################################################################
+##Creating Fitted Data Based on Selected (by SSE criteria) Model
+################################################################
+## Matrix of data
+numauct<-length(sLive)
+x<-seq(0,duration,by=.1)
+x[1]<-min(x)+.01
+x[length(x)]<-max(x)-.01
+numplot<-length(x)
+ypred5 <- yfdpred5 <- ysdpred5 <- array(0,c(numauct,numplot))
+
+models5<- models<- models.range   ###IMPT: THIS IS THE SSE CRITERIA THAT I AM USING (either models.range or models.var)
+
+
+for (i in 1:n){
+
+## Exponential Growth, Start and End Prices Added (Model 1)
+###########################################################
+if (models[i]==1){
+reg1<-lm(log(sLiveEnds[[i]])~ sTimeEnds[[i]])
+ypred5[i,]<-exp(as.vector(reg1$coefficients)[1])*exp(as.vector(reg1$coefficients)[2]*x)
+yfdpred5[i,]<-exp(as.vector(reg1$coefficients)[1])*as.vector(reg1$coefficients)[2]*exp(as.vector(reg1$coefficients)[2]*x)
+ysdpred5[i,]<-exp(as.vector(reg1$coefficients)[1])*(as.vector(reg1$coefficients)[2])^2*exp(as.vector(reg1$coefficients)[2]*x)
+}
+
+## Exponential Growth, Reflected, Start and End Prices Added (Model 2) 
+######################################################################
+if (models[i]==2){
+reg2<-lm(log(sTimeEndsTemp[[i]])~ sLiveEnds[[i]])
+ypred5[i,]<-log(x/exp(as.vector(reg2$coefficients)[1]))  /as.vector(reg2$coefficients)[2]
+yfdpred5[i,]<-1/(as.vector(reg2$coefficients)[2]*x)
+ysdpred5[i,]<- -1/(as.vector(reg2$coefficients)[2]*x^2)
+}
+
+## Logistic Growth (Model 3) 
+############################
+if (models[i]==3){
+reg3<- lm( log((max(sLiveStart[[i]])+delta)/sLiveStart[[i]]-1) ~ sTimeStart[[i]] )
+ypred5[i,]<- (max(sLive[[i]])+delta)/(1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))
+yfdpred5[i,]<- -(max(sLive[[i]])+delta)*exp(as.vector(reg3$coefficients)[1])*as.vector(reg3$coefficients)[2]*exp(as.vector(reg3$coefficients)[2]*x)/
+	  (1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))^2
+ysdpred5[i,]<- -(max(sLive[[i]])+delta)*exp(as.vector(reg3$coefficients)[1])*(as.vector(reg3$coefficients)[2])^2*exp(as.vector(reg3$coefficients)[2]*x)*
+           (1-exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))/
+	   (1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))^3
+}
+
+## Logistic Growth, Reflected, Start and End Prices Added (Model 4)
+###################################################################
+if (models[i]==4){
+reg4<- lm( log((duration+epsilon)/sTimeEndsTemp[[i]]-1) ~ sLiveEnds[[i]])
+ypred5[i,]<- (log(((duration+epsilon)/x)-1) - as.vector(reg4$coefficients)[1]) /as.vector(reg4$coefficients)[2]
+yfdpred5[i,]<- -(duration+epsilon)/(as.vector(reg4$coefficients)[2]*(x^2)*(((duration+epsilon)/x)-1))
+ysdpred5[i,]<- ((duration+epsilon)*((duration+epsilon)-2*x))/(as.vector(reg4$coefficients)[2]*(x^4)*(((duration+epsilon)/x)-1)^2)
+}
+}
+
+
+plot(x,ypred5[1,],type="l",xlim=c(0,5),ylim=c(0,max(ypred5)),xlab="Time",ylab="Price")
+for (i in 2:numauct)
+lines(x,ypred5[i,])
+
+########### Changing the Time Points to Calendar Time #############
+AuctCalTime<-startfrombegin[!duplicated(auctid)]
+CalTime5<-matrix(0,numauct,length(x))
+CalTime5<-matrix(rep(AuctCalTime,length(x)),numauct,length(x),byrow=F) + matrix(rep(x,numauct),numauct,length(x),byrow=T)
+
+AuctEndFromBegin5<-endfrombegin[!duplicated(auctid)]
+
+detach(data5)
+
+
+
+
+
+######################################################################################################################################
+## 10 Day Auctions
+######################################################################################################################################
+attach(data10)
+
+duration<-unique(length)
+
+sLive <- split(livebid,auctid)
+sTime <- split(tbid,auctid)
+
+#create variables with opening and closing bid added
+numauct<-length(sLive)
+sLiveEnds<-list(0); length(sLiveEnds)<-numauct
+sTimeEnds<-list(0); length(sTimeEnds)<-numauct
+sLiveStart<-list(0); length(sLiveStart)<-numauct
+sTimeStart<-list(0); length(sTimeStart)<-numauct
+sTimeEndsTemp<-list(0); length(sTimeStart)<-numauct
+sTimeStartTemp<-list(0); length(sTimeStartTemp)<-numauct
+for (j in 1:numauct){
+     sLiveEnds[[j]]<-c(min(sLive[[j]]),sLive[[j]],max(sLive[[j]]))
+     sTimeEnds[[j]]<-c(0,sTime[[j]],duration)
+     sLiveStart[[j]]<-c(min(sLive[[j]]),sLive[[j]])
+     sTimeStart[[j]]<-c(0,sTime[[j]])
+     sTimeEndsTemp[[j]]<-c(0.000001,sTime[[j]],duration)
+     sTimeStartTemp[[j]]<-c(0.000001,sTime[[j]])
+     }
+
+delta<- 0.01
+epsilon<-0.000001
+
+
+########################
+##SSE for Diffent Models
+########################
+n<-length(sLive)  ##number of auctions I'm looking at 
+wSSE.range<-array(0,c(n,num.mod))  
+wSSE.var<-array(0,c(n,num.mod))  
+models.range<-array(0,n)
+models.var<-array(0,n)
+
+for (i in 1:n){
+
+## Exponential Growth, Start and End Prices Added (Model 1)
+###########################################################
+x<-seq(0,duration,by=.01)
+reg1<-lm(log(sLiveEnds[[i]])~ sTimeEnds[[i]])
+fit1y<-exp(as.vector(reg1$coefficients)[1])*exp(as.vector(reg1$coefficients)[2]*sTimeEnds[[i]])
+fit1x<-log(sLiveEnds[[i]]/exp(as.vector(reg1$coefficients)[1]))/as.vector(reg1$coefficients)[2]
+fit1.SSEy<- sum((fit1y-sLiveEnds[[i]])^2)
+fit1.SSEx<- sum((fit1x-sTimeEnds[[i]])^2)
+wSSE.range[i,1]<- (w.y*fit1.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit1.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,1]<- (w.y*fit1.SSEy)/var(sLive[[i]]) + (w.x*fit1.SSEx)/var(sTimeEnds[[i]])
+
+## Exponential Growth, Reflected, Start and End Prices Added (Model 2) 
+######################################################################
+x<-seq(0,max(sLive[[i]]),by=.1)
+reg2<-lm(log(sTimeEndsTemp[[i]])~ sLiveEnds[[i]])
+fit2y<-log(sTimeEndsTemp[[i]]/exp(as.vector(reg2$coefficients)[1]))  /as.vector(reg2$coefficients)[2]
+fit2x<-exp(as.vector(reg2$coefficients)[1]) * exp(as.vector(reg2$coefficients)[2]*sLiveEnds[[i]])
+fit2.SSEy<- sum((fit2y-sLiveEnds[[i]])^2)
+fit2.SSEx<- sum((fit2x-sTimeEnds[[i]])^2)
+wSSE.range[i,2]<- (w.y*fit2.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit2.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,2]<- (w.y*fit2.SSEy)/var(sLive[[i]]) + (w.x*fit2.SSEx)/var(sTimeEnds[[i]])
+
+## Logistic Growth (Model 3) 
+############################
+x<-seq(0,duration,by=.01)
+reg3<- lm( log((max(sLiveStart[[i]])+delta)/sLiveStart[[i]]-1) ~ sTimeStart[[i]] )
+fit3y<- (max(sLiveEnds[[i]])+delta)/(1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*sTimeEnds[[i]]))
+fit3x<- (log( (max(sLiveEnds[[i]])+delta)/sLiveEnds[[i]] - 1) - log (exp(as.vector(reg3$coefficients)[1])))/as.vector(reg3$coefficients)[2]
+fit3.SSEy<- sum((fit3y-sLiveEnds[[i]])^2)
+fit3.SSEx<- sum((fit3x-sTimeEnds[[i]])^2)
+wSSE.range[i,3]<- (w.y*fit3.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit3.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,3]<- (w.y*fit3.SSEy)/var(sLive[[i]]) + (w.x*fit3.SSEx)/var(sTimeEnds[[i]])
+
+## Logistic Growth, Reflected, Start and End Prices Added (Model 4)
+###################################################################
+x<-seq(0,max(sLive[[i]]),by=.1)
+reg4<- lm( log((duration+epsilon)/sTimeEndsTemp[[i]]-1) ~ sLiveEnds[[i]])
+fit4y<- (log(((duration+epsilon)/sTimeEndsTemp[[i]])-1) - as.vector(reg4$coefficients)[1]) /as.vector(reg4$coefficients)[2]
+fit4x<- (duration+epsilon)/(1+exp(as.vector(reg4$coefficients)[1])*exp(as.vector(reg4$coefficients)[2]*sLiveEnds[[i]]))
+fit4.SSEy<- sum((fit4y-sLiveEnds[[i]])^2)
+fit4.SSEx<- sum((fit4x-sTimeEnds[[i]])^2)
+wSSE.range[i,4]<- (w.y*fit4.SSEy)/diff(range(sLive[[i]]))^2 + (w.x*fit4.SSEx)/diff(range(sTimeEnds[[i]]))^2
+wSSE.var[i,4]<- (w.y*fit4.SSEy)/var(sLive[[i]]) + (w.x*fit4.SSEx)/var(sTimeEnds[[i]])
+
+}
+
+
+############################
+##Choosing Model for Auction
+############################
+for (k in 1:n){
+     wSSE.range[k,][wSSE.range[k,]=="NaN"]=(min(na.omit(wSSE.range[k,])+1))
+     wSSE.var[k,][wSSE.var[k,]=="NaN"]=(min(na.omit(wSSE.var[k,])+1))
+     models.range[k]<-(1:num.mod)[min(wSSE.range[k,])==wSSE.range[k,]]
+     models.var[k]<-(1:num.mod)[min(wSSE.var[k,])==wSSE.var[k,]]
+}
+(1:n)[models.range!=models.var]  ##this locates auctions where SSE gave different "best" model
+table(models.range)
+table(models.var)
+
+################################################################
+##Creating Fitted Data Based on Selected (by SSE criteria) Model
+################################################################
+## Matrix of data
+numauct<-length(sLive)
+x<-seq(0,duration,by=.1)
+x[1]<-min(x)+.01
+x[length(x)]<-max(x)-.01
+numplot<-length(x)
+ypred10 <- yfdpred10 <- ysdpred10 <- array(0,c(numauct,numplot))
+
+models10<- models<- models.range   ###IMPT: THIS IS THE SSE CRITERIA THAT I AM USING (either models.range or models.var)
+
+
+for (i in 1:n){
+
+## Exponential Growth, Start and End Prices Added (Model 1)
+###########################################################
+if (models[i]==1){
+reg1<-lm(log(sLiveEnds[[i]])~ sTimeEnds[[i]])
+ypred10[i,]<-exp(as.vector(reg1$coefficients)[1])*exp(as.vector(reg1$coefficients)[2]*x)
+yfdpred10[i,]<-exp(as.vector(reg1$coefficients)[1])*as.vector(reg1$coefficients)[2]*exp(as.vector(reg1$coefficients)[2]*x)
+ysdpred10[i,]<-exp(as.vector(reg1$coefficients)[1])*(as.vector(reg1$coefficients)[2])^2*exp(as.vector(reg1$coefficients)[2]*x)
+}
+
+## Exponential Growth, Reflected, Start and End Prices Added (Model 2) 
+######################################################################
+if (models[i]==2){
+reg2<-lm(log(sTimeEndsTemp[[i]])~ sLiveEnds[[i]])
+ypred10[i,]<-log(x/exp(as.vector(reg2$coefficients)[1]))  /as.vector(reg2$coefficients)[2]
+yfdpred10[i,]<-1/(as.vector(reg2$coefficients)[2]*x)
+ysdpred10[i,]<- -1/(as.vector(reg2$coefficients)[2]*x^2)
+}
+
+## Logistic Growth (Model 3) 
+############################
+if (models[i]==3){
+reg3<- lm( log((max(sLiveStart[[i]])+delta)/sLiveStart[[i]]-1) ~ sTimeStart[[i]] )
+ypred10[i,]<- (max(sLive[[i]])+delta)/(1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))
+yfdpred10[i,]<- -(max(sLive[[i]])+delta)*exp(as.vector(reg3$coefficients)[1])*as.vector(reg3$coefficients)[2]*exp(as.vector(reg3$coefficients)[2]*x)/
+	  (1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))^2
+ysdpred10[i,]<- -(max(sLive[[i]])+delta)*exp(as.vector(reg3$coefficients)[1])*(as.vector(reg3$coefficients)[2])^2*exp(as.vector(reg3$coefficients)[2]*x)*
+           (1-exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))/
+	   (1+exp(as.vector(reg3$coefficients)[1])*exp(as.vector(reg3$coefficients)[2]*x))^3
+}
+
+## Logistic Growth, Reflected, Start and End Prices Added (Model 4)
+###################################################################
+if (models[i]==4){
+reg4<- lm( log((duration+epsilon)/sTimeEndsTemp[[i]]-1) ~ sLiveEnds[[i]])
+ypred10[i,]<- (log(((duration+epsilon)/x)-1) - as.vector(reg4$coefficients)[1]) /as.vector(reg4$coefficients)[2]
+yfdpred10[i,]<- -(duration+epsilon)/(as.vector(reg4$coefficients)[2]*(x^2)*(((duration+epsilon)/x)-1))
+ysdpred10[i,]<- ((duration+epsilon)*((duration+epsilon)-2*x))/(as.vector(reg4$coefficients)[2]*(x^4)*(((duration+epsilon)/x)-1)^2)
+}
+}
+
+
+plot(x,ypred10[1,],type="l",xlim=c(0,10),ylim=c(0,max(ypred10)),xlab="Time",ylab="Price")
+for (i in 2:numauct)
+lines(x,ypred10[i,])
+
+########### Changing the Time Points to Calendar Time #############
+AuctCalTime<-startfrombegin[!duplicated(auctid)]
+CalTime10<-matrix(0,numauct,length(x))
+CalTime10<-matrix(rep(AuctCalTime,length(x)),numauct,length(x),byrow=F) + matrix(rep(x,numauct),numauct,length(x),byrow=T)
+
+AuctEndFromBegin10<-endfrombegin[!duplicated(auctid)]
+
+detach(data10)
+
+
+
+
+
+
+allmodels<-c(models3,models5,models7,models10)
+table(allmodels)
+
+
+
+###################################################################
+########### Creating Data For Confidence Bounds ###################
+###################################################################
+
+AllClosePrice<-c(ypred3[,31],ypred5[,51],ypred7[,71],ypred10[,101])#ypred5[,51]
+AllCloseVelocity<-c(yfdpred3[,31],yfdpred5[,51],yfdpred7[,71],yfdpred10[,101])
+AllCloseAcceleration<-c(ysdpred3[,31],ysdpred5[,51],ysdpred7[,71],ysdpred10[,101])
+
+AllEndDay<-round(c(CalTime3[,31],CalTime5[,51],CalTime7[,71],CalTime10[,101]),0)#round(CalTime5[,51],0)
+
+AvgDayPriceDat<-aggregate(AllClosePrice,list(AllEndDay),mean)
+DayRound<-sort(as.numeric(levels(AvgDayPriceDat$Group.1)))
+AvgDayPriceClose<-as.numeric(AvgDayPriceDat$x)
+SdDayPriceDat<-aggregate(AllClosePrice,list(AllEndDay),sd)
+SdDayPriceClose<-as.numeric(SdDayPriceDat$x)
+NPriceCloseDat<-aggregate(AllClosePrice,list(AllEndDay),length)
+NClose<-as.numeric(NPriceCloseDat$x)
+TVal<-qt(.975,NClose)
+MedDayPriceDat<-aggregate(AllClosePrice,list(AllEndDay),median)
+MedDayPriceClose<-as.numeric(MedDayPriceDat$x)
+IQRDayPriceDat<-aggregate(AllClosePrice,list(AllEndDay),IQR)
+IQRDayPriceClose<-as.numeric(IQRDayPriceDat$x)
+
+AvgDayVelocityDat<-aggregate(AllCloseVelocity,list(AllEndDay),mean)
+AvgDayVelocityClose<-as.numeric(AvgDayVelocityDat$x)
+SdDayVelocityDat<-aggregate(AllCloseVelocity,list(AllEndDay),sd)
+SdDayVelocityClose<-as.numeric(SdDayVelocityDat$x)
+MedDayVelocityDat<-aggregate(AllCloseVelocity,list(AllEndDay),median)
+MedDayVelocityClose<-as.numeric(MedDayVelocityDat$x)
+IQRDayVelocityDat<-aggregate(AllCloseVelocity,list(AllEndDay),IQR)
+IQRDayVelocityClose<-as.numeric(IQRDayVelocityDat$x)
+
+AvgDayAccelerationDat<-aggregate(AllCloseAcceleration,list(AllEndDay),mean)
+AvgDayAccelerationClose<-as.numeric(AvgDayAccelerationDat$x)
+SdDayAccelerationDat<-aggregate(AllCloseAcceleration,list(AllEndDay),sd)
+SdDayAccelerationClose<-as.numeric(SdDayAccelerationDat$x)
+MedDayAccelerationDat<-aggregate(AllCloseAcceleration,list(AllEndDay),median)
+MedDayAccelerationClose<-as.numeric(MedDayAccelerationDat$x)
+IQRDayAccelerationDat<-aggregate(AllCloseAcceleration,list(AllEndDay),IQR)
+IQRDayAccelerationClose<-as.numeric(IQRDayAccelerationDat$x)
+
+
+
+
+
+## Colors for Rug Plot
+
+colors<-c("green","gold","red","blue")
+linetype<-c(1,1,1,1)
+
+#colors<-c("grey90","black","black","grey60")
+#linetype<-c(1,2,1,1)
+
+##################################################################
+########### Rug Plot ##########
+##################################################################
+
+par(mfrow=c(1,1))
+
+## Price 
+##################COLOR CODED
+plot(CalTime7[1,],ypred7[1,],xlim=c(0,46.85),ylim=c(0,max(ypred3,ypred5,ypred7,ypred10)),type="l",lty=linetype[models7[1]],lwd="1",col=colors[models7[1]],xlab="Calendar Time",ylab="Price",main="Palm Pilot Price Evolution Curves Vs. Calendar Time",xaxt='n')
+axis(side=1,at=c(0,10,20,30,40),labels=c("3/14","3/24","4/3","4/13","4/23"))
+#polygon(c(DayRound,rev(DayRound)),c(AvgDayPriceClose+TVal*SdDayPriceClose/sqrt(NClose),rev(AvgDayPriceClose-TVal*SdDayPriceClose/sqrt(NClose))),col=gray(0.75),border=NA)
+polygon(c(DayRound,rev(DayRound)),c(MedDayPriceClose+IQRDayPriceClose/2,rev(MedDayPriceClose-IQRDayPriceClose/2)),col=gray(0.75),border=NA)
+points(max(CalTime7[1,]),ypred7[1,71],type="p",pch=20,lwd=2,col="black")
+for (k in 2:nrow(ypred7)){
+    lines(CalTime7[k,],ypred7[k,],lty=linetype[models7[k]],lwd=1,col=colors[models7[k]])
+    points(max(CalTime7[k,]),max(ypred7[k,71]),type="p",pch=20,lwd=1,col="black")
+}
+for (j in 1:nrow(ypred5)){
+    lines(CalTime5[j,],ypred5[j,],lty=linetype[models5[j]],lwd=1,col=colors[models5[j]])
+    points(max(CalTime5[j,]),max(ypred5[j,51]),type="p",pch=20,lwd=1,col="black")
+}
+for (l in 1:nrow(ypred3)){
+    lines(CalTime3[l,],ypred3[l,],lty=linetype[models3[l]],lwd=1,col=colors[models3[l]])
+    points(max(CalTime3[l,]),max(ypred3[l,31]),type="p",pch=20,lwd=1,col="black")
+}
+for (n in 1:nrow(ypred10)){
+    lines(CalTime10[n,],ypred10[n,],lty=linetype[models10[n]],lwd=1,col=colors[models10[n]])
+    points(max(CalTime10[n,]),max(ypred10[n,101]),type="p",pch=20,lwd=1,col="black")
+}
+lines(DayRound,AvgDayPriceClose,lwd=3)
+legend.txt<-c("exponential (44.80%)","logarithmic (1.36%)","logistic (18.55%)","reflected logistic (35.29%)")  #for full data
+legend("topleft",legend=legend.txt,bty="n",lty=c(linetype[1],linetype[2],linetype[3],linetype[4]),col=c(colors[1],colors[2],colors[3],colors[4]))
+
+
+
+
+## Velocity
+##################COLOR CODED
+plot(CalTime7[1,],yfdpred7[1,],xlim=c(0,46.85),ylim=c(0,2000),type="l",lty=linetype[models7[1]],lwd="1",col=colors[models7[1]],xlab="Calendar Time",ylab="Velocity",main="Palm Pilot Price Velocity Curves Vs. Calendar Time",xaxt='n')
+#plot(CalTime7[1,],yfdpred7[1,],xlim=c(0,46.85),ylim=c(0,max(yfdpred3,yfdpred5,yfdpred7,yfdpred10)),type="l",lwd="1",col=colors[models7[1]],xlab="Calendar Time",ylab="Velocity",main="Palm Pilot Price Velocity Curves Vs. Calendar Time",xaxt='n')
+axis(side=1,at=c(0,10,20,30,40),labels=c("3/14","3/24","4/3","4/13","4/23"))
+#polygon(c(DayRound,rev(DayRound)),c(AvgDayVelocityClose+TVal*SdDayVelocityClose/sqrt(NClose),rev(AvgDayVelocityClose-TVal*SdDayVelocityClose/sqrt(NClose))),col=gray(0.75),border=NA)
+#polygon(c(DayRound,rev(DayRound)),c(MedDayVelocityClose+IQRDayVelocityClose/2,rev(MedDayVelocityClose-IQRDayVelocityClose/2)),col=gray(0.75),border=NA)
+points(max(CalTime7[1,]),yfdpred7[1,71],type="p",pch=20,lwd=2,col="black")
+for (k in 2:nrow(yfdpred7)){
+    lines(CalTime7[k,],yfdpred7[k,],lty=linetype[models7[k]],lwd=1,col=colors[models7[k]])
+    points(max(CalTime7[k,]),yfdpred7[k,71]*exp(ypred7[k,71]),type="p",pch=20,lwd=2,col="black")
+}
+for (j in 1:nrow(yfdpred5)){
+    lines(CalTime5[j,],yfdpred5[j,],lty=linetype[models5[j]],lwd=1,col=colors[models5[j]])
+    points(max(CalTime5[j,]),yfdpred5[j,51]*exp(ypred5[j,51]),type="p",pch=20,lwd=2,col="black")
+}
+for (l in 1:nrow(yfdpred3)){
+    lines(CalTime3[l,],yfdpred3[l,],lty=linetype[models3[l]],lwd=1,col=colors[models3[l]])
+    points(max(CalTime3[l,]),yfdpred3[l,31],type="p",pch=20,lwd=2,col="black")
+}
+for (n in 1:nrow(yfdpred10)){
+    lines(CalTime10[n,],yfdpred10[n,],lty=linetype[models10[n]],lwd=1,col=colors[models10[n]])
+    points(max(CalTime10[n,]),yfdpred10[n,101],type="p",pch=20,lwd=2,col="black")
+}
+lines(DayRound,AvgDayVelocityClose,lwd=3)
+
+
+

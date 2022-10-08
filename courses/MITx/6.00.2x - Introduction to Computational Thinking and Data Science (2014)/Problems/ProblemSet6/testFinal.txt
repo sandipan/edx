@@ -1,0 +1,10 @@
+#point_name
+#feature_value
+#end
+a,4
+b,9
+c,9
+d,9
+e,8
+f,0
+g,8  

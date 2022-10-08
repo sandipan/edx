@@ -1,0 +1,103 @@
+###########################################################
+########### Start of Program                      #########
+###########################################################
+##remove junk!!
+rm(list = ls(all = TRUE))
+##Load necessary packages
+library(pspline)
+##set working directory
+setwd("C:\\WFiles\\Research\\MyPaperProjects\\People\\Bapna\\Working\\WinnersCurse\\R")
+#############################################################
+##Import data: Note , the data should contain auction IDs,
+##magnitude and timing of each bid, and a bidder ID
+#############################################################
+data    <- read.csv("Cartier.csv")
+attach(data)
+##data preprocessing
+sp.bid      <- split(bid,auctionid)
+sp.time     <- split(bidtime,auctionid)
+sp.bidder   <- split(bidder,auctionid)
+n           <- length(sp.bid)
+ksm.bid     <- list(0)
+res.bid     <- list(0)
+num.bidders <- list(0)
+###############################################################
+##Kernel smoothing: eliminate the effect of time
+###############################################################
+for (i in 1:n){
+ ksm.bid[[i]] <- ksmooth(sp.time[[i]],sp.bid[[i]],
+                 kernel="normal",bandwidth = 0.5,x.points=sp.time[[i]])$y
+ res.bid[[i]] <- sp.bid[[i]] - ksm.bid[[i]]
+}
+
+################################################################
+##Compute number of unique bidders
+################################################################
+for (i in 1:n){
+  m <- length(sp.bidder[[i]])
+  curr.bidders <- 1
+  num.bidders[[i]] <- curr.bidders
+  for (j in 2:m){
+   if (any((sp.bidder[[i]][1:(j-1)]==sp.bidder[[i]][j])==TRUE)==FALSE)
+      { curr.bidders <- curr.bidders + 1}
+   num.bidders[[i]] <- c(num.bidders[[i]],curr.bidders)
+  }
+}
+
+##############################################################################
+##fit smoothing splines to the residual bids vs. the number of unique bidders
+##############################################################################
+res.pri     <- list(0)
+res.vel     <- list(0)
+bid.points  <- list(0)
+for (i in 1:n){
+ if (length(unique(num.bidders[[i]]))>3){
+        spline  <- smooth.spline(num.bidders[[i]],res.bid[[i]])
+        bid.points[[i]] <- seq(1, max(num.bidders[[i]]),by=.1)
+        res.pri[[i]] <- predict(spline,bid.points[[i]],deriv=0)$y
+        res.vel[[i]] <- predict(spline,bid.points[[i]],deriv=1)$y
+}}
+
+mean.points <- seq(1,max(unlist(num.bidders)),by=.1)
+mean.length <- length(mean.points)
+mean.vec.pri<- array(0,c(1,mean.length))
+mean.vec.vel<- array(0,c(1,mean.length))
+
+for (j in 1:mean.length){
+   h.sum.1 <- 0
+   h.sum.2 <- 0
+   h.n   <- 0
+   for (i in 1:n){
+   if (is.null(res.pri[[i]])==FALSE){
+      if (mean.points[j] <= max(bid.points[[i]]))
+         {h.sum.1 <- h.sum.1 + res.pri[[i]][j];
+          h.sum.2 <- h.sum.2 + res.vel[[i]][j];
+          h.n     <- h.n   + 1;}
+       }
+   }
+   mean.vec.pri[j] <- h.sum.1/h.n;
+   mean.vec.vel[j] <- h.sum.2/h.n;
+}
+
+
+#########################################################################
+##graph predicted versus unique number of bidders
+#########################################################################
+postscript("winners-curse.eps",horizontal=T);
+par(mfrow=c(1,2))
+plot(mean.points,mean.vec.pri, type="l",
+     ylab="Residual Price",xlab="Current Number of Bidders",
+     ylim=c(-600,600),xlim=c(1,20),lwd=5,lty=2,col="blue")
+for (i in 1:n){ if (is.null(res.pri[[i]])==FALSE)
+                {lines(bid.points[[i]],res.pri[[i]],lty=2)}}
+
+plot(mean.points,mean.vec.vel, type="l",
+     ylab="Velocity",xlab="Current Number of Bidders",
+     ylim=c(-1200,1200),xlim=c(1,20),lwd=5,lty=2,col="blue")
+for (i in 1:n){ if (is.null(res.pri[[i]])==FALSE)
+                {lines(bid.points[[i]],res.vel[[i]],lty=2)}}
+graphics.off();
+
+###########################################################
+###########  End  of Program                      #########
+###########################################################
