@@ -1,0 +1,15 @@
+DAT209x Class grades
+
+Name,Grade
+Bobby,90
+Dana,92 
+James,88 
+John,79 
+Darren,84 
+Sam,88 
+Joanna,89	
+Scott,88 
+Sean,85	
+Laura,95 
+Anna,86 
+Tay,88

@@ -1,0 +1,139 @@
+sqlite3 movie.db
+.open movie.db
+.read rating.sql
+.database
+.tables
+.fullschema
+
+sqlite> .fullschema
+#CREATE TABLE Movie(mID int, title text, year int, director text);
+#CREATE TABLE Reviewer(rID int, name text);
+#CREATE TABLE Rating(rID int, mID int, stars int, ratingDate date);
+
+SELECT * from Movie LIMIT 10;
+SELECT * from Reviewer LIMIT 10;
+SELECT * from Rating LIMIT 10;
+
+SELECT title from Movie where director='Steven Spielberg';
+SELECT distinct(m.year) as y FROM Movie as m JOIN Rating as r on m.mID = r.mID where r.stars >= 4 order by y;
+SELECT m.title FROM Movie as m left outer JOIN Rating as r on m.mID = r.mID where r.stars is null;
+SELECT r2.name FROM Reviewer as r2 JOIN Rating as r on r2.rID = r.rID where r.ratingDate is null;
+SELECT r.name as n, m.title as t, r2.stars as s, r2.ratingDate FROM Movie as m JOIN Rating as r2 on m.mID = r2.mID JOIN Reviewer as r on r2.rID = r.rID order by n, t, s;
+
+SELECT r.name as n, m.title as t FROM Reviewer as r 
+JOIN Rating as r1 on r.rID = r1.rID 
+JOIN Rating as r2 on r1.rID = r2.rID and r1.mID = r2.mID and r1.ratingDate > r2.ratingDate and r1.stars > r2.stars
+JOIN Movie as m on m.mID = r1.mID;
+#group by r1.rID, r1.mID having c >= 2;
+
+#SELECT r.name as n, r1.mID as m, count(r1.mID) as c FROM Reviewer as r JOIN Rating as r1 on r.rID = r1.rID group by r1.rID, r1.mID having c = 2;
+#SELECT name, title, R1.ratingDate, R1.stars, R2.ratingDate, R2.stars FROM Movie INNER JOIN Rating R1 INNER JOIN Rating R2 INNER JOIN Reviewer WHERE R1.mID = R2.mID AND R1.ratingDate < R2.ratingDate AND #R1.stars < R2.stars;
+#SELECT r.name as n, r1.mID as m, count(r1.mID) as c FROM Reviewer as r JOIN Rating as r1 on r.rID = r1.rID JOIN Rating as r2 on r1.mID = r2.mID group by r1.mID having r1.ratingDate < r2.ratingDate AND #r1.stars < r2.stars AND c = 2;
+
+SELECT m.title as t, max(r.stars) FROM Movie as m JOIN Rating as r on m.mID = r.mID group by m.mID order by t;
+SELECT m.title as t, max(r.stars) - min(r.stars) as d FROM Movie as m JOIN Rating as r on m.mID = r.mID group by m.mID order by d desc, t;
+SELECT avg(B.s) - avg(A.s) from (SELECT avg(r.stars) as s FROM Movie as m JOIN Rating as r on m.mID = r.mID group by m.mID having m.year < 1980) as B, (SELECT avg(r.stars) as s FROM Movie as m JOIN Rating as r on m.mID = r.mID group by m.mID having m.year >= 1980) as A;
+
+sqlite3 social.db
+.open social.db
+.read social.sql
+
+sqlite> .fullschema
+CREATE TABLE Highschooler(ID int, name text, grade int);
+CREATE TABLE Friend(ID1 int, ID2 int);
+CREATE TABLE Likes(ID1 int, ID2 int);
+
+SELECT name from Highschooler where ID in
+(SELECT ID2 from Friend as f JOIN Highschooler as h on f.ID1 = h.ID where name = 'Gabriel'
+union
+SELECT ID1 from Friend as f JOIN Highschooler as h on f.ID2 = h.ID where name = 'Gabriel');
+
+SELECT h.name, h.grade, h1.name, h1.grade as G from Likes as l JOIN Highschooler as h on l.ID1 = h.ID JOIN Highschooler as h1 on l.ID2 = h1.ID where h.grade - h1.grade >= 2;
+
+SELECT h.name, h.grade, h1.name, h1.grade from Likes as l1 JOIN Likes as l2 on (l1.ID1 = l2.ID2 and l1.ID2 = l2.ID1) 
+JOIN Highschooler as h on l1.ID1 = h.ID JOIN Highschooler as h1 on l1.ID2 = h1.ID where h.name < h1.name;
+
+SELECT n, g FROM
+(SELECT h.name as n, h.grade as g FROM Highschooler as h left outer JOIN Likes as l on h.ID = l.ID1 where l.ID2 is null
+intersect
+SELECT h.name as n, h.grade as g FROM Highschooler as h left outer JOIN Likes as l on h.ID = l.ID2 where l.ID1 is null) order by g, n;
+
+SELECT name, grade FROM (SELECT ID2 as id, count(ID1) as c FROM Likes group by ID2 having c>1) as s JOIN Highschooler as h ON h.ID = s.id;
+
+#SELECT h.name, h.grade from Friend as f 
+#JOIN Highschooler as h on f.ID1 = h.ID
+#JOIN Highschooler as h1 on f.ID2 = h1.ID
+#group by f.ID1 having count(distinct h1.grade) = 1 and h.grade = max(h1.grade)
+#order by h.grade, h.name;
+
+SELECT DISTINCT H1.name, H1.grade, H2.name, H2.grade, H3.name, H3.grade
+FROM Highschooler H1, Highschooler H2, Highschooler H3, Likes L, Friend F1, Friend F2
+WHERE (H1.ID = L.ID1 AND H2.ID = L.ID2) AND H2.ID NOT IN (
+  SELECT ID2
+  FROM Friend
+  WHERE ID1 = H1.ID
+) AND (H1.ID = F1.ID1 AND H3.ID = F1.ID2) AND (H2.ID = F2.ID1 AND H3.ID = F2.ID2);
+
+
+SELECT ID1 from Friend
+where S.ID in 
+(SELECT ID1, ID2 from Likes as l 
+where ID2 not in (select ID2 from Friend as f where f.ID1=l.ID1 union select ID1 from Friend as f where f.ID2=l.ID1)) as S
+JOIN Friend as f1 
+on S.ID1 = f1.ID1 and S.ID2 = f1.ID2;
+  
+
+SELECT h.name, h.grade, h1.name, h1.grade from Likes as l1 left outer JOIN Likes as l2 on l1.ID2 = l2.ID1
+JOIN Highschooler as h on l1.ID1 = h.ID JOIN Highschooler as h1 on l1.ID2 = h1.ID where l2.ID1 is null;
+
+#SELECT h.name, h.grade from Likes as l JOIN Highschooler as h on l.ID1 = h.ID JOIN Highschooler as h1 on l.ID2 = h1.ID where h.grade = h1.grade;
+
+SELECT c1-c2 from (SELECT count(name) as c1, count(distinct(name)) as c2 from Highschooler);
+
+INSERT INTO Reviewer (rID, name) VALUES(209, 'Roger Ebert');
+
+UPDATE Movie SET year = year + 25
+where mID in
+(SELECT m.mID FROM Movie m JOIN Rating as r on m.mID = r.mID group by m.mID having avg(r.stars) >= 4);
+
+#DELETE FROM Rating
+#where rID in
+#(SELECT r.rID FROM Rating as r Join Movie as m on r.mID = m.mID and r.stars < 4 and (m.year < 1970 or m.year > 2000)); # BETWEEN 1970 and 2000; 
+
+DELETE FROM Rating
+where stars < 4 and 
+mID in(SELECT mID FROM Movie where year < 1970 or year > 2000); # BETWEEN 1970 and 2000; 
+
+
+DELETE FROM Highschooler
+where grade = 12;
+
+DELETE from Likes 
+where ID1 in
+(SELECT f.ID1 FROM Friend as f
+JOIN Likes as l
+on f.ID1 = l.ID1 and f.ID2 = l.ID2
+where f.ID1 not in (select ID2 from Likes as l1 where l1.ID1 = f.ID2));
+
+insert into Friend
+select distinct F1.ID1, F2.ID2
+from Friend F1, Friend F2
+where F1.ID2 = F2.ID1 and F1.ID1<>F2.ID2 
+      and F1.ID1 not in (select F3.ID1 from Friend F3 where F3.ID2=F2.ID2);
+
+
+#DELETE from Likes 
+#where ID1 in (SELECT ID1 FROM 
+#(SELECT ID1 as a, ID2 as b from Friend
+#intersect 
+#SELECT ID1 as a, ID2 as b from Likes 
+#except 
+#SELECT ID2 as a, ID1 as b from Likes)) and
+#ID2 in (SELECT ID2 FROM 
+#(SELECT ID1 as a, ID2 as b from Friend
+#intersect 
+#SELECT ID1 as a, ID2 as b from Likes 
+#except 
+#SELECT ID2 as a, ID1 as b from Likes)); 
+
+
