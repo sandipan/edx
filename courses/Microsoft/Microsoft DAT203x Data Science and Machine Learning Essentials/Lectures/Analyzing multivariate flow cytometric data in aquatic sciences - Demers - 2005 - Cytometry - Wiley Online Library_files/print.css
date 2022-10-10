@@ -1,0 +1,18 @@
+*{background:transparent!important;color:black!important;text-shadow:none!important}
+a,a:visited{text-decoration:underline}
+a[href]:after{content:" (" attr(href) ")"}
+abbr[title]:after{content:" (" attr(title) ")"}
+a[href^="javascript:"]:after,a[href^="JavaScript:"]:after,a[href^="#"]:after{content:""}
+pre,blockquote{border:1px solid #999;page-break-inside:avoid}
+thead{display:table-header-group}
+tr,img{page-break-inside:avoid}
+img{max-width:100%!important}
+@page{margin:.5cm}
+p,h2,h3{orphans:3;widows:3}
+h2,h3{page-break-after:avoid}
+#skip,#header,#breadcrumb,#pageNavAndTools,noscript,#footer,#banner,#promosAndTools,.previousAndNext,.resultControls,.paginationFilter,.subSectionHeading select,.subSectionHeading label,.headingCont select,.access input,.articleCategory a,#toggleAddInfo{display:none}
+#authorsAffiliations,.noteGroup,.figure ul{list-style-type:none}
+#authorsAffiliations sup,.noteGroup .bullet{float:left;margin-right:1em}
+#authorsDetail,#publicationHistoryDetails,#howToCite,#errata{display:block}
+#leaderBoard a:after,.figZoom:after{content:normal;display:none}
+.para .custom li{page-break-after:always;overflow:visible}
