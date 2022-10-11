@@ -1,0 +1,1699 @@
+
+
+<!DOCTYPE html>
+<!--[if lte IE 9]><html class="ie ie9 lte9" lang="en"><![endif]-->
+<!--[if !IE]><!--><html lang="en"><!--<![endif]-->
+<head dir="ltr">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"XA4GVl5ACwAEV1JQAA=="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(){}function r(t){function e(t){return t&&t instanceof n?t:t?a(t,i,o):o()}function s(n,r,o){t&&t(n,r,o);for(var i=e(o),a=f(n),s=a.length,c=0;s>c;c++)a[c].apply(i,r);return i}function c(t,e){d[t]=f(t).concat(e)}function f(t){return d[t]||[]}function u(){return r(s)}var d={};return{on:c,emit:s,create:u,listeners:f,context:e,_events:d}}function o(){return new n}var i="nr@context",a=t("gos");e.exports=r()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t){try{i.console&&console.log(t)}catch(e){}}var n,r=t("ee"),o=t(1),i={};try{n=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(i.console=!0,-1!==n.indexOf("dev")&&(i.dev=!0),-1!==n.indexOf("nr_dev")&&(i.nrDev=!0))}catch(a){}i.nrDev&&r.on("internal-error",function(t){e(t.stack)}),i.dev&&r.on("fn-err",function(t,n,r){e(r.stack)}),i.dev&&(e("NR AGENT IN DEVELOPMENT MODE"),e("flags: "+o(i,function(t){return t}).join(", ")))},{1:25,ee:"QJf3ax"}],4:[function(t){function e(t,e,n,i,a){try{f?f-=1:r("err",[a||new UncaughtException(t,e,n)])}catch(c){try{r("ierr",[c,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof s?s.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t("ee"),a=t("loader"),s=window.onerror,c=!1,f=0;a.features.err=!0,t(5),window.onerror=e;try{throw new Error}catch(u){"stack"in u&&(t(1),t(2),"addEventListener"in window&&t(3),a.xhrWrappable&&t(4),c=!0)}i.on("fn-start",function(){c&&(f+=1)}),i.on("fn-err",function(t,e,r){c&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){c&&!this.thrown&&f>0&&(f-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:11,2:10,3:8,4:12,5:3,6:26,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t){if(window.addEventListener){var e=t("handle"),n=t("ee");t(1),window.addEventListener("click",function(){e("inc",["ck"])},!1),window.addEventListener("hashchange",function(){e("inc",["hc"])},!1),n.on("pushState-start",function(){e("inc",["ps"])})}},{1:9,ee:"QJf3ax",handle:"D5DuLP"}],6:[function(t){t("loader").features.ins=!0},{loader:"G9z0Bl"}],7:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1),i=t(2);t("loader").features.stn=!0,t(3);var a=Event;n.on("fn-start",function(t){var e=t[0];e instanceof a&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof a&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),i.on("fn-start",function(){this.bstStart=Date.now()}),i.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.clearResourceTimings?window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1):window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:11,2:10,3:9,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],8:[function(t,e){function n(t){for(var e=t;e&&!e.hasOwnProperty("addEventListener");)e=Object.getPrototypeOf(e);e&&r(e)}function r(t){a.inPlace(t,["addEventListener","removeEventListener"],"-",o)}function o(t){return t[1]}var i=t("ee").create(),a=t(1)(i),s=t("gos");e.exports=i,r(window),"getPrototypeOf"in Object?(n(document),n(XMLHttpRequest.prototype)):XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&r(XMLHttpRequest.prototype),i.on("addEventListener-start",function(t){if(t[1]){var e=t[1];if("function"==typeof e){var n=s(e,"nr@wrapped",function(){return a(e,"fn-",null,e.name||"anonymous")});this.wrapped=t[1]=n}else"function"==typeof e.handleEvent&&a.inPlace(e,["handleEvent"],"fn-")}}),i.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:27,ee:"QJf3ax",gos:"7eSDFh"}],9:[function(t,e){var n=t("ee").create(),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState","replaceState"],"-")},{1:27,ee:"QJf3ax"}],10:[function(t,e){var n=t("ee").create(),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:27,ee:"QJf3ax"}],11:[function(t,e){function n(t,e,n){t[0]=i(t[0],"fn-",null,n)}function r(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=i(t[0],"fn-",this,n)}var o=t("ee").create(),i=t(1)(o);e.exports=o,i.inPlace(window,["setTimeout","setImmediate"],"setTimer-"),i.inPlace(window,["setInterval"],"setInterval-"),i.inPlace(window,["clearTimeout","clearImmediate"],"clearTimeout-"),o.on("setInterval-start",n),o.on("setTimer-start",r)},{1:27,ee:"QJf3ax"}],12:[function(t,e){function n(){f.inPlace(this,l,"fn-",o)}function r(t,e){f.inPlace(e,["onreadystatechange"],"fn-",o)}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").create(),s=t(1),c=t(2),f=c(a),u=c(s),d=window.XMLHttpRequest,l=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=a,window.XMLHttpRequest=function(t){var e=new d(t);try{a.emit("new-xhr",[e],e),e.hasOwnProperty("addEventListener")&&u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",n,!1)}catch(r){try{a.emit("internal-error",[r])}catch(i){}}return e},i(d,XMLHttpRequest),XMLHttpRequest.prototype=d.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{1:8,2:27,ee:"QJf3ax"}],13:[function(t){function e(t){var e=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var o=0;u>o;o++)t.removeEventListener(f[o],this.listener,!1);if(!e.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=this.lastSize||n(t);if(i&&(r.rxSize=i),this.sameOrigin){var s=t.getResponseHeader("X-NewRelic-App-Data");s&&(e.cat=s.split(", ").pop())}}else e.status=0;r.cbTime=this.cbTime,c.emit("xhr-done",[t],t),a("xhr",[e,r,this.startTime])}}}function n(t){var e=t.responseType,n="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return r(n)}function r(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function o(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var i=t("loader");if(i.xhrWrappable){var a=t("handle"),s=t(2),c=t("ee"),f=["load","error","abort","timeout"],u=f.length,d=t(1),l=t(3),p=window.XMLHttpRequest;i.features.xhr=!0,t(5),t(4),c.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=e,n.ended=!1,n.xhrGuids={},n.lastSize=0,l&&(l>34||10>l)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),c.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),c.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),c.on("send-xhr-start",function(t,e){var n=this.metrics,o=t[0],i=this;if(n&&o){var a=r(o);a&&(n.txSize=a)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{c.emit("internal-error",[n])}catch(r){}}};for(var s=0;u>s;s++)e.addEventListener(f[s],this.listener,!1)}),c.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),c.on("xhr-load-added",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),c.on("xhr-load-removed",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),c.on("addEventListener-end",function(t,e){e instanceof p&&"load"===t[0]&&c.emit("xhr-load-added",[t[1],t[2]],e)}),c.on("removeEventListener-end",function(t,e){e instanceof p&&"load"===t[0]&&c.emit("xhr-load-removed",[t[1],t[2]],e)}),c.on("fn-start",function(t,e,n){e instanceof p&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),c.on("fn-end",function(t,e){this.xhrCbStart&&c.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:14,3:16,4:12,5:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],14:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],15:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:25,2:26,handle:"D5DuLP"}],16:[function(t,e){var n=0,r=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);r&&(n=+r[1]),e.exports=n},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):void(r.q&&(r.q[t]||(r.q[t]=[]),r.q[t].push(e)))}var r=t("ee").create();e.exports=n,n.ee=r,r.q={}},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){if(!h++){var t=p.info=NREUM.info,e=f.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(d,function(e,n){t[e]||(t[e]=n)});var n="https"===u.split(":")[0]||t.sslForHttp;p.proto=n?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=p.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document;t(2);var u=(""+location).split("?")[0],d={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-852.min.js"},l=window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent),p=e.exports={offset:i(),origin:u,features:{},xhrWrappable:l};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),c.addEventListener("load",n,!1)):(f.attachEvent("onreadystatechange",r),c.attachEvent("onload",n)),a("mark",["firstbyte",i()]);var h=0},{1:25,2:15,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],25:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],26:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],27:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@original",a=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,c;try{i=this,n=o(arguments),s="function"==typeof r?r(n,i):r||{}}catch(u){d([u,"",[n,i,a],s])}f(e+"start",[n,i,a],s);try{return c=t.apply(i,n)}catch(l){throw f(e+"err",[n,i,l],s),l}finally{f(e+"end",[n,i,c],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=t,u(t,nrWrapper),nrWrapper)}function c(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!s){s=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}s=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=c,e.flag=i,e}},{1:26,ee:"QJf3ax"}]},{},["G9z0Bl",4,13,7,6,5]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"1beac94c95","agent":"","transactionName":"NQQGYUZWDUNSVUMPWQxOIkBaVBdZXFgYAlwDDwNaa1QMXV5TWRJpAQ0NUFpDTVZcREILGBQIAUJHDRBZXVFbA2kWCRZQVVM=","applicationID":"3343327","errorBeacon":"bam.nr-data.net","applicationTime":407}</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+
+
+  
+      <title>
+       Discussion - 004x | edX
+      </title>
+  
+
+      <script type="text/javascript">
+        /* immediately break out of an iframe if coming from the marketing website */
+        (function(window) {
+          if (window.location !== window.top.location) {
+            window.top.location = window.location;
+          }
+        })(this);
+      </script>
+
+  
+
+  <script type="text/javascript" src="https://d37djvu3ytnwxt.cloudfront.net/static/js/i18n/en/djangojs.b28203373cc1.js"></script>
+
+  <link rel="icon" type="image/x-icon" href="https://d37djvu3ytnwxt.cloudfront.net/static/images/favicon.c074c912999f.ico" />
+
+  
+  
+
+    <link href="https://d37djvu3ytnwxt.cloudfront.net/static/css/lms-style-vendor.614217745ba0.css" rel="stylesheet" type="text/css" />
+
+
+
+  
+  <link rel="stylesheet" href="https://d37djvu3ytnwxt.cloudfront.net/static/css/lms-main.aaa42fe73ec2.css" type="text/css" media="all" />
+
+    
+    <script type="text/javascript" src="https://d37djvu3ytnwxt.cloudfront.net/static/js/lms-main_vendor.6efceadddba7.js" charset="utf-8"></script>
+
+
+    
+    <script type="text/javascript" src="https://d37djvu3ytnwxt.cloudfront.net/static/js/lms-application.ee6ddc7d55a1.js" charset="utf-8"></script>
+
+
+
+  <script>
+    window.baseUrl = "https://d37djvu3ytnwxt.cloudfront.net/static/";
+    (function (require) {
+      require.config({
+          baseUrl: window.baseUrl
+      });
+    }).call(this, require || RequireJS.require);
+  </script>
+  <script type="text/javascript" src="https://d37djvu3ytnwxt.cloudfront.net/static/lms/js/require-config.773d0baddd96.js"></script>
+
+  
+  
+
+    
+    <script type="text/javascript" src="https://d37djvu3ytnwxt.cloudfront.net/static/js/lms-modules.5853bee7bf41.js" charset="utf-8"></script>
+
+
+
+  
+
+  
+
+    <link href="https://d37djvu3ytnwxt.cloudfront.net/static/css/lms-style-course-vendor.d65f103108eb.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+
+    <link href="https://d37djvu3ytnwxt.cloudfront.net/static/css/lms-course.4fef8db119ad.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+<script type="text/javascript" src="https://d37djvu3ytnwxt.cloudfront.net/static/js/jquery.autocomplete.3bd10d7510d2.js"></script>
+<script type="text/javascript" src="https://d37djvu3ytnwxt.cloudfront.net/static/js/src/tooltip_manager.c80266d685f1.js"></script>
+
+
+    <script type="text/javascript" src="https://d37djvu3ytnwxt.cloudfront.net/static/js/discussion_vendor.859650802276.js" charset="utf-8"></script>
+
+
+
+<link href="https://d37djvu3ytnwxt.cloudfront.net/static/css/vendor/jquery.autocomplete.09a0b34739a2.css" rel="stylesheet" type="text/css">
+
+
+
+  
+
+  <script src=//cdn.optimizely.com/js/1743970571.js></script>
+
+  <!-- begin Segment -->
+<script type="text/javascript">
+  // Asynchronously load Segment's analytics.js library
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+  analytics.load("8fncv13bt5");
+  analytics.page();
+  }}();
+  // Note: user tracking moved to segment-io-footer.html
+</script>
+<!-- end Segment -->
+
+
+  <meta name="path_prefix" content="">
+  <meta name="google-site-verification" content="_mipQ4AtZQDNmbtOkwehQDOgCxUUV2fb_C0b6wbiRHY" />
+
+
+
+</head>
+
+<body class="ltr discussion lang_en">
+
+<div id="page-prompt"></div>
+  <div class="window-wrap" dir="ltr">
+    <a class="nav-skip" href="#discussion-container">Skip to main content</a>
+
+        
+
+
+
+
+
+
+
+
+
+<header class="global slim" aria-label="Main" role="banner">
+  <div class="wrapper-header nav-container">
+    <h1 class="logo" itemscope="" itemtype="http://schema.org/Organization">
+      <a href="https://www.edx.org" itemprop="url">
+        
+            <img src="https://d37djvu3ytnwxt.cloudfront.net/static/images/logo.790c9a5340cb.png" alt="edX Home Page" itemprop="logo" />
+        
+      </a>
+    </h1>
+
+    <h2 class="course-header">
+      <span class="provider">KyotoUx:</span>
+      <span class="course-number">004x</span>
+      <span class="course-name">Fun with Prime Numbers: The Mysterious World of Mathematics</span>
+    </h2>
+
+
+    <ul class="user">
+      <li class="primary">
+        <a href="/dashboard" class="user-link">
+          <span class="sr">Dashboard for:</span>
+          
+          <img class="user-image-frame" src="https://d37djvu3ytnwxt.cloudfront.net/static/images/profiles/default_50.76570a4d025e.png" alt="Profile image for sandipan_dey">
+          <div class="label-username">sandipan_dey</div>
+        </a>
+      </li>
+      <li class="primary">
+        <a href="#" class="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr">More options dropdown</span> &#9662;</a>
+        <ul class="dropdown-menu" aria-label="More Options" role="menu">
+          
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/u/sandipan_dey">Profile</a></li>
+            <li><a href="/account/settings">Account</a></li>
+          
+          <li><a href="/logout" role="menuitem">Sign Out</a></li>
+        </ul>
+      </li>
+    </ul>
+
+
+  </div>
+</header>
+<!--[if lte IE 9]>
+<div class="ie-banner" aria-hidden="true"><strong>Warning:</strong> Your browser is not fully supported. We strongly recommend using <a href="https://www.google.com/chrome" target="_blank">Chrome</a> or <a href="http://www.mozilla.org/firefox" target="_blank">Firefox</a>.</div>
+<![endif]-->
+
+
+
+
+
+
+<div class="help-tab">
+  <a href="#help-modal" rel="leanModal" role="button">Help</a>
+</div>
+
+<section id="help-modal" class="modal" aria-hidden="true" role="dialog" aria-label="edX Help">
+  <div class="inner-wrapper" id="help_wrapper">
+    <button class="close-modal "tabindex="0">
+      <i class="icon fa fa-remove"></i>
+      <span class="sr">
+        Close
+      </span>
+    </button>
+
+    <header>
+      <h2>
+	<span class="edx">edX</span> Help
+      </h2>
+      <hr>
+    </header>
+
+
+
+    <p>For <strong>questions on course lectures, homework, tools, or materials for this course</strong>, post in the <a href="/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum" target="_blank">course discussion forum</a>.
+    </p>
+
+    <p>Have <strong>general questions about edX</strong>? You can find lots of helpful information in the edX <a href="https://www.edx.org/student-faq" target="_blank">FAQ</a>.
+      </p>
+
+    <p>Have a <strong>question about something specific</strong>? You can contact the edX general support team directly:</p>
+    <hr>
+
+    <div class="help-buttons">
+      <a href="#" id="feedback_link_problem">Report a problem</a>
+      <a href="#" id="feedback_link_suggestion">Make a suggestion</a>
+      <a href="#" id="feedback_link_question">Ask a question</a>
+    </div>
+
+    <p class="note">Please note: The edX support team is English speaking. While we will do our best to address your inquiry in any language, our responses will be in English.</p>
+
+  </div>
+
+  <div class="inner-wrapper" id="feedback_form_wrapper">
+    <button class="close-modal">
+      <i class="icon fa fa-remove"></i>
+      <span class="sr">
+        Close
+      </span>
+    </button>
+
+    <header></header>
+
+    <form id="feedback_form" class="feedback_form" method="post" data-remote="true" action="/submit_feedback">
+      <div id="feedback_error" class="modal-form-error" tabindex="-1"></div>
+      <label data-field="subject" for="feedback_form_subject">Briefly describe your issue*</label>
+      <input name="subject" type="text" id="feedback_form_subject" aria-required="true">
+      <label data-field="details" for="feedback_form_details">Tell us the details*
+<span class="tip">Include error messages, steps which lead to the issue, etc</span></label>
+      <textarea name="details" id="feedback_form_details" aria-required="true"></textarea>
+      <input name="issue_type" type="hidden">
+      <input name="course_id" type="hidden" value="course-v1:KyotoUx+004x+1T2016">
+      <div class="submit">
+        <input name="submit" type="submit" value="Submit" id="feedback_submit">
+      </div>
+    </form>
+  </div>
+
+  <div class="inner-wrapper" id="feedback_success_wrapper" tabindex="0">
+    <button class="close-modal" tabindex="0">
+      <i class="icon fa fa-remove"></i>
+      <span class="sr">
+        Close
+      </span>
+    </button>
+
+    <header>
+      <h2>Thank You!</h2>
+      <hr>
+    </header>
+
+    
+    <p>
+    Thank you for your inquiry or feedback.  We typically respond to a request within one business day (Monday to Friday, 14:00 UTC to 22:00 UTC.) In the meantime, please review our <a href="https://www.edx.org/student-faq" target="_blank" id="feedback-faq-link" tabindex="0">detailed FAQs</a> where most questions have already been answered.
+    </p>
+  </div>
+</section>
+
+<script type="text/javascript">
+(function() {
+    var onModalClose = function() {
+            $("#help-modal .close-modal").off("click");
+            $("#lean_overlay").off("click");
+            $("#help-modal").attr("aria-hidden", "true");
+            $('area,input,select,textarea,button').removeAttr('tabindex');
+            $(".help-tab a").focus();
+        },
+        cycle_modal_tab = function(from_element_name, to_element_name) {
+            $(from_element_name).on('keydown', function(e) {
+                var keyCode = e.keyCode || e.which;
+                if (keyCode === 9) {
+                    e.preventDefault();
+                    $(to_element_name).focus();
+                }
+            });
+        };
+
+    $(".help-tab").click(function() {
+        $(".field-error").removeClass("field-error");
+        $("#feedback_form")[0].reset();
+        $("#feedback_form input[type='submit']").removeAttr("disabled");
+        $("#feedback_form_wrapper").css("display", "none");
+        $("#feedback_error").css("display", "none");
+        $("#feedback_success_wrapper").css("display", "none");
+        $("#help_wrapper").css("display", "block");
+        $("#help-modal").attr("aria-hidden", "false");
+        $("#help-modal .close-modal").click(onModalClose);
+        $("#lean_overlay").click(onModalClose);
+        $("#help_wrapper .close-modal").focus();
+    });
+    showFeedback = function(event, issue_type, title, subject_label, details_label) {
+        $("#help_wrapper").css("display", "none");
+        $("#feedback_form input[name='issue_type']").val(issue_type);
+        $("#feedback_form_wrapper").css("display", "block");
+        $("#feedback_form_wrapper header").html("<h2>" + title + "</h2><hr>");
+        $("#feedback_form_wrapper label[data-field='subject']").html(subject_label);
+        $("#feedback_form_wrapper label[data-field='details']").html(details_label);
+        $("#feedback_form_wrapper .close-modal").focus();
+        event.preventDefault();
+    };
+    cycle_modal_tab("#feedback_link_question", "#help_wrapper .close-modal");
+    cycle_modal_tab("#feedback_submit", "#feedback_form_wrapper .close-modal");
+    cycle_modal_tab("#feedback-faq-link", "#feedback_success_wrapper .close-modal");
+    $("#help-modal").on("keydown", function(e) {
+        var keyCode = e.keyCode || e.which;
+        if (keyCode === 27) {
+            e.preventDefault();
+            $("#help_wrapper .close-modal").click();
+        }
+    });
+    $("#feedback_link_problem").click(function(event) {
+        showFeedback(
+            event,
+            "problem",
+            "Report a Problem",
+            "Brief description of the problem" + "*",
+            "Details of the problem you are encountering" + "*" + "<span class='tip'>" +
+              "Include error messages, steps which lead to the issue, etc." + "</span>"
+        );
+    });
+    $("#feedback_link_suggestion").click(function(event) {
+        showFeedback(
+            event,
+            "suggestion",
+            "Make a Suggestion",
+            "Brief description of your suggestion" + "*",
+            "Details" + "*"
+        );
+    });
+    $("#feedback_link_question").click(function(event) {
+        showFeedback(
+            event,
+            "question",
+            "Ask a Question",
+            "Brief summary of your question" + "*",
+            "Details" + "*"
+        );
+    });
+    $("#feedback_form").submit(function() {
+        $("input[type='submit']", this).attr("disabled", "disabled");
+        $('area,input,select,textarea,button').attr('tabindex', -1);
+        $("#feedback_form_wrapper .close-modal").focus();
+    });
+    $("#feedback_form").on("ajax:complete", function() {
+        $("input[type='submit']", this).removeAttr("disabled");
+    });
+    $("#feedback_form").on("ajax:success", function(event, data, status, xhr) {
+        $("#feedback_form_wrapper").css("display", "none");
+        $("#feedback_success_wrapper").css("display", "block");
+        $("#feedback_success_wrapper").focus();
+    });
+    $("#feedback_form").on("ajax:error", function(event, xhr, status, error) {
+        $(".field-error").removeClass("field-error").removeAttr("aria-invalid");
+        var responseData;
+        try {
+            responseData = jQuery.parseJSON(xhr.responseText);
+        } catch(err) {
+        }
+        if (responseData) {
+            $("[data-field='"+responseData.field+"']").addClass("field-error").attr("aria-invalid", "true");
+            $("#feedback_error").html(responseData.error).stop().css("display", "block");
+        } else {
+            // If no data (or malformed data) is returned, a server error occurred
+            htmlStr = "An error has occurred.";
+            htmlStr += " " + _.template(
+              "Please {link_start}send us e-mail{link_end}.",
+              {link_start: '<a href="#" id="feedback_email">', link_end: '</a>'},
+              {interpolate: /\{(.+?)\}/g})
+            $("#feedback_error").html(htmlStr).stop().css("display", "block");
+            $("#feedback_email").click(function(e) {
+                mailto = "mailto:" + "bugs@edx.org" +
+                    "?subject=" + $("#feedback_form input[name='subject']").val() +
+                    "&body=" + $("#feedback_form textarea[name='details']").val();
+                window.open(mailto);
+                e.preventDefault();
+            });
+        }
+        // Make change explicit to assistive technology
+        $("#feedback_error").focus();
+    });
+})(this)
+</script>
+
+
+
+
+    <div class="content-wrapper" id="content">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="discussion wrapper-course-material" aria-label="Course Material">
+  <div class="course-material">
+    <ol class="course-tabs">
+        
+          <li>
+             <a href="/courses/course-v1:KyotoUx+004x+1T2016/info" class="">
+                 Home
+             </a>
+          </li>
+        
+          <li>
+             <a href="/courses/course-v1:KyotoUx+004x+1T2016/courseware" class="">
+                 Course
+             </a>
+          </li>
+        
+          <li>
+             <a href="/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum" class="active">
+                 Discussion
+                   <span class="sr">, current location</span>
+             </a>
+          </li>
+        
+          <li>
+             <a href="/courses/course-v1:KyotoUx+004x+1T2016/progress" class="">
+                 Progress
+             </a>
+          </li>
+        
+          <li>
+             <a href="/courses/course-v1:KyotoUx+004x+1T2016/ac46b02885c64e63a4e7276325ed2452/" class="">
+                 Syllabus
+             </a>
+          </li>
+      
+    <li class="right"><a href="#" class="new-post-btn" role="button"><span class="icon fa fa-edit new-post-icon"></span>New Post</a></li>
+
+    </ol>
+  </div>
+</nav>
+
+
+
+<section class="discussion container" id="discussion-container"
+         data-roles="{&#34;Moderator&#34;: [8822354, 8834412, 8835527, 8842154, 8846446], &#34;Administrator&#34;: [2646187, 3636718, 4860442, 5470506, 7208502, 7289967, 8167424], &#34;Community TA&#34;: []}"
+         data-course-id="course-v1:KyotoUx+004x+1T2016"
+         data-course-name="Fun with Prime Numbers: The Mysterious World of Mathematics"
+         data-user-info="{&#34;username&#34;: &#34;sandipan_dey&#34;, &#34;follower_ids&#34;: [], &#34;default_sort_key&#34;: &#34;date&#34;, &#34;downvoted_ids&#34;: [], &#34;subscribed_thread_ids&#34;: [&#34;536a7e2e5c98f2733000024b&#34;, &#34;536bdb015c98f2c1c4000312&#34;, &#34;5411e604f34608425a0001d0&#34;], &#34;upvoted_ids&#34;: [&#34;56bca05717a62f052e000921&#34;, &#34;53775d0a888206ecbc0008fc&#34;], &#34;external_id&#34;: &#34;195694&#34;, &#34;id&#34;: &#34;195694&#34;, &#34;subscribed_user_ids&#34;: [], &#34;subscribed_commentable_ids&#34;: []}"
+         data-user-create-comment="true"
+         data-user-create-subcomment="true"
+         data-read-only="false"
+         data-threads="[{&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 3, &#34;updated_at&#34;: &#34;2016-02-11T19:30:21Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56bc4c1417a62f058a000887&#34;, &#34;pinned&#34;: true, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;5470506&#34;, &#34;title&#34;: &#34;[OFFICIAL] What is your favorite ABC triple?&#34;, &#34;commentable_id&#34;: &#34;course&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;What is your favorite ABC triple? Write your favorite triple (A, B, C) on the Discussion forum. Calculate the conductor N, and write it on the Discussion forum.&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-11T08:53:40Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;mako9999&#34;, &#34;comments_count&#34;: 82, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 3, &#34;updated_at&#34;: &#34;2016-02-11T18:43:41Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56b9b7c617a62f0596000730&#34;, &#34;pinned&#34;: true, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;5470506&#34;, &#34;title&#34;: &#34;[OFFICIAL] Homework 4&#34;, &#34;commentable_id&#34;: &#34;course&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;If you have any questions or troubles with Homework 4, please post them below.&lt;p&gt;\nPlease look into this thread to check whether your case has been already reported prior to your post. We may have already provided an answer to your problem in the thread.&lt;br&gt;&lt;br&gt;\nWe prepared other threads for [Technical Problems Guidelines][1],  [Questions About Week 4 Lecture Videos][2], and [Questions About Week 4 Problems][3], so please check them if you would like to ask about them.\n\n\n  [1]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/i4x-KyotoUx-004x-course-2T2016_course_announcements/threads/56780a847febe5c77f000248\n  [2]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b75617a62f059600072f\n  [3]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b798af36f304f700073d&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-09T09:56:22Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;mako9999&#34;, &#34;comments_count&#34;: 3, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 0, &#34;updated_at&#34;: &#34;2016-02-11T08:50:05Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56b9b798af36f304f700073d&#34;, &#34;pinned&#34;: true, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;5470506&#34;, &#34;title&#34;: &#34;[OFFICIAL] Questions About Week 4 Problems&#34;, &#34;commentable_id&#34;: &#34;course&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;If you have any questions or troubles with Week 4 Problems (1-8), please post them below.\nPlease look into this thread to check whether your case has been already reported prior to your post.\n\nDO NOT post your answers or solutions to Problems.\nWe prepared other threads for [Questions About Week 4 Lecture Videos][1] and [Homework 4][2], so please check them if you would like to ask about them. Moreover, there is [Week 4 General Discussion][3] in order to discuss Week 4 among peers.\n\n  [1]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b75617a62f059600072f\n  [2]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b7c617a62f0596000730\n  [3]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b7252d96fe052d00074f&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-09T09:55:36Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;mako9999&#34;, &#34;comments_count&#34;: 0, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 0, &#34;updated_at&#34;: &#34;2016-02-11T08:50:00Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56b9b75617a62f059600072f&#34;, &#34;pinned&#34;: true, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;5470506&#34;, &#34;title&#34;: &#34;[OFFICIAL] Questions About Week 4 Lecture Videos&#34;, &#34;commentable_id&#34;: &#34;course&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;If you have questions or anything unclear about Week 4 Lecture Videos, please post them below.\nPlease look into this thread to check whether your question has been already reported prior to your post.\n\nWe prepared other threads for [Questions About Week 4 Problems][1] and [Homework 4][2], so please check them if you would like to ask about them. Moreover, there is [Week 4 General Discussion][3] in order to discuss Week 4 among peers.\n\n  [1]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b798af36f304f700073d\n  [2]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b7c617a62f0596000730\n  [3]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b7252d96fe052d00074f&#34;, &#34;read&#34;: true, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-09T09:54:30Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;mako9999&#34;, &#34;comments_count&#34;: 0, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 0, &#34;updated_at&#34;: &#34;2016-02-11T08:49:51Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56b9b7252d96fe052d00074f&#34;, &#34;pinned&#34;: true, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;5470506&#34;, &#34;title&#34;: &#34;[OFFICIAL] Week 4 General Discussion&#34;, &#34;commentable_id&#34;: &#34;course&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;Please feel free to discuss about contents of Week 4 here. We hope you enjoy discussion and share your ideas among peers. \n\nWe prepared other threads for [Questions About Week 4 Lecture Videos][1], [Questions About Week 4 Problems][2], and [Homework 4][3], so please check them if you would like to ask about them.\n\n  [1]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b75617a62f059600072f\n  [2]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b798af36f304f700073d\n  [3]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b7c617a62f0596000730&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-09T09:53:41Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;mako9999&#34;, &#34;comments_count&#34;: 0, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 18, &#34;updated_at&#34;: &#34;2016-02-06T16:08:31Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56a1f1bee160f20514000c99&#34;, &#34;pinned&#34;: true, &#34;votes&#34;: {&#34;count&#34;: 15, &#34;down_count&#34;: 0, &#34;point&#34;: 15, &#34;up_count&#34;: 15}, &#34;user_id&#34;: &#34;5470506&#34;, &#34;title&#34;: &#34;[OFFICIAL] Greeting from Assoc. Prof. Ito&#34;, &#34;commentable_id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_Introduce_Yourself_site&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;Hi! I&#39;m Tetsushi Ito, a lecturer of the course. \n\nIt&#39;s my first experience with giving a MOOC course. I&#39;m really excited to see all of you online! I&#39;m surprised to hear that the course is really international; you are from so many (perhaps, more than 140) countries all over the world. I couldn&#39;t imagine such a course existed 10 years ago. Please take advantage of having internet technology available today, and utilize it for your study. \n\nBy the way, it is also amusing to imagine how such technology was made possible thanks to prime numbers. It&#39;s not a traditional course at schools. Please feel free to talk to each other, and discuss math at any time. If you have any questions or comments, please write them on the board. We will do our best to support your study. \n\nBut, please do not interrupt the study of other people. Please do not write answers to the homework or exams even if you feel it is very easy. I think some of you already know much about prime numbers; for such students, some part of the course is really easy. But I also think there are some people who want to take time to think by themselves. This course is open to everybody. Some of you are beginners, or some of you learnt math in your high school days, but haven&#39;t thought of them for a long time. I feel sorry the contents of the course contain several inaccuracies. Some of you already found them. Please understand it might be difficult to replace the contents instantly. Instead, we will give some comments on the board to supplement the course. \n\nWe also plan to give references where you may find further information related to the subject of the course. It&#39;s just the tip of the iceberg. \n\nI hope it will give you an opportunity to know and learn about prime numbers, which is one of the most interesting topics in science, I believe.&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-01-22T09:09:18Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;mako9999&#34;, &#34;comments_count&#34;: 18, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 560, &#34;updated_at&#34;: &#34;2016-02-10T20:11:04Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56780abff2ff88042400027d&#34;, &#34;pinned&#34;: true, &#34;votes&#34;: {&#34;count&#34;: 5, &#34;down_count&#34;: 0, &#34;point&#34;: 5, &#34;up_count&#34;: 5}, &#34;user_id&#34;: &#34;3636718&#34;, &#34;title&#34;: &#34;[OFFICIAL]\u00a0Introduce\u00a0Yourself&#34;, &#34;commentable_id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_course_announcements&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;Hi, everyone.\n\nWe believe the active participation of course will make everyone&#39;s learning more meaningful, so we welcome each and every one of you to participate.&lt;br&gt;\nAs for the first step, please take a moment to click \&#34;Add a Response\&#34; and introduce yourself here!\n&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2015-12-21T14:20:47Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;Michiokawa&#34;, &#34;comments_count&#34;: 560, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: true}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 38, &#34;updated_at&#34;: &#34;2016-02-11T16:07:51Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56780a847febe5c77f000248&#34;, &#34;pinned&#34;: true, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;3636718&#34;, &#34;title&#34;: &#34;[OFFICIAL] Technical Problems Guidelines&#34;, &#34;commentable_id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_course_announcements&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;If you do happen to stumble upon some technical issues/bugs, please report it below with following details:\n \n 1. Is this a first time event? \n 2. A screenshot of the problem. \n 3. A brief  account of when you faced such an issue.\n\nWe hope we could be of help to you.&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2015-12-21T14:19:48Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;Michiokawa&#34;, &#34;comments_count&#34;: 38, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 8, &#34;updated_at&#34;: &#34;2016-02-10T00:46:01Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56780a5f08ea03b76900026b&#34;, &#34;pinned&#34;: true, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;3636718&#34;, &#34;title&#34;: &#34;[OFFICIAL] Discussion Forum: Rules &amp; Guidelines&#34;, &#34;commentable_id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_course_announcements&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;**KyotoUx: 004x DISCUSSION FORUM GUIDELINES**\n\nMainly, the discussion forum is the venue to talk about the lecture topics, problem sets, and homework assignments presented in the course.&lt;p&gt;\nWe have prepared another thread for [Technical Problems Guidelines][1] in the discussion forum.\u3000\n\nHere are some guidelines for the discussion forum:\n\n\n   \n- Be very specific about the purpose of your post, especially if you need help. Write a concise, descriptive title for your post. Try to  indicate the particular question in the problem or specific  concept that you want to understand more.&lt;p&gt;&lt;br&gt;  \n-  If you have a direct question to the course staff, include [STAFF] at the beginning of a post title to notify the course staff.    &lt;p&gt;&lt;br&gt;\n- Original announcements and posts made by staff members will include an \&#34;[OFFICIAL]\&#34; in the title.  The staff members&#39; responses and comments to your posts will be indicated by a colored \&#34;Staff\&#34; banner. &lt;p&gt;&lt;br&gt;\n-  Our KyotoUx team work in the Japanese time zone (JST). Please be aware that there may be a delay in feedback to your comments from the course staff due to the differences in time zones.&lt;p&gt;&lt;br&gt;\n- DO NOT post your answers or solutions to problems. &lt;p&gt;&lt;br&gt;\n- DO NOT post your or other students\u2019 private information.&lt;p&gt;&lt;br&gt;\n- DO NOT post insulting comments, offensive words (including sexually harassing and cursing words), personal attacks, or other irrelevant remarks. Also, use common writing practices for online communication. Avoid the following: TYPING ALL IN CAPS (e.g. I\u2019M ANGRY), use of excessive punctuation (e.g. when is the    deadline?????????!!!!!!!      \u2026\u2026\u2026) , repeating letters or characters (e.g. proteiiiiiiinssss) ,      abbreviated words, and unnecessary symbols (e.g. lol,    curr.opin., #s).&lt;p&gt;&lt;Br&gt;\n- Participate more by actively upvoting other posts. Posts that have more upvotes are more likely to be seen. &lt;p&gt;&lt;p&gt;\n\nAnd as a general rule, always remember the Golden Rule: Do unto others as you would have others do unto you. &lt;p&gt;Be respectful to everyone in the forum.\nWe strongly encourage everyone to actively participate in the discussion forum.\nWe\u2019re looking forward to your posts!\n\n[1]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/i4x-KyotoUx-004x-course-2T2016_course_announcements/threads/56780a847febe5c77f000248&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2015-12-21T14:19:11Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;Michiokawa&#34;, &#34;comments_count&#34;: 8, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 0, &#34;updated_at&#34;: &#34;2016-02-11T17:39:54Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56bcc76aaf36f3051500093f&#34;, &#34;pinned&#34;: false, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;5357721&#34;, &#34;title&#34;: &#34;ABC Triples.  &#34;, &#34;commentable_id&#34;: &#34;course&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;I selected 8, 11, and 19.  8 + 11 = 19.  * and 11 are relatively prime.  Thus N = 2 *3*5*7 = 210.&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-11T17:39:54Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;whgoodwi&#34;, &#34;comments_count&#34;: 0, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 2, &#34;updated_at&#34;: &#34;2016-02-11T19:16:28Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56bcafd8af36f305120008c6&#34;, &#34;pinned&#34;: false, &#34;votes&#34;: {&#34;count&#34;: 1, &#34;down_count&#34;: 0, &#34;point&#34;: 1, &#34;up_count&#34;: 1}, &#34;user_id&#34;: &#34;1106015&#34;, &#34;title&#34;: &#34;A request for the next course iteration (if there will be one...)&#34;, &#34;commentable_id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_course_announcements&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;Why not to introduce a section dedicated to prime numbers computational methods?\n\nThanks for the funny course!&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-11T15:59:20Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;EndOfGodsRecursion&#34;, &#34;comments_count&#34;: 2, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 0, &#34;updated_at&#34;: &#34;2016-02-11T14:33:09Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56bc9ba52d96fe05280008fa&#34;, &#34;pinned&#34;: false, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;7044366&#34;, &#34;title&#34;: &#34;ABC Triple&#34;, &#34;commentable_id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_course_announcements&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;I found 3, 125, 128\n3+125=128; the prime factors are 3,5,2\nN = 30 which is less than 128&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-11T14:33:09Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;dnvncnt&#34;, &#34;comments_count&#34;: 0, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 0, &#34;updated_at&#34;: &#34;2016-02-11T14:12:28Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56bc96cc17a62f055e000921&#34;, &#34;pinned&#34;: false, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;8856367&#34;, &#34;title&#34;: &#34;Favorite Prime&#34;, &#34;commentable_id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_Introduce_Yourself_site&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;My favorite prime number is 1999 because I was born in 1999&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-11T14:12:28Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;Firmando&#34;, &#34;comments_count&#34;: 0, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 1, &#34;updated_at&#34;: &#34;2016-02-11T19:14:27Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56bc7fba17a62f054500091a&#34;, &#34;pinned&#34;: false, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;3287112&#34;, &#34;title&#34;: &#34;ABC TRiple&#34;, &#34;commentable_id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_course_announcements&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;My favorit triple is 2,3,5 because 2 and 3 are prime numbers and their sum 2+3=5 5 is also prime number. &#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-11T12:34:02Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;PPEINE345&#34;, &#34;comments_count&#34;: 1, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 8, &#34;updated_at&#34;: &#34;2016-02-11T19:19:27Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56bc74012d96fe051900091c&#34;, &#34;pinned&#34;: false, &#34;votes&#34;: {&#34;count&#34;: 1, &#34;down_count&#34;: 0, &#34;point&#34;: 1, &#34;up_count&#34;: 1}, &#34;user_id&#34;: &#34;1962349&#34;, &#34;title&#34;: &#34;Final Grade&#34;, &#34;commentable_id&#34;: &#34;course&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;I appear to have 106% even though I omitted week 2 checklist.\n\nSomeone may wish to check the final grade algorithm.&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-11T11:44:01Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;CatWatcher&#34;, &#34;comments_count&#34;: 8, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 2, &#34;updated_at&#34;: &#34;2016-02-11T07:48:44Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56bbd0d92d96fe051f0008a7&#34;, &#34;pinned&#34;: false, &#34;votes&#34;: {&#34;count&#34;: 2, &#34;down_count&#34;: 0, &#34;point&#34;: 2, &#34;up_count&#34;: 2}, &#34;user_id&#34;: &#34;187063&#34;, &#34;title&#34;: &#34;BBC Horizon - Fermat\u2019s Last Theorem&#34;, &#34;commentable_id&#34;: &#34;course&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;A documentary about Andrew Wiles proving Fermat&#39;s Last Theorem.\nhttps://vimeo.com/18216532&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-11T00:07:53Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;lse&#34;, &#34;comments_count&#34;: 2, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 0, &#34;updated_at&#34;: &#34;2016-02-10T23:33:51Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56bbc8df17a62f0599000886&#34;, &#34;pinned&#34;: false, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;8621166&#34;, &#34;title&#34;: &#34;Favorit congurent number ......&#34;, &#34;commentable_id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_course_guidelines&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;Favorit congurent number and corresponding Phytagoros triples 21, (7/2, 12, 25/2)&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-10T23:33:51Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;MickLunda&#34;, &#34;comments_count&#34;: 0, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;body&#34;: &#34;Hi everyone! Post any trouble with Week 4 or the final exam here and we&#39;ll help you.&#34;, &#34;anonymous_to_peers&#34;: false, &#34;votes&#34;: {&#34;count&#34;: 1, &#34;down_count&#34;: 0, &#34;point&#34;: 1, &#34;up_count&#34;: 1}, &#34;context&#34;: &#34;course&#34;, &#34;anonymous&#34;: true, &#34;unread_comments_count&#34;: 2, &#34;read&#34;: false, &#34;endorsed&#34;: false, &#34;created_at&#34;: &#34;2016-02-10T23:06:54Z&#34;, &#34;title&#34;: &#34;Week 4 And Final Exam Help&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;updated_at&#34;: &#34;2016-02-11T00:50:38Z&#34;, &#34;commentable_id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_Introduce_Yourself_site&#34;, &#34;abuse_flaggers&#34;: [], &#34;comments_count&#34;: 2, &#34;closed&#34;: false, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;id&#34;: &#34;56bbc28e2d96fe04f2000831&#34;, &#34;pinned&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 0, &#34;updated_at&#34;: &#34;2016-02-10T23:02:59Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56bbc1a317a62f059c000838&#34;, &#34;pinned&#34;: false, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;6641021&#34;, &#34;title&#34;: &#34;prefered triangle&#34;, &#34;commentable_id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_course_announcements&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;like most people do: 3,4,5\nseems perfekt&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-10T23:02:59Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;chrisbrey&#34;, &#34;comments_count&#34;: 0, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 0, &#34;updated_at&#34;: &#34;2016-02-10T18:45:31Z&#34;, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56bb854b2d96fe052500084a&#34;, &#34;pinned&#34;: false, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;3278414&#34;, &#34;title&#34;: &#34;How to Solve P-Triangles with one leg&#39;s denominator given&#34;, &#34;commentable_id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_course_announcements&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;Anyone else waiting to see a video explaining how to solve p-triangles with one leg&#39;s denominator given?\n\nSo far I can&#39;t solve this without checking every single even*even or odd*odd factor pairing for 2*2*L*L*P, where L is the leg&#39;s denominator, and P is the area of the triangle (a prime).\n\nFor example, if L = 5, and P = 7, then 2*2*5*5*7=700.\n\nThen all the even*even factors:\n\n2*350\n\n70*10\n\n14*50\n\nFor each I have to re-write as a difference of two squares, for example,\n\n700 = 15*14 = (32+18)(32-18) = (s+t)(s-t)\n\nThen I can use these formulas to calculate:\n\nA^2  = sqrt(st) = sqrt(32*18) = sqrt(576) = 24\n\nD = (s^2+t^2)/2 = (1024+324)/2 = 674\n\nE = LA = 5*A = 5*24 = 120\n\nThen you have to reduce D/E = 674/120 = 337/60\n\nAnd solve B/C knowing D/E and A/L.\n\nAnyways, this is a lot of working finding all the even*even or odd*odd factors of 2*2*L*L*P and so on, and not something I could do by hand for very large numbers.\n&#34;, &#34;read&#34;: false, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-10T18:45:31Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;SideOrderOfBacon&#34;, &#34;comments_count&#34;: 0, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}, {&#34;anonymous_to_peers&#34;: false, &#34;unread_comments_count&#34;: 0, &#34;updated_at&#34;: &#34;2016-02-11T08:50:00Z&#34;, &#34;children&#34;: [], &#34;resp_skip&#34;: 0, &#34;course_id&#34;: &#34;course-v1:KyotoUx+004x+1T2016&#34;, &#34;id&#34;: &#34;56b9b75617a62f059600072f&#34;, &#34;pinned&#34;: true, &#34;votes&#34;: {&#34;count&#34;: 0, &#34;down_count&#34;: 0, &#34;point&#34;: 0, &#34;up_count&#34;: 0}, &#34;user_id&#34;: &#34;5470506&#34;, &#34;title&#34;: &#34;[OFFICIAL] Questions About Week 4 Lecture Videos&#34;, &#34;commentable_id&#34;: &#34;course&#34;, &#34;abuse_flaggers&#34;: [], &#34;closed&#34;: false, &#34;resp_total&#34;: 0, &#34;at_position_list&#34;: [], &#34;type&#34;: &#34;thread&#34;, &#34;body&#34;: &#34;If you have questions or anything unclear about Week 4 Lecture Videos, please post them below.\nPlease look into this thread to check whether your question has been already reported prior to your post.\n\nWe prepared other threads for [Questions About Week 4 Problems][1] and [Homework 4][2], so please check them if you would like to ask about them. Moreover, there is [Week 4 General Discussion][3] in order to discuss Week 4 among peers.\n\n  [1]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b798af36f304f700073d\n  [2]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b7c617a62f0596000730\n  [3]: https://courses.edx.org/courses/course-v1:KyotoUx+004x+1T2016/discussion/forum/course/threads/56b9b7252d96fe052d00074f&#34;, &#34;read&#34;: true, &#34;anonymous&#34;: false, &#34;created_at&#34;: &#34;2016-02-09T09:54:30Z&#34;, &#34;thread_type&#34;: &#34;discussion&#34;, &#34;username&#34;: &#34;mako9999&#34;, &#34;comments_count&#34;: 0, &#34;context&#34;: &#34;course&#34;, &#34;endorsed&#34;: false}]"
+         data-thread-pages="20"
+         data-content-info="{&#34;56bcc76aaf36f3051500093f&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56bbc1a317a62f059c000838&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56bc74012d96fe051900091c&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56b9b7c617a62f0596000730&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56bbd0d92d96fe051f0008a7&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56780abff2ff88042400027d&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56bc7fba17a62f054500091a&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56bbc28e2d96fe04f2000831&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56b9b798af36f304f700073d&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56bc4c1417a62f058a000887&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56bcafd8af36f305120008c6&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56bb854b2d96fe052500084a&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56a1f1bee160f20514000c99&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56bbc8df17a62f0599000886&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56b9b75617a62f059600072f&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56bc96cc17a62f055e000921&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56b9b7252d96fe052d00074f&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56bc9ba52d96fe05280008fa&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56780a5f08ea03b76900026b&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}, &#34;56780a847febe5c77f000248&#34;: {&#34;voted&#34;: &#34;&#34;, &#34;subscribed&#34;: false, &#34;ability&#34;: {&#34;can_reply&#34;: true, &#34;editable&#34;: false, &#34;can_openclose&#34;: false, &#34;can_delete&#34;: false, &#34;can_vote&#34;: true}}}"
+         data-sort-preference="date"
+         data-flag-moderator="False"
+         data-user-cohort-id="None"
+         data-course-settings="{&#34;is_cohorted&#34;: false, &#34;allow_anonymous_to_peers&#34;: false, &#34;allow_anonymous&#34;: true, &#34;category_map&#34;: {&#34;subcategories&#34;: {}, &#34;children&#34;: [&#34;Announcements&#34;, &#34;Discussion Forum Guidelines&#34;, &#34;General&#34;, &#34;Introduce Yourself&#34;, &#34;Technical Problems&#34;], &#34;entries&#34;: {&#34;Introduce Yourself&#34;: {&#34;sort_key&#34;: &#34;Introduce Yourself&#34;, &#34;is_cohorted&#34;: false, &#34;id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_Introduce_Yourself_site&#34;}, &#34;Announcements&#34;: {&#34;sort_key&#34;: &#34;Announcements&#34;, &#34;is_cohorted&#34;: false, &#34;id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_course_announcements&#34;}, &#34;Discussion Forum Guidelines&#34;: {&#34;sort_key&#34;: &#34;Discussion Forum Guidelines&#34;, &#34;is_cohorted&#34;: false, &#34;id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_course_guidelines&#34;}, &#34;Technical Problems&#34;: {&#34;sort_key&#34;: &#34;Technical Problems&#34;, &#34;is_cohorted&#34;: false, &#34;id&#34;: &#34;i4x-KyotoUx-004x-course-2T2016_technical_problems&#34;}, &#34;General&#34;: {&#34;sort_key&#34;: &#34;General&#34;, &#34;is_cohorted&#34;: false, &#34;id&#34;: &#34;course&#34;}}}, &#34;cohorts&#34;: []}">
+    <div class="discussion-body">
+        <div class="forum-nav" role="complementary" aria-label="Discussion thread list"></div>
+        <div class="discussion-column" role="main" aria-label="Discussion" id="discussion-column">
+          <article class="new-post-article" style="display: none" tabindex="-1" aria-label="New topic form"></article>
+          <div class="forum-content"></div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script type="text/javascript">
+window.PLATFORM_NAME = "edX";
+window.ENABLE_DISCUSSION_HOME_PANEL = true;
+</script>
+
+
+
+<script aria-hidden="true" type="text/template" id="thread-template">
+    <article class="discussion-article" data-id="<%- id %>" tabindex="-1">
+    <div class="thread-wrapper">
+        <div class="forum-thread-main-wrapper">
+            <div class="thread-content-wrapper"></div>
+            <div class="post-extended-content">
+                <ol class="responses js-marked-answer-list"></ol>
+            </div>
+        </div>
+        <div class="post-extended-content">
+            <div class="response-count"/>
+            <% if (!readOnly) { %>
+                <div class="add-response">
+                    <button class="button add-response-btn">
+                        <i class="icon fa fa-reply"></i>
+                        <span class="add-response-btn-text"><%- gettext("Add a Response") %></span>
+                    </button>
+                </div>
+            <% } %>
+            <ol class="responses js-response-list"/>
+            <div class="response-pagination"/>
+            <div class="post-status-closed bottom-post-status" style="display: none">
+              <%- gettext("This thread is closed.") %>
+            </div>
+            <% if (can_create_comment && !readOnly) { %>
+            <form class="discussion-reply-new" data-id="<%- id %>">
+                <h4><%- gettext("Post a response:") %></h4>
+                <ul class="discussion-errors"></ul>
+                <div class="reply-body" data-id="<%- id %>"></div>
+                <div class="reply-post-control">
+                    <a class="discussion-submit-post control-button" href="#"><%- gettext("Submit") %></a>
+                </div>
+            </form>
+            <% } %>
+        </div>
+    </div>
+    <div class="post-tools">
+        <a href="javascript:void(0)" class="forum-thread-expand"><span class="icon fa fa-plus"/><%- gettext("Expand discussion") %></a>
+        <a href="javascript:void(0)" class="forum-thread-collapse"><span class="icon fa fa-minus"/><%- gettext("Collapse discussion") %></a>
+    </div>
+</article>
+
+</script>
+<script aria-hidden="true" type="text/template" id="thread-show-template">
+    <div class="discussion-post">
+    <header class="wrapper-post-header">
+        <div class="post-header-content">
+            <h1 class="post-title"><%- title %></h1>
+            <p class="posted-details">
+            <%
+            var timeAgoHtml = interpolate(
+                '<span class="timeago" title="%(created_at)s">%(created_at)s</span>',
+                {created_at: created_at},
+                true
+            );
+            %>
+            <%=
+            interpolate(
+                // Translators: post_type describes the kind of post this is (e.g. "question" or "discussion");
+                // time_ago is how much time has passed since the post was created (e.g. "4 hours ago")
+                _.escape(gettext('%(post_type)s posted %(time_ago)s by %(author)s')),
+                {post_type: thread_type, time_ago: timeAgoHtml, author: author_display},
+                true
+            )
+            %>
+            </p>
+            <div class="post-labels">
+                <span class="post-label-pinned"><i class="icon fa fa-thumb-tack"></i><%- gettext("Pinned") %></span>
+                <span class="post-label-reported"><i class="icon fa fa-flag"></i><%- gettext("Reported") %></span>
+                <span class="post-label-closed"><i class="icon fa fa-lock"></i><%- gettext("Closed") %></span>
+            </div>
+        </div>
+        <% if (!readOnly) { %>
+            <div class="post-header-actions post-extended-content">
+                <%=
+                _.template(
+                    $('#forum-actions').html(),
+                    {
+                        contentId: cid,
+                        contentType: 'post',
+                        primaryActions: ['vote', 'follow'],
+                        secondaryActions: ['pin', 'edit', 'delete', 'report', 'close'],
+                        readOnly: readOnly
+                    }
+                )
+                %>
+            </div>
+        <% } %>
+    </header>
+
+    <div class="post-body"><%- body %></div>
+    <div class="post-context">
+        <% if (mode == "tab" && obj.courseware_url) { %>
+            <%
+            var courseware_title_linked = interpolate(
+                '<a href="%(courseware_url)s">%(courseware_title)s</a>',
+                {courseware_url: courseware_url, courseware_title: _.escape(courseware_title)},
+                true
+            );
+            %>
+            <%=
+            interpolate(
+                _.escape(gettext('Related to: %(courseware_title_linked)s')),
+                {courseware_title_linked: courseware_title_linked},
+                true
+            )
+            %>
+        <% } %>
+        <div class="group-visibility-label">
+            <% if (obj.group_name) { %>
+                <%-
+                interpolate(
+                    gettext('This post is visible only to %(group_name)s.'),
+                    {group_name: obj.group_name},
+                    true
+                )
+                %>
+            <% } else { %>
+                <%- gettext('This post is visible to everyone.') %>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+</script>
+<script aria-hidden="true" type="text/template" id="thread-edit-template">
+    <h1><%- gettext("Editing post") %></h1>
+<ul class="post-errors"></ul>
+<div class="forum-edit-post-form-wrapper"></div>
+<div class="form-row">
+  <label class="sr" for="edit-post-title"><%- gettext("Edit post title") %></label>
+  <input type="text" id="edit-post-title" class="edit-post-title" name="title" value="<%-title %>" placeholder="<%- gettext('Title') %>">
+</div>
+<div class="form-row">
+  <div class="edit-post-body" name="body"><%- body %></div>
+</div>
+<input type="submit" id="edit-post-submit" class="post-update" value="<%- gettext("Update post") %>">
+<a href="#" class="post-cancel"><%- gettext("Cancel") %></a>
+
+</script>
+<script aria-hidden="true" type="text/template" id="thread-response-template">
+    <div class="discussion-response"></div>
+<a href="#" class="action-show-comments">
+    <%
+    var fmts = ngettext("Show Comment (%(num_comments)s)", "Show Comments (%(num_comments)s)", comments.length);
+    print(interpolate(fmts, {num_comments: comments.length}, true));
+    %>
+    <i class="icon fa fa-caret-down"></i>
+</a>
+<ol class="comments">
+    <li class="new-comment">
+        <% if (create_sub_comment && !readOnly) { %>
+            <form class="comment-form" data-id="<%- wmdId %>">
+                <ul class="discussion-errors"></ul>
+                <label class="sr" for="add-new-comment"><%- gettext("Add a comment") %></label>
+                <div class="comment-body" id="add-new-comment" data-id="<%- wmdId %>"
+                data-placeholder="<%- gettext('Add a comment') %>"></div>
+                <div class="comment-post-control">
+                    <a class="discussion-submit-comment control-button" href="#"><%- gettext("Submit") %></a>
+                </div>
+            </form>
+        <% } %>
+    </li>
+</ol>
+
+</script>
+<script aria-hidden="true" type="text/template" id="thread-response-show-template">
+    <header class="wrapper-response-header">
+  <div class="response-header-content">
+    <%= author_display %>
+    <p class="posted-details">
+        <span class="timeago" title="<%= created_at %>"><%= created_at %></span>
+        <% if (obj.endorsement) { %>
+            -
+            <%
+            var fmt = null;
+            if (thread.get("thread_type") == "question") {
+              if (endorsement.username) {
+                // Translators: time_ago is a placeholder for a fuzzy, relative timestamp
+                // like "4 hours ago" or "about a month ago"
+                fmt = gettext("marked as answer %(time_ago)s by %(user)s");
+              } else {
+                // Translators: time_ago is a placeholder for a fuzzy, relative timestamp
+                // like "4 hours ago" or "about a month ago"
+                fmt = gettext("marked as answer %(time_ago)s");
+              }
+            } else {
+              if (endorsement.username) {
+                // Translators: time_ago is a placeholder for a fuzzy, relative timestamp
+                // like "4 hours ago" or "about a month ago"
+                fmt = gettext("endorsed %(time_ago)s by %(user)s");
+              } else {
+                // Translators: time_ago is a placeholder for a fuzzy, relative timestamp
+                // like "4 hours ago" or "about a month ago"
+                fmt = gettext("endorsed %(time_ago)s");
+              }
+            }
+            var time_ago = interpolate(
+              '<span class="timeago" title="%(time)s">%(time)s</span>',
+              {time: endorsement.time},
+              true
+            );
+            %>
+            <%= interpolate(fmt, {time_ago: time_ago, user: endorser_display}, true) %>
+        <% } %>
+      </p>
+      <div class="post-labels">
+          <span class="post-label-reported"><i class="icon fa fa-flag"></i><%- gettext("Reported") %></span>
+      </div>
+      </div>
+      <div class="response-header-actions">
+        <%=
+            _.template(
+                $('#forum-actions').html(),
+                {
+                    contentId: cid,
+                    contentType: 'response',
+                    primaryActions: ['vote', thread.get('thread_type') == 'question' ? 'answer' : 'endorse'],
+                    secondaryActions: ['edit', 'delete', 'report'],
+                    readOnly: readOnly
+                }
+            )
+        %>
+      </div>
+</header>
+
+<div class="response-body"><%- body %></div>
+
+</script>
+<script aria-hidden="true" type="text/template" id="thread-response-edit-template">
+    <div class="edit-post-form">
+  <h1><%- gettext("Editing response") %></h1>
+  <ul class="edit-post-form-errors"></ul>
+  <div class="form-row">
+    <div class="edit-post-body" name="body" data-id="<%- id %>"><%- body %></div>
+  </div>
+  <input type="submit" id="edit-response-submit"class="post-update" value="<%- gettext("Update response") %>">
+  <a href="#" class="post-cancel"><%- gettext("Cancel") %></a>
+</div>
+
+</script>
+<script aria-hidden="true" type="text/template" id="response-comment-show-template">
+    <div class="discussion-comment" id="comment_<%- id %>">
+  <div class="response-body"><%- body %></div>
+  <%=
+      _.template(
+          $('#forum-actions').html(),
+          {
+              contentId: cid,
+              contentType: 'comment',
+              primaryActions: [],
+              secondaryActions: ['edit', 'delete', 'report'],
+              readOnly: readOnly
+          }
+      )
+  %>
+  <p class="posted-details">
+    <%
+    var time_ago = interpolate(
+      '<span class="timeago" title="%(time)s">%(time)s</span>',
+      {time: created_at},
+      true
+    );
+    %>
+    <%= interpolate(
+      // Translators: 'timeago' is a placeholder for a fuzzy, relative timestamp (see: https://github.com/rmm5t/jquery-timeago)
+      gettext("posted %(time_ago)s by %(author)s"),
+      {time_ago: time_ago, author: author_display},
+      true
+    ) %>
+  </p>
+  <div class="post-labels">
+    <span class="post-label-reported"><i class="icon fa fa-flag"></i><%- gettext("Reported") %></span>
+  </div>
+</div>
+
+</script>
+<script aria-hidden="true" type="text/template" id="response-comment-edit-template">
+    <div class="edit-post-form" id="comment_<%- id %>">
+  <h1><%- gettext("Editing comment") %></h1>
+  <ul class="edit-comment-form-errors"></ul>
+  <div class="form-row">
+    <div class="edit-comment-body" name="body" data-id="<%- id %>"><%- body %></div>
+  </div>
+  <input type="submit" id="edit-comment-submit" class="post-update" value="<%- gettext("Update comment") %>">
+  <a href="#" class="post-cancel"><%- gettext("Cancel") %></a>
+</div>
+
+</script>
+<script aria-hidden="true" type="text/template" id="thread-list-item-template">
+    <li data-id="<%- id %>" class="forum-nav-thread<% if (typeof(read) != "undefined" && !read) { %> is-unread<% } %>">
+  <a href="#" class="forum-nav-thread-link">
+    <div class="forum-nav-thread-wrapper-0">
+      <%
+      var icon_class, sr_text;
+      if (thread_type === "discussion") {
+          icon_class = "fa-comments";
+          // Translators: This is a label for a Discussion forum thread
+          sr_text = gettext("discussion");
+      } else if (endorsed) {
+          icon_class = "fa-check-square-o";
+          // Translators: This is a label for a Question forum thread with a marked answer
+          sr_text = gettext("answered question");
+      } else {
+          icon_class = "fa-question";
+          // Translators: This is a label for a Question forum thread without a marked answer
+          sr_text = gettext("unanswered question");
+      }
+      %>
+      <span class="sr"><%= sr_text %></span>
+      <i class="icon fa <%= icon_class %>"></i>
+    </div><div class="forum-nav-thread-wrapper-1">
+      <span class="forum-nav-thread-title"><%- title %></span>
+      <% if(typeof(subscribed) === "undefined") { var subscribed = null; } %>
+      <% if(pinned || subscribed || staff_authored || community_ta_authored) { %>
+        <ul class="forum-nav-thread-labels">
+        <% if (pinned) { %>
+          <li class="post-label-pinned">
+            <i class="icon fa fa-thumb-tack"></i>
+            <% // Translators: This is a label for a forum thread that has been pinned %>
+            <%- gettext("Pinned") %>
+          </li>
+        <% } %>
+        <% if (subscribed) { %>
+          <li class="post-label-following">
+            <i class="icon fa fa-star"></i>
+            <% // Translators: This is a label for a forum thread that the user is subscribed to %>
+            <%- gettext("Following") %>
+          </li>
+        <% } %>
+        <% if (staff_authored) { %>
+          <li class="post-label-by-staff">
+            <i class="icon fa fa-user"></i>
+            <% // Translators: This is a label for a forum thread that was authored by a member of the course staff %>
+            <%- gettext("By: Staff") %>
+          </li>
+        <% } %>
+        <% if (community_ta_authored) { %>
+          <li class="post-label-by-community-ta">
+            <i class="icon fa fa-user"></i>
+            <% // Translators: This is a label for a forum thread that was authored by a community TA %>
+            <%- gettext("By: Community TA") %>
+          </li>
+        <% } %>
+        </ul>
+      <% } %>
+    </div><div class="forum-nav-thread-wrapper-2">
+      <%
+      // Translators: 'votes_count' is a numerical placeholder for a specific discussion thread; 'span_start' and 'span_end' placeholders refer to HTML markup.  Please translate the word 'votes'.
+      var fmt = ngettext(
+           "%(votes_count)s%(span_start)s vote %(span_end)s",
+           "%(votes_count)s%(span_start)s votes %(span_end)s",
+           votes['up_count']
+      );
+      %>
+      <span class="forum-nav-thread-votes-count">
+      +<%= interpolate(fmt, {
+               votes_count: votes['up_count'],
+               span_start: '<span class="sr">',
+               span_end: '</span>'
+            }, true)
+      %>
+      </span>
+
+      <span class="forum-nav-thread-comments-count <% if (unread_comments_count > 0) { %>is-unread<% } %>">
+      <%
+      var fmt;
+      // Counts in data do not include the post itself, but the UI should
+      var data = {
+          'span_sr_open': '<span class="sr">',
+          'span_close': '</span>',
+          'unread_comments_count': unread_comments_count + (read ? 0 : 1),
+          'comments_count': comments_count + 1
+      };
+      if (unread_comments_count > 0) {
+          // Translators: 'comments_count' and 'unread_comments_count' are numerical placeholders for a specific discussion thread; 'span_*' placeholders refer to HTML markup.  Please translate the word 'comments'.
+          fmt = gettext('%(comments_count)s %(span_sr_open)scomments (%(unread_comments_count)s unread comments)%(span_close)s');
+      } else {
+          // Translators: 'comments_count' is a numerical placeholder for a specific discussion thread; 'span_*' placeholders refer to HTML markup.  Please translate the word 'comments'.
+          fmt = gettext('%(comments_count)s %(span_sr_open)scomments %(span_close)s');
+      }
+      print(interpolate(fmt, data, true));
+      %>
+      </span>
+    </div>
+  </a>
+</li>
+
+</script>
+<script aria-hidden="true" type="text/template" id="discussion-home-template">
+    <div class="discussion-article view-discussion-home">
+  <section class="home-header">
+    <span class="label"><%- gettext("DISCUSSION HOME:") %></span>
+    <% if (window.courseName) { %>
+      <h1 class="home-title"><%- window.courseName %></h1>
+    <% } %>
+  </section>
+
+  <% if (window.ENABLE_DISCUSSION_HOME_PANEL) { %>
+    <span class="label label-settings">
+      <%- interpolate(
+            gettext("How to use %(platform_name)s discussions"),
+            {platform_name: window.PLATFORM_NAME}, true
+          ) %>
+    </span>
+    <table class="home-helpgrid">
+      <tr class="helpgrid-row helpgrid-row-navigation">
+        <td class="row-title"><%- gettext("Find discussions") %></td>
+        <td class="row-item">
+          <i class="icon fa fa-reorder"></i>
+          <span class="row-description"><%- gettext("Focus in on specific topics") %></span>
+        </td>
+        <td class="row-item">
+          <i class="icon fa fa-search"></i>
+          <span class="row-description"><%- gettext("Search for specific posts") %></span>
+        </td>
+        <td class="row-item">
+          <i class="icon fa fa-sort"></i>
+          <span class="row-description"><%- gettext("Sort by date, vote, or comments") %></span>
+        </td>
+      </tr>
+      <tr class="helpgrid-row helpgrid-row-participation">
+        <td class="row-title"><%- gettext("Engage with posts") %></td>
+        <td class="row-item">
+          <i class="icon fa fa-plus"></i>
+          <span class="row-description"><%- gettext("Upvote posts and good responses") %></span>
+        </td>
+        <td class="row-item">
+          <i class="icon fa fa-flag"></i>
+          <span class="row-description"><%- gettext("Report Forum Misuse") %></span>
+        </td>
+        <td class="row-item">
+          <i class="icon fa fa-star"></i>
+          <span class="row-description"><%- gettext("Follow posts for updates") %></span>
+        </td>
+      </tr>
+      <tr class="helpgrid-row helpgrid-row-notification">
+        <td class="row-title"><%- gettext('Receive updates') %></td>
+        <td class="row-item-full" colspan="3">
+          <label for="email-setting-checkbox">
+            <span class="sr"><%- gettext("Toggle Notifications Setting") %></span>
+            <span class="notification-checkbox">
+              <input type="checkbox" id="email-setting-checkbox" class="email-setting" name="email-notification"/>
+              <i class="icon fa fa-envelope"></i>
+            </span>
+          </label>
+          <span class="row-description"><%- gettext("Check this box to receive an email digest once a day notifying you about new, unread activity from posts you are following.") %></span>
+        </td>
+      </tr>
+    </table>
+  <% } %>
+</div>
+
+</script>
+<script aria-hidden="true" type="text/template" id="search-alert-template">
+    <div class="search-alert" id="search-alert-<%- cid %>">
+    <div class="search-alert-content">
+      <p class="message"><%= message %></p>
+    </div>
+
+    <div class="search-alert-controls">
+      <a href="#" class="dismiss control control-dismiss"><i class="icon fa fa-remove"></i></a>
+    </div>
+</div>
+
+</script>
+<script aria-hidden="true" type="text/template" id="new-post-template">
+    <form class="forum-new-post-form">
+    <ul class="post-errors" style="display: none"></ul>
+    <div class="forum-new-post-form-wrapper"></div>
+    <% if (cohort_options) { %>
+    <div class="post-field group-selector-wrapper <% if (!is_commentable_cohorted) { print('disabled'); } %>">
+        <label class="field-label">
+            <span class="field-label-text">
+                <% //Translators: This labels the selector for which group of students can view a post %>
+                <%- gettext("Visible To:") %>
+            </span><select aria-describedby="field_help_visible_to" class="field-input js-group-select" name="group_id" <% if (!is_commentable_cohorted) { print("disabled"); } %>>
+                <option value=""><%- gettext("All Groups") %></option>
+                <% _.each(cohort_options, function(opt) { %>
+                <option value="<%= opt.value %>" <% if (opt.selected) { print("selected"); } %>><%- opt.text %></option>
+                <% }); %>
+             </select>
+        </label><div class="field-help" id="field_help_visible_to">
+            <%- gettext("Discussion admins, moderators, and TAs can make their posts visible to all students or specify a single cohort.") %>
+        </div>
+    </div>
+    <% } %>
+    <div class="post-field">
+        <label class="field-label">
+            <span class="sr"><%- gettext("Title:") %></span>
+            <input aria-describedby="field_help_title" type="text" class="field-input js-post-title" name="title" placeholder="<%- gettext('Title') %>">
+        </label><span class="field-help" id="field_help_title">
+            <%- gettext("Add a clear and descriptive title to encourage participation.") %>
+        </span>
+    </div>
+    <div class="post-field js-post-body editor" name="body" data-placeholder="<%- gettext('Enter your question or comment') %>"></div>
+    <div class="post-options">
+        <label class="post-option is-enabled">
+            <input type="checkbox" name="follow" class="post-option-input js-follow" checked>
+            <i class="icon fa fa-star"></i><%- gettext("follow this post") %>
+        </label>
+        <% if (allow_anonymous) { %>
+        <label class="post-option">
+            <input type="checkbox" name="anonymous" class="post-option-input js-anon">
+            <%- gettext("post anonymously") %>
+        </label>
+        <% } %>
+        <% if (allow_anonymous_to_peers) { %>
+        <label class="post-option">
+            <input type="checkbox" name="anonymous_to_peers" class="post-option-input js-anon-peers">
+            <%- gettext("post anonymously to classmates") %>
+        </label>
+        <% } %>
+    </div>
+    <div>
+        <input type="submit" class="submit" value="<%- gettext('Add Post') %>">
+        <a href="#" class="cancel"><%- gettext('Cancel') %></a>
+    </div>
+</form>
+
+</script>
+<script aria-hidden="true" type="text/template" id="thread-type-template">
+    <div class="post-field">
+    <div class="field-label">
+        <span class="field-label-text">
+            <% // Translators: This is the label for a control to select a forum post type %>
+            <%- gettext("Post type:") %>
+        </span><fieldset class="field-input"><legend class="sr"><%- gettext("Post type:") %></legend>
+            <input aria-describedby="field_help_post_type" type="radio" name="<%= form_id %>-post-type" class="post-type-input" id="<%= form_id %>-post-type-question" value="question">
+            <label for="<%= form_id %>-post-type-question" class="post-type-label">
+                <i class="icon fa fa-question"></i>
+                <% // Translators: This is a forum post type %>
+                <%- gettext("Question") %>
+            </label>
+            <input aria-describedby="field_help_post_type" type="radio" name="<%= form_id %>-post-type" class="post-type-input" id="<%= form_id %>-post-type-discussion" value="discussion" checked>
+            <label for="<%= form_id %>-post-type-discussion" class="post-type-label">
+                <i class="icon fa fa-comments"></i>
+                <% // Translators: This is a forum post type %>
+                <%- gettext("Discussion") %>
+            </label>
+        </fieldset>
+    </div><span class="field-help" id="field_help_post_type">
+        <%- gettext("Questions raise issues that need answers. Discussions share ideas and start conversations.") %>
+    </span>
+</div>
+
+</script>
+<script aria-hidden="true" type="text/template" id="new-post-menu-entry-template">
+    <li role="menuitem" class="topic-menu-item">
+    <a href="#" class="topic-title" data-discussion-id="<%- id %>" data-cohorted="<%- is_cohorted %>"><%- text %></a>
+</li>
+
+</script>
+<script aria-hidden="true" type="text/template" id="new-post-menu-category-template">
+    <li role="menuitem" class="topic-menu-item">
+    <span class="topic-title"><%- text %></span>
+    <ul role="menu" class="topic-submenu"><%= entries %></ul>
+</li>
+
+</script>
+<script aria-hidden="true" type="text/template" id="topic-template">
+    <% // Using div here instead of label because we are using a non-native control %>
+<div class="field-label">
+    <span class="field-label-text"><%- gettext("Topic Area:") %></span><div class="field-input post-topic">
+        <a href="#" class="post-topic-button">
+            <span class="sr"><%- gettext("Discussion topics; current selection is: ") %></span>
+            <span class="js-selected-topic"></span>
+            <span class="drop-arrow" aria-hidden="true">▾</span>
+        </a>
+        <div class="topic-menu-wrapper">
+            <label class="topic-filter-label">
+                <span class="sr"><%- gettext("Filter topics") %></span>
+                <input aria-describedby="field_help_topic_area" type="text" class="topic-filter-input" placeholder="<%- gettext('Filter topics') %>">
+            </label>
+            <ul class="topic-menu" role="menu"><%= topics_html %></ul>
+       </div>
+   </div>
+</div><span class="field-help" id="field_help_topic_area">
+    <%- gettext("Add your post to a relevant topic to help others find it.") %>
+</span>
+
+</script>
+<script aria-hidden="true" type="text/template" id="post-user-display-template">
+    <% if (username) { %>
+<a href="<%- user_url %>" class="username"><%- username %></a>
+    <% if (is_community_ta) { %>
+    <span class="user-label-community-ta"><%- gettext("Community TA") %></span>
+    <% } else if (is_staff) { %>
+    <span class="user-label-staff"><%- gettext("Staff") %></span>
+    <% } %>
+<% } else { %>
+    <%- gettext('anonymous') %>
+<% } %>
+
+</script>
+<script aria-hidden="true" type="text/template" id="inline-discussion-template">
+    <section class="discussion" data-discussion-id="<%= discussionId %>">
+    <article class="new-post-article"></article>
+
+    <section class="threads">
+        <% _.each(threads, function(thread) { %>
+            <article class="discussion-thread" id="thread_<%= thread.id %>">
+            </article>
+        <% }); %>
+    </section>
+
+    <section class="discussion-pagination">
+    </section>
+</section>
+
+</script>
+<script aria-hidden="true" type="text/template" id="pagination-template">
+    <nav class="discussion-paginator">
+    <ol>
+        <% if (previous) { %>
+            <li class="previous-page"><a class="discussion-pagination" href="<%= previous.url %>" data-page-number="<%= previous.number %>">&lt; <%- gettext("Previous") %></a></li>
+        <% } %>
+        <% if (first) { %>
+            <li class="first-page"><a class="discussion-pagination" href="<%= first.url %>" data-page-number="1">1</a></li>
+        <% } %>
+        <% if (leftdots) { %>
+            <li class="previous-ellipses"><%- gettext("…") %></li>
+        <% } %>
+
+        <% _.each(lowPages, function(page) { %>
+            <li class="lower-page"><a class="discussion-pagination" href="<%= page.url %>" data-page-number="<%= page.number %>"><%= page.number %></a></li>
+        <% }); %>
+        <li class="current-page"><span><%= page %></span></li>
+        <% _.each(highPages, function(page) { %>
+            <li class="higher-page"><a class="discussion-pagination" href="<%= page.url %>" data-page-number="<%= page.number %>"><%= page.number %></a></li>
+        <% }); %>
+
+        <% if (rightdots) { %>
+            <li class="next-ellipses"><%- gettext("…") %></li>
+        <% } %>
+        <% if (last) { %>
+            <li class="last-page"><a class="discussion-pagination" href="<%= last.url %>" data-page-number="<%= last.number %>"><%= last.number %></a></li>
+        <% } %>
+        <% if (next) { %>
+            <li class="next-page"><a class="discussion-pagination" href="<%= next.url %>" data-page-number="<%= next.number %>"><%- gettext("Next") %> &gt;</a></li>
+        <% } %>
+    </ol>
+</nav>
+
+</script>
+<script aria-hidden="true" type="text/template" id="user-profile-template">
+    <h2><%- gettext("Active Threads") %></h2>
+<section class="discussion">
+    <% _.each(threads, function(thread) { %>
+        <article class="discussion-thread" id="thread_<%= thread.id %>"/>
+    <% }); %>
+</section>
+<section class="discussion-pagination"/>
+
+</script>
+<script aria-hidden="true" type="text/template" id="profile-thread-template">
+    <article class="discussion-article" data-id="<%- id %>">
+    <div class="discussion-post">
+        <header>
+            <h3><%- title %></h3>
+            <p class="posted-details">
+                <% if (user) { %>
+                    <a href="<%- user.url %>" class="username"><%- user.username %></a>
+                <% } else { %>
+                    <%- gettext("anonymous") %>
+                <% } %>
+
+                <span class="timeago" title="<%- created_at %>"><%- created_at %></span>
+                <span class="post-status-closed top-post-status" style="display: none">
+                    &bull; <%- gettext("This thread is closed.") %>
+                </span>
+            </p>
+        </header>
+        <div class="post-body"><%= abbreviatedBody %></div>
+    </div>
+    <div class="post-tools">
+        <a href="<%- permalink %>"><%- gettext("View discussion") %></a>
+    </div>
+
+</article>
+
+</script>
+<script aria-hidden="true" type="text/template" id="customwmd-prompt-template">
+    <h4 id="editor-dialog-title"><%- title %></h4>
+<div role="status" id="wmd-editor-dialog-form-errors" class="sr" tabindex="-1"></div>
+<div>
+    <form class="form">
+        <fieldset class="field-group">
+            <legend class="form-group-hd sr"><%- title %></legend>
+            <div class="field <%- uploadFieldClass %>">
+                <label id="new-url-input-label" for="new-url-input" class="field-label">
+                    <%- urlLabel %></label>
+                <input type="text" id="new-url-input" class="field-input input-text" aria-describedby="new-url-input-help">
+                <% if (imageUploadHandler) { %>
+                    <button id="file-upload-proxy" class="btn btn-primary btn-base form-btn">
+                        <%- chooseFileText %>
+                    </button>
+                    <input type="file" name="file-upload" id="file-upload" style="display:none;"/>
+                <% } %>
+                <div id="new-url-input-field-message" class="field-message has-error" style="display:none">
+                    <span class="field-message-content"><%- urlError %></span>
+                </div>
+                <div id="new-url-input-help" class="field-hint">
+                    <%- urlHelp %>
+                </div>
+            </div>
+            <div class="field">
+                <label for="new-url-desc-input" class="field-label"><%- urlDescLabel %></label>
+                <input type="text" id="new-url-desc-input" class="field-input input-text" required aria-describedby="new-url-desc-input-help">
+                <div id="new-url-desc-input-field-message" class="field-message has-error" style="display:none">
+                    <span class="field-message-content"><%- descError %></span>
+                </div>
+                <div id="new-url-desc-input-help" class="field-hint">
+                    <%- urlDescHelp %>
+                    <% if (urlDescHelpLink) { %>
+                        <a href="<%- urlDescHelpLink['href'] %>">
+                            <%- urlDescHelpLink['text'] %>
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+            <div class="field"><% if (imageUploadHandler) { %>
+                <label for="img-is-decorative" class="field-label label-inline">
+                    <input type="checkbox" id="img-is-decorative" class="field-input input-checkbox">
+                    <span class="field-input-label"><%- imageIsDecorativeLabel %></span>
+                </label> <% }
+            %></div>
+        </fieldset>
+        <div class="form-actions">
+            <input type="button" id="new-link-image-ok" class="btn btn-primary btn-base form-btn" value="<%- okText %>" />
+            <input type="button" id="new-link-image-cancel" class="btn btn-primary btn-base form-btn" value="<%- cancelText %>" >
+        </div>
+    </form>
+</div>
+
+</script>
+
+<script aria-hidden="true" type="text/template" id="forum-action-endorse">
+    <li class="actions-item">
+    <a href="javascript:void(0)" class="action-button action-endorse" role="checkbox" aria-checked="false">
+        <span class="sr"><%- gettext("Endorse") %></span>
+        <span class="action-label" aria-hidden="true">
+            <span class="label-unchecked"><%- gettext("Endorse") %></span>
+            <span class="label-checked"><%- gettext("Unendorse") %></span>
+        </span>
+        <span class="action-icon"><i class="icon fa fa-check"></i></span>
+    </a>
+</li>
+
+</script>
+<script aria-hidden="true" type="text/template" id="forum-action-answer">
+    <li class="actions-item">
+    <a href="javascript:void(0)" class="action-button action-answer" role="checkbox" aria-checked="false">
+        <span class="sr"><%- gettext("Mark as Answer") %></span>
+        <span class="action-label" aria-hidden="true">
+            <span class="label-unchecked"><%- gettext("Mark as Answer") %></span>
+            <span class="label-checked"><%- gettext("Unmark as Answer") %></span>
+        </span>
+        <span class="action-icon"><i class="icon fa fa-check"></i></span>
+    </a>
+</li>
+
+</script>
+<script aria-hidden="true" type="text/template" id="forum-action-follow">
+    <li class="actions-item">
+    <a href="javascript:void(0)" class="action-button action-follow" role="checkbox" aria-checked="false">
+        <span class="sr"><%- gettext("Follow") %></span>
+        <span class="action-label" aria-hidden="true">
+            <span class="label-unchecked"><%- gettext("Follow") %></span>
+            <span class="label-checked"><%- gettext("Unfollow") %></span>
+        </span>
+        <span class="action-icon"><i class="icon fa fa-star"></i></span>
+    </a>
+</li>
+
+</script>
+<script aria-hidden="true" type="text/template" id="forum-action-vote">
+    <li class="actions-item">
+    <span aria-hidden="true" class="display-vote" >
+      <span class="vote-count"></span>
+    </span>
+    <a href="#" class="action-button action-vote" role="checkbox" aria-checked="false">
+        <% // Vote counts are populated by JS %>
+        <span class="sr"><%- gettext("Vote for this post,") %>&nbsp;</span>
+        <span class="sr js-sr-vote-count"></span>
+
+        <span class="action-label" aria-hidden="true">
+          <span class="vote-count"></span>
+        </span>
+
+        <span class="action-icon" aria-hidden="true">
+            <i class="icon fa fa-plus"></i>
+        </span>
+    </a>
+</li>
+
+</script>
+<script aria-hidden="true" type="text/template" id="forum-action-report">
+    <li class="actions-item">
+    <a href="javascript:void(0)" class="action-list-item action-report" role="checkbox" aria-checked="false">
+        <span class="sr"><%- gettext("Report abuse") %></span>
+        <span class="action-label" aria-hidden="true">
+            <span class="label-unchecked"><%- gettext("Report") %></span>
+            <span class="label-checked"><%- gettext("Unreport") %></span>
+        </span>
+        <span class="action-icon">
+          <i class="icon fa fa-flag"></i>
+        </span>
+    </a>
+</li>
+
+</script>
+<script aria-hidden="true" type="text/template" id="forum-action-pin">
+    <li class="actions-item">
+    <a href="javascript:void(0)" class="action-list-item action-pin" role="checkbox" aria-checked="false">
+        <span class="sr"><%- gettext("Pin") %></span>
+        <span class="action-label" aria-hidden="true">
+            <span class="label-unchecked"><%- gettext("Pin") %></span>
+            <span class="label-checked"><%- gettext("Unpin") %></span>
+        </span>
+        <span class="action-icon">
+          <i class="icon fa fa-thumb-tack"></i>
+        </span>
+    </a>
+</li>
+
+</script>
+<script aria-hidden="true" type="text/template" id="forum-action-close">
+    <li class="actions-item">
+    <a href="javascript:void(0)" class="action-list-item action-close" role="checkbox" aria-checked="false">
+        <span class="sr"><%- gettext("Close") %></span>
+        <span class="action-label" aria-hidden="true">
+            <span class="label-unchecked"><%- gettext("Close") %></span>
+            <span class="label-checked"><%- gettext("Open") %></span>
+        </span>
+        <span class="action-icon">
+          <i class="icon fa fa-lock"></i>
+        </span>
+    </a>
+</li>
+
+</script>
+<script aria-hidden="true" type="text/template" id="forum-action-edit">
+    <li class="actions-item">
+    <a href="javascript:void(0)" class="action-list-item action-edit" role="button">
+        <span class="action-label"><%- gettext("Edit") %></span>
+        <span class="action-icon"><i class="icon fa fa-pencil"></i></span>
+    </a>
+</li>
+
+</script>
+<script aria-hidden="true" type="text/template" id="forum-action-delete">
+    <li class="actions-item">
+    <a href="javascript:void(0)" class="action-list-item action-delete" role="button">
+        <span class="action-label"><%- gettext("Delete") %></span>
+        <span class="action-icon"><i class="icon fa fa-remove"></i></span>
+    </a>
+</li>
+
+</script>
+<script aria-hidden="true" type="text/template" id="forum-actions">
+    <% if (!readOnly) { %>
+    <ul class="<%= contentType %>-actions-list">
+        <% _.each(primaryActions, function(action) { print(_.template($('#forum-action-' + action).html(), {})) }) %>
+        <li class="actions-item is-visible">
+            <div class="more-wrapper">
+                <a href="javascript:void(0)" class="action-button action-more" role="button" aria-haspopup="true" aria-controls="action-menu-<%= contentId %>">
+                    <span class="action-label"><%- gettext("More") %></span>
+                    <span class="action-icon"><i class="icon fa fa-ellipsis-h"></i></span>
+                </a>
+                <div class="actions-dropdown" id="action-menu-<%= contentType %>" aria-expanded="false">
+                  <ul class="actions-dropdown-list">
+                    <% _.each(secondaryActions, function(action) { print(_.template($('#forum-action-' + action).html(), {})) }) %>
+                  </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+<% } %>
+
+</script>
+
+
+<script type="text/template" id="thread-list-template">
+    <div class="forum-nav-header">
+        <a href="#" class="forum-nav-browse" aria-haspopup="true">
+            <i class="icon fa fa-reorder"></i><span class="sr">Discussion topics; current selection is: </span><span class="forum-nav-browse-current">All Discussions</span><span class="forum-nav-browse-drop-arrow">▾</span>
+        </a>
+        <form class="forum-nav-search">
+            <div class="forum-nav-search-ff-position-fix">
+                <label>
+                    <span class="sr">Search</span>
+                    <input class="forum-nav-search-input" type="text" placeholder="Search all posts">
+                    <i class="icon fa fa-search"></i>
+                </label>
+            </div>
+        </form>
+    </div>
+    
+
+
+
+
+
+
+
+<div class="forum-nav-browse-menu-wrapper" style="display: none">
+    <form class="forum-nav-browse-filter">
+        <label>
+            <span class="sr">Filter Topics</span>
+            <input type="text" class="forum-nav-browse-filter-input" placeholder="filter topics">
+            <i class="icon fa fa-filter"></i>
+        </label>
+    </form>
+    <ul class="forum-nav-browse-menu">
+        <li class="forum-nav-browse-menu-item forum-nav-browse-menu-all">
+            <a href="#" class="forum-nav-browse-title">All Discussions</a>
+        </li>
+        <li class="forum-nav-browse-menu-item forum-nav-browse-menu-following">
+            <a href="#" class="forum-nav-browse-title"><i class="icon fa fa-star"></i>Posts I'm Following</a>
+        </li>
+        
+            
+    <li
+        class="forum-nav-browse-menu-item"
+        data-discussion-id='i4x-KyotoUx-004x-course-2T2016_course_announcements'
+        data-cohorted="false"
+    >
+        <a href="#" class="forum-nav-browse-title">Announcements</a>
+    </li>
+
+            
+    <li
+        class="forum-nav-browse-menu-item"
+        data-discussion-id='i4x-KyotoUx-004x-course-2T2016_course_guidelines'
+        data-cohorted="false"
+    >
+        <a href="#" class="forum-nav-browse-title">Discussion Forum Guidelines</a>
+    </li>
+
+            
+    <li
+        class="forum-nav-browse-menu-item"
+        data-discussion-id='course'
+        data-cohorted="false"
+    >
+        <a href="#" class="forum-nav-browse-title">General</a>
+    </li>
+
+            
+    <li
+        class="forum-nav-browse-menu-item"
+        data-discussion-id='i4x-KyotoUx-004x-course-2T2016_Introduce_Yourself_site'
+        data-cohorted="false"
+    >
+        <a href="#" class="forum-nav-browse-title">Introduce Yourself</a>
+    </li>
+
+            
+    <li
+        class="forum-nav-browse-menu-item"
+        data-discussion-id='i4x-KyotoUx-004x-course-2T2016_technical_problems'
+        data-cohorted="false"
+    >
+        <a href="#" class="forum-nav-browse-title">Technical Problems</a>
+    </li>
+
+
+    </ul>
+</div>
+
+    <div class="forum-nav-thread-list-wrapper">
+        <div class="forum-nav-refine-bar">
+            <label class="forum-nav-filter-main">
+                <span class="sr">Filter:</span>
+                <select class="forum-nav-filter-main-control">
+                    <option value="all">Show all</option>
+                    <option value="unread">Unread</option>
+                    <option value="unanswered">Unanswered</option>
+                </select>
+            </label><% if (isCohorted && isPrivilegedUser) { %><label class="forum-nav-filter-cohort">
+                <span class="sr">Cohort:</span>
+                <select class="forum-nav-filter-cohort-control">
+                    <option value="">in all cohorts</option>
+                </select>
+            </label><% } %><label class="forum-nav-sort">
+                <span class="sr">Sort:</span>
+                <select class="forum-nav-sort-control">
+                    <option value="date">by recent activity</option>
+                    <option value="comments">by most activity</option>
+                    <option value="votes">by most votes</option>
+                </select>
+            </label>
+        </div>
+        <div class="search-alerts"></div>
+        <ul class="forum-nav-thread-list"></ul>
+    </div>
+</script>
+
+
+      
+    </div>
+
+        
+
+
+
+
+
+
+<footer id="footer-edx-v3" role="contentinfo" aria-label="Page Footer"
+>
+    <h2 class="sr footer-about-title">About edX</h2>
+    <div class="footer-content-wrapper">
+      <div class="footer-logo">
+          <img alt="edX logo" src="https://d37djvu3ytnwxt.cloudfront.net/static/images/edx-theme/edx-header-logo.517a627deaad.png">
+      </div>
+
+      <div class="site-details">
+          <nav class="site-nav" aria-label="About edX">
+              <a href="https://www.edx.org/about-us">About</a>
+              <a href="https://www.edx.org/blog">Blog</a>
+              <a href="https://www.edx.org/news-announcements">News</a>
+              <a href="https://support.edx.org">Help Center</a>
+              <a href="https://www.edx.org/contact">Contact</a>
+              <a href="https://www.edx.org/careers">Careers</a>
+              <a href="https://www.edx.org/donate">Donate</a>
+              <a href="https://www.edx.org/sitemap">Sitemap</a>
+          </nav>
+          <nav class="legal-notices" aria-label="Legal">
+              <a href="https://www.edx.org/edx-terms-service">Terms of Service & Honor Code</a>
+              <a href="https://www.edx.org/edx-privacy-policy">Privacy Policy</a>
+              <a href="https://www.edx.org/accessibility">Accessibility Policy</a>
+          </nav>
+          <p class="copyright">© edX Inc.  All rights reserved except where noted.  EdX, Open edX and the edX and Open EdX logos are registered trademarks or trademarks of edX Inc.
+          </p>
+
+          <div class="openedx-link">
+            <a href="http://open.edx.org" title="Powered by Open edX">
+              <img alt="Powered by Open edX" src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag.png" width="140">
+            </a>
+          </div>
+      </div>
+
+      <div class="external-links">
+        <div class="social-media-links">
+          <a href="http://www.facebook.com/EdxOnline" class="sm-link external" title="Facebook" rel="noreferrer">
+            <span class="icon fa fa-facebook-square" aria-hidden="true"></span>
+            <span class="sr">Like edX on Facebook</span>
+          </a>
+          <a href="https://twitter.com/edXOnline" class="sm-link external" title="Twitter" rel="noreferrer">
+            <span class="icon fa fa-twitter" aria-hidden="true"></span>
+            <span class="sr">Follow edX on Twitter</span>
+          </a>
+          <a href="https://www.youtube.com/user/edxonline?sub_confirmation=1" class="sm-link external" title="Youtube" rel="noreferrer">
+            <span class="icon fa fa-youtube" aria-hidden="true"></span>
+            <span class="sr">Subscribe to the edX YouTube channel</span>
+          </a>
+          <a href="http://www.linkedin.com/company/edx" class="sm-link external" title="LinkedIn" rel="noreferrer">
+            <span class="icon fa fa-linkedin-square" aria-hidden="true"></span>
+            <span class="sr">Follow edX on LinkedIn</span>
+          </a>
+          <a href="https://plus.google.com/+edXOnline" class="sm-link external" title="Google+" rel="noreferrer">
+            <span class="icon fa fa-google-plus-square" aria-hidden="true"></span>
+            <span class="sr">Follow edX on Google+</span>
+          </a>
+          <a href="http://www.reddit.com/r/edx" class="sm-link external" title="Reddit" rel="noreferrer">
+            <span class="icon fa fa-reddit" aria-hidden="true"></span>
+            <span class="sr">Subscribe to the edX subreddit</span>
+          </a>
+        </div>
+
+        <div class="mobile-app-links">
+          <a href="https://itunes.apple.com/us/app/edx/id945480667?mt=8" class="app-link external">
+            <img alt="Download the edX mobile app from the Apple App Store" src="https://d37djvu3ytnwxt.cloudfront.net/static/images/app/app_store_badge_135x40.d0558d910630.svg">
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=org.edx.mobile" class="app-link external">
+            <img alt="Download the edX mobile app from Google Play" src="https://d37djvu3ytnwxt.cloudfront.net/static/images/app/google_play_badge_45.144f2dd05129.png">
+          </a>
+        </div>
+      </div>
+    </div>
+</footer>
+
+  
+
+    <link href="https://d37djvu3ytnwxt.cloudfront.net/static/css/lms-footer-edx.438e585f2182.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+  </div>
+
+  
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [
+        ["\\(","\\)"],
+        ['[mathjaxinline]','[/mathjaxinline]']
+      ],
+      displayMath: [
+        ["\\[","\\]"],
+        ['[mathjax]','[/mathjax]']
+      ]
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+
+
+  MathJax.Hub.signal.Interest(function(message) {
+    if(message[0] === "End Math") {
+        set_mathjax_display_div_settings();
+    }
+  });
+  function set_mathjax_display_div_settings() {
+    $('.MathJax_Display').each(function( index ) {
+      this.setAttribute('tabindex', '0');
+      this.setAttribute('aria-live', 'off');
+      this.removeAttribute('role');
+      this.removeAttribute('aria-readonly');
+    });
+  }
+</script>
+
+
+<!-- This must appear after all mathjax-config blocks, so it is after the imports from the other templates.
+     It can't be run through static.url because MathJax uses crazy url introspection to do lazy loading of
+     MathJax extension libraries -->
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/2.5-latest/MathJax.js?config=TeX-MML-AM_HTMLorMML-full"></script>
+
+
+
+    <script type="text/javascript" src="https://d37djvu3ytnwxt.cloudfront.net/static/js/discussion.7693ca40e694.js" charset="utf-8"></script>
+
+
+
+      <!-- begin segment footer -->
+    <script type="text/javascript">
+        $(window).load(function() {
+            analytics.identify("195694", {
+              email: "sandipan.dey@gmail.com",
+              username: "sandipan_dey"
+            });
+        });
+    </script>
+    <!-- end segment footer -->
+
+  <script type="text/javascript" src="https://d37djvu3ytnwxt.cloudfront.net/static/js/vendor/noreferrer.aa62a3e70ffa.js" charset="utf-8"></script>
+  <script type="text/javascript" src="https://d37djvu3ytnwxt.cloudfront.net/static/js/utils/navigation.17df676f9045.js" charset="utf-8"></script>
+  
+</body>
+</html>
+
+
+
+<!-- Performance beacon for onload times -->
+<script>
+  (function () {
+    var sample_rate = 0.05;
+    var roll = Math.floor(Math.random() * 100)/100;
+    var onloadBeaconSent = false;
+
+    if(roll < sample_rate){
+      $(window).load(function() {
+        setTimeout(function(){
+          var t = window.performance.timing;
+
+          var data = {
+            event: "onload",
+            value: t.loadEventEnd - t.navigationStart,
+            page: window.location.href,
+          };
+
+          if (!onloadBeaconSent) {
+            $.ajax({method: "POST", url: "/performance", data: data});
+          }
+          onloadBeaconSent = true;
+        }, 0);
+      });
+    }
+  }());
+</script>
