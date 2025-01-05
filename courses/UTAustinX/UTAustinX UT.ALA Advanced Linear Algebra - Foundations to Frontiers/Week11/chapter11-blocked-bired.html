@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--*    Generated from PreTeXt source   *-->
+<!--*    on 2023-10-11T13:00:24-05:00    *-->
+<!--*                                    *-->
+<!--*      https://pretextbook.org       *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ALAFF Casting the reduction to bidiagonal form in terms of matrix-matrix multiplication</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']]
+    },
+    asciimath2jax: {
+        ignoreClass: ".*",
+        processClass: "has_am"
+    },
+    jax: ["input/AsciiMath"],
+    extensions: ["asciimath2jax.js"],
+    TeX: {
+        extensions: ["extpfeil.js", "autobold.js", "https://pretextbook.org/js/lib/mathjaxknowl.js", ],
+        // scrolling to fragment identifiers is controlled by other Javascript
+        positionToHash: false,
+        equationNumbers: { autoNumber: "none", useLabelIds: true, },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    // HTML-CSS output Jax to be dropped for MathJax 3.0
+    "HTML-CSS": {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+    CommonHTML: {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+});
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML-full"></script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.12/pretext.js"></script><script src="https://pretextbook.org/js/0.12/pretext_add_on.js"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/colors_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/setcolors.css" rel="stylesheet" type="text/css">
+<!-- 2019-10-12: Temporary - CSS file for experiments with styling --><link href="developer.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.31/features.css" rel="stylesheet" type="text/css">
+<script>var logged_in = false;
+var role = 'student';
+var guest_access = true;
+var login_required = false;
+var js_version = 0.12;
+</script>
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<a class="assistive" href="#content">Skip to main content</a><div class="hidden-content" style="display:none">\(      
+      \usepackage{array}
+       \setlength{\oddsidemargin}{-0.0in}
+       \setlength{\evensidemargin}{-0.0in}
+       \setlength{\textheight}{8.75in}
+       \setlength{\textwidth}{6.5in}
+       \setlength{\topmargin}{-0.25in}
+
+    \newcommand{\R}{\mathbb R}
+    \newcommand{\Rm}{\mathbb R^m}
+    \newcommand{\Rn}{\mathbb R^n}
+    \newcommand{\Rnxn}{\mathbb R^{n \times n}}    
+    \newcommand{\Rmxn}{\mathbb R^{m \times n}}    
+    \newcommand{\Rmxm}{\mathbb R^{m \times m}}    
+    \newcommand{\Rmxk}{\mathbb R^{m \times k}}    
+    \newcommand{\Rkxn}{\mathbb R^{k \times n}}    
+    \newcommand{\C}{\mathbb C}
+    \newcommand{\Cm}{\mathbb C^m}
+    \newcommand{\Cmxm}{\mathbb C^{m \times m}}
+    \newcommand{\Cnxn}{\mathbb C^{n \times n}}
+    \newcommand{\Cmxn}{\mathbb C^{m \times n}}
+    \newcommand{\Ckxk}{\mathbb C^{k \times k}}
+    \newcommand{\Cn}{\mathbb C^n}
+    \newcommand{\Ck}{\mathbb C^k}
+
+    \newcommand{\Null}{{\cal N}}
+    \newcommand{\Col}{{\cal C}}
+    \newcommand{\Rowspace}{{\cal R}}
+    \newcommand{\Span}{{\rm {Span}}}
+    \newcommand{\rank}{{\rm rank}}
+
+    \newcommand{\triu}{{\rm triu}}
+    \newcommand{\tril}{{\rm tril}}
+    
+    \newcommand{\sign}{{\rm sign}}
+
+    \newcommand{\FlaTwoByTwo}[4]{
+    \left( \begin{array}{c | c}
+    #1 \amp #2 \\ \hline 
+    #3 \amp #4 
+    \end{array}
+    \right) 
+    }
+
+    \newcommand{\FlaTwoByTwoSingleLine}[4]{
+    \left( \begin{array}{c c}
+    #1 \amp #2 \\ 
+    #3 \amp #4 
+    \end{array}
+    \right) 
+    }
+
+    \newcommand{\FlaTwoByTwoSingleLineNoPar}[4]{
+    \begin{array}{c c}
+    #1 \amp #2 \\ 
+    #3 \amp #4 
+    \end{array}
+    }
+    
+    \newcommand{\FlaOneByTwo}[2]{
+    \left( \begin{array}{c | c}
+    #1 \amp #2 
+    \end{array}
+    \right) 
+    }
+
+    \newcommand{\FlaOneByTwoSingleLine}[2]{
+    \left( \begin{array}{c c}
+    #1 \amp #2 
+    \end{array}
+    \right) 
+    }
+    
+    \newcommand{\FlaTwoByOne}[2]{
+    \left( \begin{array}{c}
+    #1 \\ \hline
+    #2 
+    \end{array}
+    \right) 
+    }
+
+    \newcommand{\FlaTwoByOneSingleLine}[2]{
+    \left( \begin{array}{c}
+    #1 \\ 
+    #2 
+    \end{array}
+    \right) 
+    }
+
+    \newcommand{\FlaThreeByOneB}[3]{
+    \left( \begin{array}{c}
+    #1 \\ \hline
+    #2 \\
+    #3
+    \end{array}
+    \right) 
+    }
+
+    \newcommand{\FlaThreeByOneT}[3]{
+    \left( \begin{array}{c}
+    #1 \\ 
+    #2 \\ \hline
+    #3
+    \end{array}
+    \right) 
+    }
+    
+    \newcommand{\FlaOneByThreeR}[3]{
+    \left( \begin{array}{c | c c}
+    #1 \amp #2 \amp #3
+    \end{array}
+    \right) 
+    }
+
+    \newcommand{\FlaOneByThreeL}[3]{
+    \left( \begin{array}{c c | c}
+    #1 \amp #2 \amp #3
+    \end{array}
+    \right) 
+    }
+
+    \newcommand{\FlaThreeByThreeBR}[9]{
+    \left( \begin{array}{c | c  c}
+    #1 \amp #2 \amp #3 \\ \hline
+    #4 \amp #5 \amp #6 \\
+    #7 \amp #8 \amp #9
+    \end{array}
+    \right) 
+    }
+
+    \newcommand{\FlaThreeByThreeTL}[9]{
+    \left( \begin{array}{c c | c}
+    #1 \amp #2 \amp #3 \\ 
+    #4 \amp #5 \amp #6 \\ \hline
+    #7 \amp #8 \amp #9
+    \end{array}
+    \right) 
+    }
+
+    \newcommand{\diag}[1]{{\rm diag}( #1 )}
+    \newcommand{\URt}{{\sc HQR}}
+
+    \newcommand{\FlaAlgorithm}{
+	\begin{array}{|l|} \hline 
+\routinename \\ \hline 
+\partitionings \\
+~~~ \begin{array}{l}
+    \partitionsizes 
+    \end{array} \\
+{\bf \color{blue} {while}~} \guard \\
+~~~ \begin{array}{l}
+    \repartitionings 
+    \end{array} \\
+~~~ \color{red} { \begin{array}{l} \hline 
+   \color{black} {\update} \\  \hline 
+    \end{array}}  \\
+~~~ \begin{array}{l}
+    \moveboundaries 
+    \end{array} \\ 
+{\bf \color{blue} {endwhile}}
+\\ \hline 
+	\end{array}
+     }
+
+    \newcommand{\FlaAlgorithmWithInit}{
+    \begin{array}{|l|} \hline
+    \routinename \\ \hline
+    \initialize \\ 
+\partitionings \\
+~~~ \begin{array}{l}
+    \partitionsizes 
+    \end{array} \\
+{\bf \color{blue} {while}~} \guard \\
+~~~ \begin{array}{l}
+    \repartitionings 
+    \end{array} \\
+~~~ \color{red} { \begin{array}{l} \hline 
+   \color{black} {\update} \\  \hline 
+    \end{array}}  \\
+~~~ \begin{array}{l}
+    \moveboundaries 
+    \end{array} \\ 
+{\bf \color{blue} {endwhile}}
+\\ \hline 
+	\end{array}
+     }
+     
+    \newcommand{\FlaBlkAlgorithm}{
+	\begin{array}{|l|} \hline 
+	\routinename \\ \hline 
+	\partitionings \\
+	~~~ \begin{array}{l}
+	\partitionsizes 
+	\end{array} \\
+	{\bf \color{blue} {while}~} \guard \\
+	~~~ {\bf choose~block~size~} \blocksize \\
+	~~~ \begin{array}{l}
+	\repartitionings 
+	\end{array} \\
+	~~~ ~~~ \repartitionsizes \\
+	~~~ \color{red} { \begin{array}{l} \hline 
+	\color{black} {\update} \\  \hline 
+	\end{array}}  \\
+	~~~ \begin{array}{l}
+	\moveboundaries 
+	\end{array} \\ 
+	{\bf \color{blue} {endwhile}}
+	\\ \hline 
+	\end{array}
+	}
+
+    \newcommand{\complexone}{
+\begin{array}{|c|}\hline 
+\!\pm\! 
+\\ \hline 
+\end{array}~
+    }
+
+
+    \newcommand{\HQR}{{\rm HQR}}
+    \newcommand{\QR}{{\rm QR}}
+    \newcommand{\st}{{\rm \ s.t. }}
+    \newcommand{\QRQ}{{\rm {\normalsize \bf Q}{\rm \tiny R}}}
+    \newcommand{\QRR}{{\rm {\rm \tiny Q}{\bf \normalsize R}}} 
+
+    \newcommand{\deltaalpha}{\delta\!\alpha}
+
+    \newcommand{\deltax}{\delta\!x}
+    \newcommand{\deltay}{\delta\!y}
+    \newcommand{\deltaz}{\delta\!z}
+    \newcommand{\deltaw}{\delta\!w}        
+
+    \newcommand{\DeltaA}{\delta\!\!A}
+
+    \newcommand{\meps}{\epsilon_{\rm mach}}
+    \newcommand{\fl}[1]{{\rm fl( #1 )}}
+    \newcommand{\becomes}{:=}
+
+    \newcommand{\defrowvector}[2]{
+    \left(#1_0, #1_1, \ldots, #1_{#2-1}\right) 
+    }
+
+    \newcommand{\tr}[1]{{#1}^T}
+
+    \newcommand{\LUpiv}[1]{{\rm LU}(#1)}
+
+    \newcommand{\maxi}{{\rm maxi}}
+
+    \newcommand{\Chol}[1]{{\rm Chol}( #1 )}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<a id="logo-link" href="http://ulaff.net" target="_blank"><img src="./images/Logo/ALU.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="ALAFF.html"><span class="title">Advanced Linear Algebra:</span> <span class="subtitle">Foundations to Frontiers</span></a></h1>
+<p class="byline">Robert van de Geijn, Margaret Myers</p>
+</div>
+</div></div>
+<nav id="primary-navbar" class="navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active" aria-label="Show or hide table of contents sidebar">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="index-button toolbar-item button" href="index-1.html" title="Index">Index</a><span class="threebuttons"><a id="previousbutton" class="previous-button toolbar-item button" href="chapter11-PCA.html" title="Previous">Prev</a><a id="upbutton" class="up-button button toolbar-item" href="chapter11-enrichments.html" title="Up">Up</a><a id="nextbutton" class="next-button button toolbar-item" href="chapter11-optimizing-biqr.html" title="Next">Next</a></span>
+</div>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="chapter11-PCA.html" title="Previous">Prev</a><a class="up-button button toolbar-item" href="chapter11-enrichments.html" title="Up">Up</a><a class="next-button button toolbar-item" href="chapter11-optimizing-biqr.html" title="Next">Next</a>
+</div>
+</div></nav></header><div class="page">
+<div id="sidebar-left" class="sidebar" role="navigation"><div class="sidebar-content">
+<nav id="toc"><ul>
+<li class="link">
+<a href="frontmatter.html" data-scroll="frontmatter"><span class="title">Front Matter</span></a><ul>
+<li><a href="front-colophon.html" data-scroll="front-colophon">Colophon</a></li>
+<li><a href="acknowledgement.html" data-scroll="acknowledgement">Acknowledgements</a></li>
+<li><a href="preface.html" data-scroll="preface">Preface</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chapter00-setting-up.html" data-scroll="chapter00-setting-up"><span class="codenumber">0</span> <span class="title">Getting Started</span></a><ul>
+<li><a href="chapter00-opening-remarks.html" data-scroll="chapter00-opening-remarks">Opening Remarks</a></li>
+<li><a href="chapter00-setting-up-for-ALAFF.html" data-scroll="chapter00-setting-up-for-ALAFF">Setting Up For ALAFF</a></li>
+<li><a href="chapter00-enrichments.html" data-scroll="chapter00-enrichments">Enrichments</a></li>
+<li><a href="chapter00-wrap-up.html" data-scroll="chapter00-wrap-up">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part1-orthogonality.html" data-scroll="part1-orthogonality"><span class="codenumber">I</span> <span class="title">Orthogonality</span></a></li>
+<li class="link">
+<a href="chapter01-norms.html" data-scroll="chapter01-norms"><span class="codenumber">1</span> <span class="title">Norms</span></a><ul>
+<li><a href="chapter01-opening.html" data-scroll="chapter01-opening">Opening Remarks</a></li>
+<li><a href="chapter01-section-norms-vector-norms.html" data-scroll="chapter01-section-norms-vector-norms">Vector Norms</a></li>
+<li><a href="section-norms-matrix-norms.html" data-scroll="section-norms-matrix-norms">Matrix Norms</a></li>
+<li><a href="chapter01-conditioning-of-a-matrix.html" data-scroll="chapter01-conditioning-of-a-matrix">Condition Number of a Matrix</a></li>
+<li><a href="chapter-01enrichments.html" data-scroll="chapter-01enrichments">Enrichments</a></li>
+<li><a href="chapter01-wrapup.html" data-scroll="chapter01-wrapup">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chapter02-svd.html" data-scroll="chapter02-svd"><span class="codenumber">2</span> <span class="title">The Singular Value Decomposition</span></a><ul>
+<li><a href="chapter02-opening.html" data-scroll="chapter02-opening">Opening Remarks</a></li>
+<li><a href="chapter02-orthogonal-vectors-and-matrices.html" data-scroll="chapter02-orthogonal-vectors-and-matrices">Orthogonal Vectors and Matrices</a></li>
+<li><a href="chapter02-the-singular-value-decomposition.html" data-scroll="chapter02-the-singular-value-decomposition">The Singular Value Decomposition</a></li>
+<li><a href="chapter02-enrichments.html" data-scroll="chapter02-enrichments">Enrichments</a></li>
+<li><a href="chapter02-wrapup.html" data-scroll="chapter02-wrapup">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chapter03-qr.html" data-scroll="chapter03-qr"><span class="codenumber">3</span> <span class="title">The QR Decomposition</span></a><ul>
+<li><a href="chapter03-opening.html" data-scroll="chapter03-opening">Opening Remarks</a></li>
+<li><a href="chapter03-gram-schmidt.html" data-scroll="chapter03-gram-schmidt">Gram-Schmidt Orthogonalization</a></li>
+<li><a href="chapter03-householder-qr-factorization.html" data-scroll="chapter03-householder-qr-factorization">Householder QR Factorization</a></li>
+<li><a href="chapter03-enrichments.html" data-scroll="chapter03-enrichments">Enrichments</a></li>
+<li><a href="chapter03-wrapup.html" data-scroll="chapter03-wrapup">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chapter04-linear-least-squares.html" data-scroll="chapter04-linear-least-squares"><span class="codenumber">4</span> <span class="title">Linear Least Squares</span></a><ul>
+<li><a href="chapter04-opening.html" data-scroll="chapter04-opening">Opening Remarks</a></li>
+<li><a href="chapter04-solution-via-method-of-normal-equations.html" data-scroll="chapter04-solution-via-method-of-normal-equations">Solution via the Method of Normal Equations</a></li>
+<li><a href="chapter04-solution-via-svd.html" data-scroll="chapter04-solution-via-svd">Solution via the SVD</a></li>
+<li><a href="chapter04-via-GS.html" data-scroll="chapter04-via-GS">Solution via the QR factorization</a></li>
+<li><a href="chapter04-enrichments.html" data-scroll="chapter04-enrichments">Enrichments</a></li>
+<li><a href="chapter04-wrapup.html" data-scroll="chapter04-wrapup">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part2-solving-linear-systems.html" data-scroll="part2-solving-linear-systems"><span class="codenumber">II</span> <span class="title">Solving Linear Systems</span></a></li>
+<li class="link">
+<a href="chapter05-LU-factorization.html" data-scroll="chapter05-LU-factorization"><span class="codenumber">5</span> <span class="title">The LU and Cholesky Factorizations</span></a><ul>
+<li><a href="chapter05-opening.html" data-scroll="chapter05-opening">Opening Remarks</a></li>
+<li><a href="chapter05-lu-factorization-section.html" data-scroll="chapter05-lu-factorization-section">From Gaussian elimination to LU factorization</a></li>
+<li><a href="chapter05-lu-piv.html" data-scroll="chapter05-lu-piv">LU factorization with (row) pivoting</a></li>
+<li><a href="chapter05-Cholesky-factorization.html" data-scroll="chapter05-Cholesky-factorization">Cholesky factorization</a></li>
+<li><a href="chapter05-enrichments.html" data-scroll="chapter05-enrichments">Enrichments</a></li>
+<li><a href="chapter05-wrapup.html" data-scroll="chapter05-wrapup">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chapter06-numerical-stability.html" data-scroll="chapter06-numerical-stability"><span class="codenumber">6</span> <span class="title">Numerical Stability</span></a><ul>
+<li><a href="chapter06-opening.html" data-scroll="chapter06-opening">Opening Remarks</a></li>
+<li><a href="chapter06-floating-point-arithmetic.html" data-scroll="chapter06-floating-point-arithmetic">Floating Point Arithmetic</a></li>
+<li><a href="chapter06-stability-of-dot-product-algorithms.html" data-scroll="chapter06-stability-of-dot-product-algorithms">Error Analysis for Basic Linear Algebra Algorithms</a></li>
+<li><a href="chapter06-stability-of-linear-solve.html" data-scroll="chapter06-stability-of-linear-solve">Error Analysis for Solving Linear Systems</a></li>
+<li><a href="chapter06-enrichments.html" data-scroll="chapter06-enrichments">Enrichments</a></li>
+<li><a href="chapter06-wrapup.html" data-scroll="chapter06-wrapup">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chapter07-sparse-linear-systems.html" data-scroll="chapter07-sparse-linear-systems"><span class="codenumber">7</span> <span class="title">Solving Sparse Linear Systems</span></a><ul>
+<li><a href="chapter07-opening.html" data-scroll="chapter07-opening">Opening Remarks</a></li>
+<li><a href="chapter07-direct-solution.html" data-scroll="chapter07-direct-solution">Direct Solution</a></li>
+<li><a href="chapter07-splitting-methods.html" data-scroll="chapter07-splitting-methods">Iterative Solution</a></li>
+<li><a href="chapter07-enrichments.html" data-scroll="chapter07-enrichments">Enrichments</a></li>
+<li><a href="chapter07-wrapup.html" data-scroll="chapter07-wrapup">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chapter08-descent-methods.html" data-scroll="chapter08-descent-methods"><span class="codenumber">8</span> <span class="title">Descent Methods</span></a><ul>
+<li><a href="chapter08-opening.html" data-scroll="chapter08-opening">Opening Remarks</a></li>
+<li><a href="chapter08-search-directions.html" data-scroll="chapter08-search-directions">Search directions</a></li>
+<li><a href="chapter08-conjugate-gradient-method.html" data-scroll="chapter08-conjugate-gradient-method">The  Conjugate Gradient Method</a></li>
+<li><a href="chapter08-enrichments.html" data-scroll="chapter08-enrichments">Enrichments</a></li>
+<li><a href="chapter08-wrapup.html" data-scroll="chapter08-wrapup">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link part"><a href="part3-the-algebraic-eigenvalue-problem.html" data-scroll="part3-the-algebraic-eigenvalue-problem"><span class="codenumber">III</span> <span class="title">The Algebraic Eigenvalue Problem</span></a></li>
+<li class="link">
+<a href="chapter09-eigenvalues-and-eigenvectors.html" data-scroll="chapter09-eigenvalues-and-eigenvectors"><span class="codenumber">9</span> <span class="title">Eigenvalues and Eigenvectors</span></a><ul>
+<li><a href="chapter09-opening.html" data-scroll="chapter09-opening">Opening Remarks</a></li>
+<li><a href="chapter09-EVD-basics.html" data-scroll="chapter09-EVD-basics">Basics</a></li>
+<li><a href="chapter09-power-method-etc.html" data-scroll="chapter09-power-method-etc">The Power Method and related approaches</a></li>
+<li><a href="chapter09-enrichments.html" data-scroll="chapter09-enrichments">Enrichments</a></li>
+<li><a href="chapter09-wrapup.html" data-scroll="chapter09-wrapup">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chapter10-qr-algorithm-part-1.html" data-scroll="chapter10-qr-algorithm-part-1"><span class="codenumber">10</span> <span class="title">Practical Solution of the Hermitian Eigenvalue Problem</span></a><ul>
+<li><a href="chapter10-opening.html" data-scroll="chapter10-opening">Opening Remarks</a></li>
+<li><a href="chapter10-QR1-power-to-QR.html" data-scroll="chapter10-QR1-power-to-QR">From Power Method to a simple QR algorithm</a></li>
+<li><a href="chapter10-practical-qr.html" data-scroll="chapter10-practical-qr">A Practical Hermitian QR Algorithm</a></li>
+<li><a href="chapter10-enrichments.html" data-scroll="chapter10-enrichments">Enrichments</a></li>
+<li><a href="chapter10-wrapup.html" data-scroll="chapter10-wrapup">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chapter11-QR-algorithm-for-SVD.html" data-scroll="chapter11-QR-algorithm-for-SVD"><span class="codenumber">11</span> <span class="title">Computing the SVD</span></a><ul>
+<li><a href="chapter11-opening.html" data-scroll="chapter11-opening">Opening Remarks</a></li>
+<li><a href="chapter11-computing-SVD.html" data-scroll="chapter11-computing-SVD">Practical Computation of the Singular Value Decomposition</a></li>
+<li><a href="chapter11-Jacobi-method.html" data-scroll="chapter11-Jacobi-method">Jacobi's Method</a></li>
+<li><a href="chapter11-enrichments.html" data-scroll="chapter11-enrichments">Enrichments</a></li>
+<li><a href="chapter11-wrapup.html" data-scroll="chapter11-wrapup">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link">
+<a href="chapter12-attaining-high-performance.html" data-scroll="chapter12-attaining-high-performance"><span class="codenumber">12</span> <span class="title">Attaining High Performance</span></a><ul>
+<li><a href="chapter12-opening.html" data-scroll="chapter12-opening">Opening Remarks</a></li>
+<li><a href="chapter12-basic-linear-algebra-operations.html" data-scroll="chapter12-basic-linear-algebra-operations">Linear Algebra Building Blocks</a></li>
+<li><a href="chapter12-casting-in-terms-of-MMM.html" data-scroll="chapter12-casting-in-terms-of-MMM">Casting Computation in Terms of Matrix-Matrix Multiplication</a></li>
+<li><a href="chapter12-enrichments.html" data-scroll="chapter12-enrichments">Enrichments</a></li>
+<li><a href="chapter12-wrapup.html" data-scroll="chapter12-wrapup">Wrap Up</a></li>
+</ul>
+</li>
+<li class="link"><a href="backmatter.html" data-scroll="backmatter"><span class="title">Back Matter</span></a></li>
+<li class="link"><a href="Appendix0-pretest.html" data-scroll="Appendix0-pretest"><span class="codenumber">A</span> <span class="title">Are you ready?</span></a></li>
+<li class="link">
+<a href="AppendixA-notation.html" data-scroll="AppendixA-notation"><span class="codenumber">B</span> <span class="title">Notation</span></a><ul><li><a href="a1appendix-householder-notation.html" data-scroll="a1appendix-householder-notation">Householder notation</a></li></ul>
+</li>
+<li class="link">
+<a href="AppendixB-NA.html" data-scroll="AppendixB-NA"><span class="codenumber">C</span> <span class="title">Knowledge from Numerical Analysis</span></a><ul>
+<li><a href="a2appendix-cost-of-blas.html" data-scroll="a2appendix-cost-of-blas">Cost of basic linear algebra operations</a></li>
+<li><a href="a2appendix-catastrophic-cancellation.html" data-scroll="a2appendix-catastrophic-cancellation">Catastrophic cancellation</a></li>
+</ul>
+</li>
+<li class="link"><a href="appendix-gfdl.html" data-scroll="appendix-gfdl"><span class="codenumber">D</span> <span class="title">GNU Free Documentation License</span></a></li>
+<li class="link"><a href="references-1.html" data-scroll="references-1"><span class="title">References</span></a></li>
+<li class="link"><a href="solutions-1.html" data-scroll="solutions-1"><span class="codenumber">E</span> <span class="title">Answers and Solutions to Homeworks</span></a></li>
+<li class="link"><a href="index-1.html" data-scroll="index-1"><span class="title">Index</span></a></li>
+<li class="link"><a href="back-colophon.html" data-scroll="back-colophon"><span class="title">Colophon</span></a></li>
+</ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://pretextbook.org">Authored in PreTeXt</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/badge.gif" alt="Powered by MathJax"></a></nav></div>
+</div></div>
+<main class="main"><div id="content" class="pretext-content"><section class="subsection" id="chapter11-blocked-bired"><h2 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">11.4.2</span> <span class="title">Casting the reduction to bidiagonal form in terms of matrix-matrix multiplication</span>
+</h2>
+<a href="chapter11-blocked-bired.html" class="permalink">¶</a><p id="p-4432">As was discussed in <a href="chapter10-blocked-trired.html" class="internal" title="Subsection 10.4.3: Casting the reduction to tridiagonal form in terms of matrix-matrix multiplication">Subsection 10.4.3</a> for the reduction to tridiagonal form, reduction to bidiagonal form can only be partly cast in terms of matrix-matrix multiplication. As for the reduction to tridiagonal form, we recommend</p>
+<ul class="disc"><li id="li-1557"><p id="p-4433"><a data-knowl="./knowl/biblio-reduction-to-condensed-form.html" title="Bibliographic Entry 48: Families of Algorithms for Reducing a Matrix to Condensed.">[48]</a> Field G. Van Zee, Robert A. van de Geijn, Gregorio Quintana-Ortí, G. Joseph Elizondo, Families of Algorithms for Reducing a Matrix to Condensed Form, ACM Transactions on Mathematical Software (TOMS) , Vol. 39, No. 1, 2012.</p></li></ul>
+<p>Bidiagonal, tridiagonal, and upper Hessenberg form are together referred to as <dfn class="terminology">condensed form</dfn>.</p></section></div></main>
+</div>
+<div class="login-link"><span id="loginlogout" class="login">login</span></div>
+<script src="https://pretextbook.org/js/0.12/login.js"></script>
+</body>
+</html>
