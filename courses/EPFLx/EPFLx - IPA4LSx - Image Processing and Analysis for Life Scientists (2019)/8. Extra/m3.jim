@@ -1,0 +1,5 @@
+print( "\\Clear" );
+listOfThreshold = getList( "threshold.methods" );
+Array.print( listOfThreshold );
+index = 10;
+print( listOfThreshold[index] );

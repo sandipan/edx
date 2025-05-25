@@ -1,0 +1,4 @@
+listOfLUTs = getList( "LUTs" );
+Array.print( listOfLUTs );
+index = 4 ; 
+print ( listOfLUTs[3] ) ; 

@@ -1,0 +1,8 @@
+run("Close All");
+
+minArea = 500; // 10; // in pixels 2
+
+run("Blobs (25K)");
+setAutoThreshold("Default");
+
+run("Analyze Particles...", "size="+minArea+"-Infinity clear display exclude");
