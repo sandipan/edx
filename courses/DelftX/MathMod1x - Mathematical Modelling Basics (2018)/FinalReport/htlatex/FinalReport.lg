@@ -1,0 +1,590 @@
+htfcss: cmitt font-family: monospace; font-style: italic;
+htfcss: cmtt font-family: monospace;
+htfcss: cmti  font-style: italic;
+htfcss: cmbx  font-weight: bold;
+htfcss: cmbxsl  font-weight: bold; font-style: oblique;
+htfcss: cmtt font-family: monospace;
+htfcss: cmmi font-style: italic;
+htfcss: cmmib font-style: italic; font-weight: bold;
+htfcss: t1xi font-style: italic;
+htfcss: t1xss font-family: sans-serif;
+htfcss: t1xtt font-family: monospace;
+htfcss: t1xb font-weight: bold;
+htfcss: t1xbi font-weight: bold;
+htfcss: t1xbss font-weight: bold; font-family: sans-serif;
+htfcss: t1xbtt font-weight: bold; font-family: monospace;
+htfcss: t1xbsl font-weight: bold; font-style: italic;
+htfcss: t1xbsssl font-weight: bold; font-family: sans-serif; font-style: italic;
+htfcss: t1xbttsl font-weight: bold; font-style: italic;
+htfcss: t1xsl font-style: italic;
+htfcss: t1xsssl font-family: sans-serif; font-style: italic;
+htfcss: t1xi font-style: italic;
+htfcss: t1xss font-family: sans-serif;
+htfcss: t1xtt font-family: monospace;
+htfcss: t1xb font-weight: bold;
+htfcss: t1xbi font-weight: bold;
+htfcss: t1xbss font-weight: bold; font-family: sans-serif;
+htfcss: t1xbtt font-weight: bold; font-family: monospace;
+htfcss: t1xbsl font-weight: bold; font-style: italic;
+htfcss: t1xbsssl font-weight: bold; font-family: sans-serif; font-style: italic;
+htfcss: t1xbttsl font-weight: bold; font-style: italic;
+htfcss: t1xsl font-style: italic;
+htfcss: t1xsssl font-family: sans-serif; font-style: italic;
+File: FinalReport.html
+File: FinalReport.css
+File: FinalReport.tmp
+Font_Class(4,"4"): <span  class="small-caps"></span>
+Css: p.noindent { text-indent: 0em }
+Css: td p.noindent { text-indent: 0em; margin-top:0em; }
+Css: p.nopar { text-indent: 0em; }
+Css: p.indent{ text-indent: 1.5em }
+Css: @media print {div.crosslinks {visibility:hidden;}}
+Css: a img { border-top: 0; border-left: 0; border-right: 0; }
+Font_Css("4"): .small-caps{font-variant: small-caps; }
+Font_Css("10"): .htf-cmbx {font-weight: bold; font-style:normal;}
+Font_Css("12"): .htf-calligraphy {font-family:cursive}
+Font_Css("14"): .htf-italic {font-style: italic;}
+Font_Css("16"): .htf-bold {font-weight: bold;}
+Font_Css("12"): .htf-calligraphy-bold {font-family:cursive ; font-weight: bold; }
+Css: center { margin-top:1em; margin-bottom:1em; }
+Css: td center { margin-top:0em; margin-bottom:0em; }
+Css: .Canvas { position:relative; }
+Css: img.math{vertical-align:middle;}
+Css: li p.indent { text-indent: 0em }
+Css: li p:first-child{ margin-top:0em; }
+Css: li p:last-child, li div:last-child { margin-bottom:0.5em; }
+Css: li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }
+Css: .enumerate1 {list-style-type:decimal;}
+Css: .enumerate2 {list-style-type:lower-alpha;}
+Css: .enumerate3 {list-style-type:lower-roman;}
+Css: .enumerate4 {list-style-type:upper-alpha;}
+Css: div.newtheorem { margin-bottom: 2em; margin-top: 2em;}
+Css: .obeylines-h,.obeylines-v {white-space: nowrap; }
+Css: div.obeylines-v p { margin-top:0; margin-bottom:0; }
+Css: .overline{ text-decoration:overline; }
+Css: .overline img{ border-top: 1px solid black; }
+Css: td.displaylines {text-align:center; white-space:nowrap;}
+Css: .centerline {text-align:center;}
+Css: .rightline {text-align:right;}
+Css: div.verbatim {font-family: monospace; white-space: nowrap; text-align:left; clear:both; }
+Css: .fbox {padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
+Css: div.fbox {display:table}
+Css: div.center div.fbox {text-align:center; clear:both; padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
+Css: div.minipage{width:100%;}
+Css: div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}
+Css: div.center div {text-align: left;}
+Css: div.flushright, div.flushright div.flushright {text-align: right;}
+Css: div.flushright div {text-align: left;}
+Css: div.flushleft {text-align: left;}
+Css: .underline{ text-decoration:underline; }
+Css: .underline img{ border-bottom: 1px solid black; margin-bottom:1pt; }
+Css: .framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
+Css: .framebox-c {text-align:center;}
+Css: .framebox-l {text-align:left;}
+Css: .framebox-r {text-align:right;}
+Css: span.thank-mark{ vertical-align: super }
+Css: span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }
+Css: div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }
+Css: table.tabular td p{margin-top:0em;}
+Css: table.tabular {margin-left: auto; margin-right: auto;}
+Css: td p:first-child{ margin-top:0em; }
+Css: td p:last-child{ margin-bottom:0em; }
+Css: div.td00{ margin-left:0pt; margin-right:0pt; }
+Css: div.td01{ margin-left:0pt; margin-right:5pt; }
+Css: div.td10{ margin-left:5pt; margin-right:0pt; }
+Css: div.td11{ margin-left:5pt; margin-right:5pt; }
+Css: table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+Css: td.td00{ padding-left:0pt; padding-right:0pt; }
+Css: td.td01{ padding-left:0pt; padding-right:5pt; }
+Css: td.td10{ padding-left:5pt; padding-right:0pt; }
+Css: td.td11{ padding-left:5pt; padding-right:5pt; }
+Css: table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+Css: .hline hr, .cline hr{ height : 1px; margin:0px; }
+Css: .tabbing-right {text-align:right;}
+Css: span.TEX {letter-spacing: -0.125em; }
+Css: span.TEX span.E{ position:relative;top:0.5ex;left:-0.0417em;}
+Css: a span.TEX span.E {text-decoration: none; }
+Css: span.LATEX span.A{ position:relative; top:-0.5ex; left:-0.4em; font-size:85%;}
+Css: span.LATEX span.TEX{ position:relative; left: -0.4em; }
+Css: div.float, div.figure {margin-left: auto; margin-right: auto;}
+Css: div.float img {text-align:center;}
+Css: div.figure img {text-align:center;}
+Css: .marginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}
+Css: .marginpar p{margin-top:0.4em; margin-bottom:0.4em;}
+Css: table.equation {width:100%;}
+Css: .equation td{text-align:center; }
+Css: td.equation { margin-top:1em; margin-bottom:1em; } 
+Css: td.equation-label { width:5%; text-align:center; }
+Css: td.eqnarray4 { width:5%; white-space: normal; }
+Css: td.eqnarray2 { width:5%; }
+Css: table.eqnarray-star, table.eqnarray {width:100%;}
+Css: div.eqnarray{text-align:center;}
+Css: div.array {text-align:center;}
+Css: div.pmatrix {text-align:center;}
+Css: table.pmatrix {width:100%;}
+Css: span.pmatrix img{vertical-align:middle;}
+Css: div.pmatrix {text-align:center;}
+Css: table.pmatrix {width:100%;}
+Css: span.bar-css {text-decoration:overline;}
+Css: img.cdots{vertical-align:middle;}
+Css: .partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}
+Css: .chapterToc a, .chapterToc, .likechapterToc a, .likechapterToc, .appendixToc a, .appendixToc {line-height: 200%; font-weight:bold;}
+Css: .index-item, .index-subitem, .index-subsubitem {display:block}
+Css: div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}
+Css: div.caption span.id{font-weight: bold; white-space: nowrap; }
+Css: h1.partHead{text-align: center}
+Css: p.bibitem { text-indent: -2em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
+Css: p.bibitem-p { text-indent: 0em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
+Css: .paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}
+Css: .subparagraphHead, .likesubparagraphHead { font-weight: bold;}
+Css: .quote {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; margin-right:1em; text-align:justify;}
+Css: .verse{white-space:nowrap; margin-left:2em}
+Css: div.maketitle {text-align:center;}
+Css: h2.titleHead{text-align:center;}
+Css: div.maketitle{ margin-bottom: 2em; }
+Css: div.author, div.date {text-align:center;}
+Css: div.thanks{text-align:left; margin-left:10%; font-size:85%; font-style:italic; }
+Css: div.author{white-space: nowrap;}
+Font_Size: 11
+Css: .quotation {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; }
+Css: h1.partHead{text-align: center}
+Css: .abstract p {margin-left:5%; margin-right:5%;}
+Css: div.abstract {width:100%;}
+Css: .lstlisting .label{margin-right:0.5em; }
+Css: div.lstlisting{font-family: monospace; white-space: nowrap; margin-top:0.5em; margin-bottom:0.5em; }
+Css: div.lstinputlisting{ font-family: monospace; white-space: nowrap; }
+Css: .lstinputlisting .label{margin-right:0.5em;}
+Css: .alltt P { margin-bottom : 0em; margin-top : 0em; }
+Css: .alltt { margin-bottom : 1em; margin-top : 1em; }
+Css: .equation td{text-align:center; }
+Css: .equation-star td{text-align:center; }
+Css: table.equation-star { width:100%; }
+Css: table.equation { width:100%; }
+Css: table.align, table.alignat, table.xalignat, table.xxalignat, table.flalign {width:100%; margin-left:5%; white-space: nowrap;}
+Css: table.align-star, table.alignat-star, table.xalignat-star, table.flalign-star {margin-left:auto; margin-right:auto; white-space: nowrap;}
+Css: td.align-label { width:5%; text-align:center; }
+Css: td.align-odd { text-align:right; padding-right:0.3em;}
+Css: td.align-even { text-align:left; padding-right:0.6em;}
+Css: table.multline, table.multline-star {width:100%;}
+Css: td.gather {text-align:center; }
+Css: table.gather {width:100%;}
+Css: div.gather-star {text-align:center;}
+Css: .figure img.graphics {margin-left:10%;}
+--- needs --- FinalReport.idv[2] ==> FinalReport0x.png ---
+--- needs --- FinalReport.idv[3] ==> FinalReport1x.png ---
+--- needs --- FinalReport.idv[5] ==> FinalReport2x.png ---
+--- needs --- FinalReport.idv[6] ==> FinalReport3x.png ---
+--- needs --- FinalReport.idv[8] ==> FinalReport4x.png ---
+File: B00528_H1N1_flu_blue_sml.jpg
+--- needs --- FinalReport.idv[10] ==> FinalReport5x.png ---
+--- needs --- FinalReport.idv[12] ==> FinalReport6x.png ---
+--- needs --- FinalReport.idv[13] ==> FinalReport7x.png ---
+--- needs --- FinalReport.idv[14] ==> FinalReport8x.png ---
+--- needs --- FinalReport.idv[15] ==> FinalReport9x.png ---
+--- needs --- FinalReport.idv[17] ==> FinalReport10x.png ---
+File: IJMR-135-529-g004.jpg
+--- needs --- FinalReport.idv[19] ==> FinalReport11x.png ---
+--- needs --- FinalReport.idv[21] ==> FinalReport12x.png ---
+File: r1_0.png
+--- needs --- FinalReport.idv[23] ==> FinalReport13x.png ---
+--- needs --- FinalReport.idv[24] ==> FinalReport14x.png ---
+--- needs --- FinalReport.idv[25] ==> FinalReport15x.png ---
+--- needs --- FinalReport.idv[26] ==> FinalReport16x.png ---
+File: r1_2.png
+File: r1_1.png
+File: algo.png
+File: r1.png
+--- needs --- FinalReport.idv[28] ==> FinalReport17x.png ---
+File: r2.png
+--- needs --- FinalReport.idv[30] ==> FinalReport18x.png ---
+File: r1_3.png
+File: r1_4.png
+--- needs --- FinalReport.idv[32] ==> FinalReport19x.png ---
+--- needs --- FinalReport.idv[34] ==> FinalReport20x.png ---
+File: r3_0.png
+--- needs --- FinalReport.idv[36] ==> FinalReport21x.png ---
+File: r3_01.png
+--- needs --- FinalReport.idv[38] ==> FinalReport22x.png ---
+File: r3.png
+File: algo2.png
+--- needs --- FinalReport.idv[40] ==> FinalReport23x.png ---
+--- needs --- FinalReport.idv[41] ==> FinalReport24x.png ---
+--- needs --- FinalReport.idv[42] ==> FinalReport25x.png ---
+--- needs --- FinalReport.idv[43] ==> FinalReport26x.png ---
+--- needs --- FinalReport.idv[44] ==> FinalReport27x.png ---
+File: r4_3.png
+--- needs --- FinalReport.idv[46] ==> FinalReport28x.png ---
+--- needs --- FinalReport.idv[47] ==> FinalReport29x.png ---
+File: r4.png
+File: r4_0.png
+File: r4_4.png
+File: r4_01.png
+File: r4_1.png
+--- needs --- FinalReport.idv[49] ==> FinalReport30x.png ---
+--- needs --- FinalReport.idv[50] ==> FinalReport31x.png ---
+--- needs --- FinalReport.idv[52] ==> FinalReport32x.png ---
+--- needs --- FinalReport.idv[53] ==> FinalReport33x.png ---
+--- needs --- FinalReport.idv[54] ==> FinalReport34x.png ---
+--- needs --- FinalReport.idv[55] ==> FinalReport35x.png ---
+--- needs --- FinalReport.idv[57] ==> FinalReport36x.png ---
+--- needs --- FinalReport.idv[58] ==> FinalReport37x.png ---
+--- needs --- FinalReport.idv[59] ==> FinalReport38x.png ---
+--- needs --- FinalReport.idv[60] ==> FinalReport39x.png ---
+--- needs --- FinalReport.idv[61] ==> FinalReport40x.png ---
+--- needs --- FinalReport.idv[62] ==> FinalReport41x.png ---
+File: r6_01.png
+File: r6_02.png
+--- needs --- FinalReport.idv[64] ==> FinalReport42x.png ---
+File: r6_03.png
+--- needs --- FinalReport.idv[66] ==> FinalReport43x.png ---
+--- needs --- FinalReport.idv[67] ==> FinalReport44x.png ---
+--- needs --- FinalReport.idv[68] ==> FinalReport45x.png ---
+File: r6_04.png
+--- needs --- FinalReport.idv[70] ==> FinalReport46x.png ---
+--- needs --- FinalReport.idv[71] ==> FinalReport47x.png ---
+--- needs --- FinalReport.idv[72] ==> FinalReport48x.png ---
+--- needs --- FinalReport.idv[73] ==> FinalReport49x.png ---
+--- needs --- FinalReport.idv[74] ==> FinalReport50x.png ---
+--- needs --- FinalReport.idv[76] ==> FinalReport51x.png ---
+--- needs --- FinalReport.idv[78] ==> FinalReport52x.png ---
+--- needs --- FinalReport.idv[79] ==> FinalReport53x.png ---
+--- needs --- FinalReport.idv[80] ==> FinalReport54x.png ---
+--- needs --- FinalReport.idv[81] ==> FinalReport55x.png ---
+--- needs --- FinalReport.idv[82] ==> FinalReport56x.png ---
+--- needs --- FinalReport.idv[83] ==> FinalReport57x.png ---
+--- needs --- FinalReport.idv[84] ==> FinalReport58x.png ---
+--- needs --- FinalReport.idv[85] ==> FinalReport59x.png ---
+--- needs --- FinalReport.idv[86] ==> FinalReport60x.png ---
+Css: span#colorbox312{background-color:rgb(247,247,0);}
+Css: span#textcolor2{color:rgb(87,87,87)}
+Css: span#textcolor3{color:rgb(175,90,100)}
+Css: span#textcolor4{color:rgb(41,95,147)}
+Css: span#textcolor5{color:rgb(87,87,87)}
+Css: span#textcolor6{color:rgb(84,170,84)}
+Css: span#textcolor7{color:rgb(87,87,87)}
+Css: span#textcolor8{color:rgb(187,90,100)}
+Css: span#textcolor9{color:rgb(87,87,87)}
+Css: span#textcolor10{color:rgb(187,90,100)}
+Css: span#textcolor11{color:rgb(87,87,87)}
+Css: span#textcolor12{color:rgb(84,170,84)}
+Css: span#textcolor13{color:rgb(87,87,87)}
+Css: span#textcolor14{color:rgb(0,0,0)}
+Css: span#textcolor15{color:rgb(87,87,87)}
+Css: span#textcolor16{color:rgb(0,0,0)}
+Css: span#textcolor17{color:rgb(87,87,87)}
+Css: span#textcolor18{color:rgb(0,0,0)}
+Css: span#textcolor19{color:rgb(87,87,87)}
+Css: span#textcolor20{color:rgb(0,0,0)}
+Css: span#textcolor21{color:rgb(87,87,87)}
+Css: span#textcolor22{color:rgb(0,0,0)}
+Css: span#textcolor23{color:rgb(87,87,87)}
+Css: span#textcolor24{color:rgb(84,170,84)}
+Css: span#textcolor25{color:rgb(87,87,87)}
+Css: span#textcolor26{color:rgb(0,0,0)}
+Css: span#textcolor27{color:rgb(87,87,87)}
+Css: span#textcolor28{color:rgb(0,0,0)}
+Css: span#textcolor29{color:rgb(87,87,87)}
+Css: span#textcolor30{color:rgb(0,0,0)}
+Css: span#textcolor31{color:rgb(87,87,87)}
+Css: span#textcolor32{color:rgb(0,0,0)}
+Css: span#textcolor33{color:rgb(87,87,87)}
+Css: span#textcolor34{color:rgb(0,0,0)}
+Css: span#textcolor35{color:rgb(87,87,87)}
+Css: span#textcolor36{color:rgb(0,0,0)}
+Css: span#textcolor37{color:rgb(87,87,87)}
+Css: span#textcolor38{color:rgb(0,0,0)}
+Css: span#textcolor39{color:rgb(87,87,87)}
+Css: span#textcolor40{color:rgb(84,170,84)}
+Css: span#textcolor41{color:rgb(87,87,87)}
+Css: span#textcolor42{color:rgb(0,0,0)}
+Css: span#textcolor43{color:rgb(87,87,87)}
+Css: span#textcolor44{color:rgb(0,0,0)}
+Css: span#textcolor45{color:rgb(87,87,87)}
+Css: span#textcolor46{color:rgb(87,87,87)}
+Css: span#textcolor47{color:rgb(87,87,87)}
+Css: span#textcolor48{color:rgb(175,90,100)}
+Css: span#textcolor49{color:rgb(174,15,145)}
+Css: span#textcolor50{color:rgb(0,0,0)}
+Css: span#textcolor51{color:rgb(174,15,145)}
+Css: span#textcolor52{color:rgb(0,0,0)}
+Css: span#textcolor53{color:rgb(87,87,87)}
+Css: span#textcolor54{color:rgb(0,0,0)}
+Css: span#textcolor55{color:rgb(174,15,145)}
+Css: span#textcolor56{color:rgb(87,87,87)}
+Css: span#textcolor57{color:rgb(87,87,87)}
+Css: span#textcolor58{color:rgb(175,90,100)}
+Css: span#textcolor59{color:rgb(174,15,145)}
+Css: span#textcolor60{color:rgb(0,0,0)}
+Css: span#textcolor61{color:rgb(174,15,145)}
+Css: span#textcolor62{color:rgb(0,0,0)}
+Css: span#textcolor63{color:rgb(87,87,87)}
+Css: span#textcolor64{color:rgb(0,0,0)}
+Css: span#textcolor65{color:rgb(174,15,145)}
+Css: span#textcolor66{color:rgb(87,87,87)}
+Css: span#textcolor67{color:rgb(172,148,174)}
+Css: span#textcolor68{color:rgb(87,87,87)}
+Css: span#textcolor69{color:rgb(175,90,100)}
+Css: span#textcolor70{color:rgb(174,15,145)}
+Css: span#textcolor71{color:rgb(87,87,87)}
+Css: span#textcolor72{color:rgb(175,90,100)}
+Css: span#textcolor73{color:rgb(174,15,145)}
+Css: span#textcolor74{color:rgb(0,0,0)}
+Css: span#textcolor75{color:rgb(174,15,145)}
+Css: span#textcolor76{color:rgb(0,0,0)}
+Css: span#textcolor77{color:rgb(174,15,145)}
+Css: span#textcolor78{color:rgb(172,148,174)}
+Css: span#textcolor79{color:rgb(87,87,87)}
+Css: span#textcolor80{color:rgb(175,90,100)}
+Css: span#textcolor81{color:rgb(187,90,100)}
+Css: span#textcolor82{color:rgb(87,87,87)}
+Css: span#textcolor83{color:rgb(84,170,84)}
+Css: span#textcolor84{color:rgb(87,87,87)}
+Css: span#textcolor85{color:rgb(174,15,145)}
+Css: span#textcolor86{color:rgb(87,87,87)}
+Css: span#textcolor87{color:rgb(84,170,84)}
+Css: span#textcolor88{color:rgb(87,87,87)}
+Css: span#textcolor89{color:rgb(174,15,145)}
+Css: span#textcolor90{color:rgb(87,87,87)}
+Css: span#textcolor91{color:rgb(84,170,84)}
+Css: span#textcolor92{color:rgb(87,87,87)}
+Css: span#textcolor93{color:rgb(174,15,145)}
+Css: span#textcolor94{color:rgb(87,87,87)}
+Css: span#textcolor95{color:rgb(87,87,87)}
+Css: span#textcolor96{color:rgb(175,90,100)}
+Css: span#textcolor97{color:rgb(87,87,87)}
+Css: span#textcolor98{color:rgb(187,90,100)}
+Css: span#textcolor99{color:rgb(87,87,87)}
+Css: span#textcolor100{color:rgb(187,90,100)}
+Css: span#textcolor101{color:rgb(87,87,87)}
+Css: span#textcolor102{color:rgb(41,95,147)}
+Css: span#textcolor103{color:rgb(87,87,87)}
+Css: span#textcolor104{color:rgb(0,0,0)}
+Css: span#textcolor105{color:rgb(174,15,145)}
+Css: span#textcolor106{color:rgb(87,87,87)}
+Css: span#textcolor107{color:rgb(87,87,87)}
+Css: span#textcolor108{color:rgb(175,90,100)}
+Css: span#textcolor109{color:rgb(87,87,87)}
+Css: span#textcolor110{color:rgb(0,0,0)}
+Css: span#textcolor111{color:rgb(87,87,87)}
+Css: span#textcolor112{color:rgb(0,0,0)}
+Css: span#textcolor113{color:rgb(187,90,100)}
+Css: span#textcolor114{color:rgb(87,87,87)}
+Css: span#textcolor115{color:rgb(87,87,87)}
+Css: span#textcolor116{color:rgb(175,90,100)}
+Css: span#textcolor117{color:rgb(87,87,87)}
+Css: span#textcolor118{color:rgb(0,0,0)}
+Css: span#textcolor119{color:rgb(87,87,87)}
+Css: span#textcolor120{color:rgb(87,87,87)}
+Css: span#textcolor121{color:rgb(175,90,100)}
+Css: span#textcolor122{color:rgb(187,90,100)}
+Css: span#textcolor123{color:rgb(87,87,87)}
+Css: span#textcolor124{color:rgb(172,148,174)}
+Css: span#textcolor125{color:rgb(87,87,87)}
+Css: span#textcolor126{color:rgb(87,87,87)}
+Css: span#textcolor127{color:rgb(0,0,0)}
+Css: span#textcolor128{color:rgb(87,87,87)}
+Css: span#textcolor129{color:rgb(175,90,100)}
+Css: span#textcolor130{color:rgb(174,15,145)}
+Css: span#textcolor131{color:rgb(0,0,0)}
+Css: span#textcolor132{color:rgb(87,87,87)}
+Css: span#textcolor133{color:rgb(187,90,100)}
+Css: span#textcolor134{color:rgb(87,87,87)}
+Css: span#textcolor135{color:rgb(0,0,0)}
+Css: span#textcolor136{color:rgb(174,15,145)}
+Css: span#textcolor137{color:rgb(87,87,87)}
+Css: span#colorbox315{background-color:rgb(247,247,0);}
+Css: span#textcolor138{color:rgb(187,90,100)}
+Css: span#textcolor139{color:rgb(87,87,87)}
+Css: span#textcolor140{color:rgb(187,90,100)}
+Css: span#textcolor141{color:rgb(87,87,87)}
+Css: span#textcolor142{color:rgb(187,90,100)}
+Css: span#textcolor143{color:rgb(87,87,87)}
+Css: span#textcolor144{color:rgb(187,90,100)}
+Css: span#textcolor145{color:rgb(87,87,87)}
+Css: span#textcolor146{color:rgb(187,90,100)}
+Css: span#textcolor147{color:rgb(87,87,87)}
+Css: span#textcolor148{color:rgb(0,0,0)}
+Css: span#textcolor149{color:rgb(187,90,100)}
+Css: span#textcolor150{color:rgb(87,87,87)}
+Css: span#textcolor151{color:rgb(84,170,84)}
+Css: span#textcolor152{color:rgb(87,87,87)}
+Css: span#textcolor153{color:rgb(48,125,204)}
+Css: span#textcolor154{color:rgb(87,87,87)}
+Css: span#textcolor155{color:rgb(0,0,0)}
+Css: span#textcolor156{color:rgb(187,90,100)}
+Css: span#textcolor157{color:rgb(87,87,87)}
+Css: span#textcolor158{color:rgb(84,170,84)}
+Css: span#textcolor159{color:rgb(87,87,87)}
+Css: span#textcolor160{color:rgb(187,90,100)}
+Css: span#textcolor161{color:rgb(87,87,87)}
+Css: span#textcolor162{color:rgb(84,170,84)}
+Css: span#textcolor163{color:rgb(87,87,87)}
+Css: span#textcolor164{color:rgb(187,90,100)}
+Css: span#textcolor165{color:rgb(87,87,87)}
+Css: span#textcolor166{color:rgb(174,15,145)}
+Css: span#textcolor167{color:rgb(87,87,87)}
+Css: span#textcolor168{color:rgb(48,125,204)}
+Css: span#textcolor169{color:rgb(87,87,87)}
+Css: span#textcolor170{color:rgb(0,0,0)}
+Css: span#textcolor171{color:rgb(187,90,100)}
+Css: span#textcolor172{color:rgb(87,87,87)}
+Css: span#textcolor173{color:rgb(187,90,100)}
+Css: span#textcolor174{color:rgb(87,87,87)}
+Css: span#textcolor175{color:rgb(187,90,100)}
+Css: span#textcolor176{color:rgb(87,87,87)}
+Css: span#textcolor177{color:rgb(0,0,0)}
+Css: span#textcolor178{color:rgb(187,90,100)}
+Css: span#textcolor179{color:rgb(87,87,87)}
+Css: span#textcolor180{color:rgb(84,170,84)}
+Css: span#textcolor181{color:rgb(87,87,87)}
+Css: span#textcolor182{color:rgb(48,125,204)}
+Css: span#textcolor183{color:rgb(87,87,87)}
+Css: span#textcolor184{color:rgb(0,0,0)}
+Css: span#textcolor185{color:rgb(187,90,100)}
+Css: span#textcolor186{color:rgb(87,87,87)}
+Css: span#textcolor187{color:rgb(84,170,84)}
+Css: span#textcolor188{color:rgb(87,87,87)}
+Css: span#textcolor189{color:rgb(187,90,100)}
+Css: span#textcolor190{color:rgb(87,87,87)}
+Css: span#textcolor191{color:rgb(84,170,84)}
+Css: span#textcolor192{color:rgb(87,87,87)}
+Css: span#textcolor193{color:rgb(187,90,100)}
+Css: span#textcolor194{color:rgb(87,87,87)}
+Css: span#textcolor195{color:rgb(174,15,145)}
+Css: span#textcolor196{color:rgb(87,87,87)}
+Css: span#textcolor197{color:rgb(48,125,204)}
+Css: span#textcolor198{color:rgb(87,87,87)}
+Css: span#textcolor199{color:rgb(0,0,0)}
+Css: span#textcolor200{color:rgb(187,90,100)}
+Css: span#textcolor201{color:rgb(87,87,87)}
+Css: span#textcolor202{color:rgb(187,90,100)}
+Css: span#textcolor203{color:rgb(87,87,87)}
+Css: span#textcolor204{color:rgb(187,90,100)}
+Css: span#textcolor205{color:rgb(87,87,87)}
+Css: span#textcolor206{color:rgb(0,0,0)}
+Css: span#textcolor207{color:rgb(187,90,100)}
+Css: span#textcolor208{color:rgb(87,87,87)}
+Css: span#textcolor209{color:rgb(84,170,84)}
+Css: span#textcolor210{color:rgb(87,87,87)}
+Css: span#textcolor211{color:rgb(48,125,204)}
+Css: span#textcolor212{color:rgb(87,87,87)}
+Css: span#textcolor213{color:rgb(0,0,0)}
+Css: span#textcolor214{color:rgb(187,90,100)}
+Css: span#textcolor215{color:rgb(87,87,87)}
+Css: span#textcolor216{color:rgb(84,170,84)}
+Css: span#textcolor217{color:rgb(87,87,87)}
+Css: span#textcolor218{color:rgb(187,90,100)}
+Css: span#textcolor219{color:rgb(87,87,87)}
+Css: span#textcolor220{color:rgb(84,170,84)}
+Css: span#textcolor221{color:rgb(87,87,87)}
+Css: span#textcolor222{color:rgb(187,90,100)}
+Css: span#textcolor223{color:rgb(87,87,87)}
+Css: span#textcolor224{color:rgb(174,15,145)}
+Css: span#textcolor225{color:rgb(87,87,87)}
+Css: span#textcolor226{color:rgb(48,125,204)}
+Css: span#textcolor227{color:rgb(87,87,87)}
+Css: span#textcolor228{color:rgb(0,0,0)}
+Css: span#textcolor229{color:rgb(187,90,100)}
+Css: span#textcolor230{color:rgb(87,87,87)}
+Css: span#textcolor231{color:rgb(84,170,84)}
+Css: span#textcolor232{color:rgb(87,87,87)}
+Css: span#textcolor233{color:rgb(174,15,145)}
+Css: span#textcolor234{color:rgb(87,87,87)}
+Css: span#textcolor235{color:rgb(187,90,100)}
+Css: span#textcolor236{color:rgb(87,87,87)}
+Css: span#textcolor237{color:rgb(87,87,87)}
+Css: span#textcolor238{color:rgb(0,0,0)}
+Css: span#textcolor239{color:rgb(87,87,87)}
+Css: span#textcolor240{color:rgb(175,90,100)}
+Css: span#textcolor241{color:rgb(87,87,87)}
+Css: span#textcolor242{color:rgb(0,0,0)}
+Css: span#textcolor243{color:rgb(87,87,87)}
+Css: span#textcolor244{color:rgb(0,0,0)}
+Css: span#textcolor245{color:rgb(174,15,145)}
+Css: span#textcolor246{color:rgb(0,0,0)}
+Css: span#textcolor247{color:rgb(174,15,145)}
+Css: span#textcolor248{color:rgb(87,87,87)}
+Css: span#textcolor249{color:rgb(0,0,0)}
+Css: span#textcolor250{color:rgb(187,90,100)}
+Css: span#textcolor251{color:rgb(87,87,87)}
+Css: span#textcolor252{color:rgb(0,0,0)}
+Css: span#textcolor253{color:rgb(87,87,87)}
+Css: span#textcolor254{color:rgb(0,0,0)}
+Css: span#textcolor255{color:rgb(187,90,100)}
+Css: span#textcolor256{color:rgb(87,87,87)}
+Css: span#textcolor257{color:rgb(187,90,100)}
+Css: span#textcolor258{color:rgb(87,87,87)}
+Css: span#textcolor259{color:rgb(84,170,84)}
+Css: span#textcolor260{color:rgb(87,87,87)}
+Css: span#textcolor261{color:rgb(0,0,0)}
+Css: span#textcolor262{color:rgb(187,90,100)}
+Css: span#textcolor263{color:rgb(87,87,87)}
+Css: span#textcolor264{color:rgb(0,0,0)}
+Css: span#textcolor265{color:rgb(187,90,100)}
+Css: span#textcolor266{color:rgb(87,87,87)}
+Css: span#textcolor267{color:rgb(0,0,0)}
+Css: span#textcolor268{color:rgb(187,90,100)}
+Css: span#textcolor269{color:rgb(87,87,87)}
+Css: span#textcolor270{color:rgb(0,0,0)}
+Css: span#textcolor271{color:rgb(87,87,87)}
+Css: span#textcolor272{color:rgb(84,170,84)}
+Css: span#textcolor273{color:rgb(87,87,87)}
+Css: span#textcolor274{color:rgb(48,125,204)}
+Css: span#textcolor275{color:rgb(87,87,87)}
+Css: span#textcolor276{color:rgb(84,170,84)}
+Css: span#textcolor277{color:rgb(87,87,87)}
+Css: span#textcolor278{color:rgb(174,15,145)}
+Css: span#textcolor279{color:rgb(87,87,87)}
+Css: span#textcolor280{color:rgb(187,90,100)}
+Css: span#textcolor281{color:rgb(87,87,87)}
+Css: span#colorbox317{background-color:rgb(247,247,0);}
+Css: span#textcolor282{color:rgb(187,90,100)}
+Css: span#textcolor283{color:rgb(87,87,87)}
+Css: span#textcolor284{color:rgb(0,0,0)}
+Css: span#textcolor285{color:rgb(87,87,87)}
+Css: span#textcolor286{color:rgb(0,0,0)}
+Css: span#textcolor287{color:rgb(87,87,87)}
+Css: span#textcolor288{color:rgb(0,0,0)}
+Css: span#textcolor289{color:rgb(87,87,87)}
+Css: span#textcolor290{color:rgb(84,170,84)}
+Css: span#textcolor291{color:rgb(87,87,87)}
+Css: span#textcolor292{color:rgb(174,15,145)}
+Css: span#textcolor293{color:rgb(87,87,87)}
+Css: span#textcolor294{color:rgb(84,170,84)}
+Css: span#textcolor295{color:rgb(87,87,87)}
+Css: span#textcolor296{color:rgb(48,125,204)}
+Css: span#textcolor297{color:rgb(87,87,87)}
+Css: span#textcolor298{color:rgb(84,170,84)}
+Css: span#textcolor299{color:rgb(87,87,87)}
+Css: span#textcolor300{color:rgb(48,125,204)}
+Css: span#textcolor301{color:rgb(87,87,87)}
+Css: span#textcolor302{color:rgb(84,170,84)}
+Css: span#textcolor303{color:rgb(87,87,87)}
+Css: span#textcolor304{color:rgb(48,125,204)}
+Css: span#textcolor305{color:rgb(87,87,87)}
+Css: span#textcolor306{color:rgb(84,170,84)}
+Css: span#textcolor307{color:rgb(87,87,87)}
+Css: span#textcolor308{color:rgb(48,125,204)}
+Css: span#textcolor309{color:rgb(87,87,87)}
+--- characters ---
+Font("cmr","10","10","109")
+Font("t1xbtt","","10","120")
+Font("t1xtt","","10","120")
+Font("cmcsc","10","10","172")
+Font("cmcsc","10","10","144")
+Font("cmr","12","12","100")
+Font("cmcsc","10","10","120")
+Font("cmr","8","8","100")
+Font("cmr","6","6","100")
+Font("cmmi","10","10","109")
+Font("cmmi","8","8","100")
+Font("cmmi","6","6","100")
+Font("cmsy","10","10","109")
+Font("cmsy","8","8","100")
+Font("cmsy","6","6","100")
+Font("cmex","10","10","109")
+Font("cmtt","10","10","109")
+Font("cmbx","10","10","109")
+Font("tcrm","1095","10","100")
+Font("cmti","10","10","109")
+Font("cmitt","10","10","109")

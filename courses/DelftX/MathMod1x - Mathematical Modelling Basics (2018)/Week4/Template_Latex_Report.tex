@@ -1,0 +1,223 @@
+% A template for a report in LaTeX
+% author: team MOOC Mathematical modelling basics
+% June 2017
+
+
+% Always compile 3 times, to get the table of contents and references right.
+\documentclass[11pt, a4paper, twoside]{report} 
+\usepackage[margin=4cm]{geometry}   % For smaller margins
+\usepackage{color}          % So you can use colors
+\usepackage{amsmath, amsfonts, amssymb} % For all kinds of math symbols
+\usepackage{graphicx}	    % Package to include photos and graphs 
+\usepackage{float}          % Helps in positioning floats
+\usepackage[justification=centering]{caption}  % To center the captions of graphs
+
+\setlength{\parindent}{0pt} % When you do not want indentation for your paragraphs.
+\setlength{\parskip}{11pt}  % For space between paragraphs.
+
+\begin{document} % Here the document starts
+
+%--Title page--------A little bit more complex than the rest....
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines
+
+\begin{center}
+~\vspace{1cm}  % vertical space
+
+\includegraphics[width=\linewidth]{Rainbowfish1000x774.jpg}
+
+\HRule \\[0.4cm] %Horizontal line and [0.4cm] extra spacing
+\textsc{\LARGE Major Heading}\\[0.5 cm] % Title of report 
+\textsc{\Large Minor Heading}\\[0.1 cm] % Subtitle 
+\HRule \\[1.5cm]
+
+
+\begin{minipage}{0.4\textwidth}
+  \begin{flushleft} 
+    \large
+    \textsc{Name 1} \\ %Name and country of person 1
+    \textsc{Country 1}       
+  \end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+  \begin{flushright} 
+    \large
+    \textsc{Name 2} \\ %Name and country of person 2
+    \textsc{Country 2}   
+  \end{flushright}
+\end{minipage}\\[3cm]
+
+{\large \today}\\ % \today automatically gives todays date
+\end{center}
+\end{titlepage}
+
+% This is the end of the titlepage ----------------------------------------------
+
+\newpage
+\thispagestyle{empty} %No page number on this empty page
+~
+
+% Summary ----------------------------------------------
+
+\chapter*{Summary} %The * makes it an unnumbered chapter. A chapter starts on a new page/
+\addcontentsline{toc}{chapter}{Summary} %Adds a line to table of contents for unnumbered parts
+Readers usually decide whether or not to read the report based on the summary, so this is an important part. The summary contains the problem, the
+calculation methods used and the main conclusions. 
+
+A summary is short. It contains two or three paragraphs, up to half a page maximum.  
+
+% Table of contents ----------------------------------------------
+
+\newpage
+\tableofcontents %The table of contents is made. You have to compile 3 times to get it right.
+
+% List of variables ----------------------------------------------
+
+\chapter*{List of variables}
+\addcontentsline{toc}{chapter}{List of variables}
+This list contains all used symbols and variables, including their meanings in words and preferably their units. With complex models, this list can be useful for the reader. When only a few symbols and variables are used in the report, a list is not necessary.
+
+Note that the variables must also be defined neatly in the text.
+
+% --MAIN TEXT-------------------------------------
+% --Introduction-------------------------------------
+
+\chapter{Introduction} %Numbered chapters are added to the table of contents automatically.
+In the introduction, you explain the motivation for the research project. Where does the problem come from? What is the subject of the research? What is the main question, the problem of this report? What is known in the literature? Also, often an overview of the rest of the report is given (in words). 
+
+% --Chapter-------------------------------------
+
+\chapter{Title of chapter}
+The main text will be divided into chapters and sections, usually one chapter per sub-question. For each sub-question you must give a brief introduction to the models used, explain the calculation methods, results, and the obtained conclusion. 
+
+\begin{itemize}
+\item Use meaningful titles for the parts. Each of the chapters and each section must have a precise title. 
+\item The models and calculation methods must be described as complete as possible. The reader should get enough information to replicate your results. 
+\item Do not only show your results in graphs and figures, but also describe in words what the results are and which conclusion can be drawn from them. 
+\end{itemize}
+
+\section{Title of section}
+\label{section: name of section} %label of section so you can refer to it somewhere else with \ref{section: name of section} or to its page: \pageref{section: name of section}
+  \subsection{Title of first subsection}
+    Text in first subsection.
+  \subsection{Title of second subsection}
+    Text in second subsection.
+
+% --Chapter some functions-------------------------------------
+
+\chapter{Some functions in \LaTeX} 
+
+\section{Lists}
+  \subsection{Bullet list}  
+    \begin{itemize} 
+      \item Example of a bullet list.
+      \item
+    \end{itemize}
+
+    \subsection{Numbered list}  
+    \begin{enumerate}
+      \item Example of a numbered list.
+      \item
+    \end{enumerate}
+
+\section{Equations}
+An inline formula: $\int_{t=0}^{\infty} \frac{e^{-\pi t}}{25} dt$. If you think that is too small, use {\tt displaystyle}: $\displaystyle{\int_{t=0}^{\infty} \frac{e^{-\pi t}}{25} dt=0}$. 
+
+A system of differential equations as a numbered equation, that you can refer to: equation \ref{eq: PG system}:
+\begin{equation}
+\left\{   % The left brace
+\begin{array}{rcll} % An array with 4 columns, (right alligned, centered, 2x left alligned). 
+% First row. Elements in a row are separated by &. \dfrac is \frac in displaystyle
+\dfrac{dP}{dt} & = & 0.7 P(t)-0.007 P^2(t)-0.04P(t)G(t), \quad& P(0)=20,\\% new row in array
+\\ %An extra row for some spacing
+\dfrac{dG}{dt} & = & -0.25G(t) + 0.008 P(t)G(t), &G(0)=5. \\
+\end{array}
+\right. 
+% Brackets come in pairs, so if you use \left\, end that with an empty \right: \right.
+\label{eq: PG system} % Label for the equation
+\end{equation}
+
+A matrix equation as an unnumbered equation:
+\[
+\left[\begin{array}{c} % a vector
+\dfrac{dP}{dt}\\[11pt] % some extra space
+\dfrac{dG}{dt}\\
+\end{array}\right] 
+=\left[\begin{array}{cc} % a matrix
+\dfrac{\partial f_1}{\partial P} & \dfrac{\partial f_1}{\partial G}\\[11pt]
+\dfrac{\partial f_2}{\partial P} & \dfrac{\partial f_2}{\partial G}\\ \end{array}\right]_{(P_0,G_0)}
+\left[\begin{array}{c}P-P_0\\G-G_0\end{array}\right]. % a vector
+\]
+
+\section{Floats}
+  Figures and tables should be floats, and \LaTeX \, puts them where it thinks it is best.
+  \subsection{Figures}
+    Figure \ref{figure: Photo Rainbowfish} is a float 
+    on page \pageref{figure: Photo Rainbowfish}. Describe what is in the figure both in the text and in the figure caption. Refer to all figures from the main text.
+    \begin{figure}[htbp] %puts the float 'here' preferably, than at the top of a page, then the bottom and then on it's own page. [H] forces the float Here.
+	\centering
+	\includegraphics[width=0.5\textwidth]{Rainbowfish1000x774.jpg}
+	\caption{\textbf{Caption of the figure.} And more information on what is in the figure, e.g.~about the parameters used.}
+	\label{figure: Photo Rainbowfish}
+    \end{figure}
+  
+  \subsection{Tables}
+     An example is Table \ref{table: Example} on page \pageref{table: Example}.
+
+	\begin{table}[htbp] 
+	\centering  
+	%For more examples of tables: https://en.wikibooks.org/wiki/LaTeX/Tables
+	\begin{tabular}{|l|l|l|l|p{3cm}|}
+	  \hline
+	  1. & Example & of & a & table with colunms and a paragraph. \\ \hline
+	  2. &         &    &   &        \\ \hline
+	  3. &         &    &   &        \\ \hline
+	\end{tabular}
+	\caption{\textbf{Caption of the table.} More information about what is in the table.}
+	\label{table: Example}
+	\end{table}
+
+%---------------------------------------
+
+\chapter{Conclusions} 
+Even though there are conclusions for the sub-questions in each chapter, there is also a chapter with conclusions for the entire study. In the conclusion you summarize the conclusions of the chapters and the conclusions of the main question is drawn. 
+
+%---------------------------------------
+
+\begin{thebibliography}{10}  % This number indicates the number of symbols in the maximum number of items in the bibliography
+\addcontentsline{toc}{chapter}{Bibliography} %Adds a line to table of contents
+
+\bibitem{bib: name} All information used, that was not your own must have a reference, so that the reader can recover the underlying information. When sources are used or mentioned in the text, a reference must be made. % Refer to this item in the text with \cite{bib: name}.
+\bibitem{bib: another name} Leslie Lamport,
+  \textit{\LaTeX: a document preparation system},
+  Addison Wesley, Massachusetts,
+  2nd edition,
+  1994. 
+\end{thebibliography}  
+
+%--Appendices from now on-------------------------------------
+\appendix     
+\chapter{Title of first appendix} %you can include your code in the appendix
+Appendices are longer pieces of text or large amount of data, which are not needed for the course of the story, but are interesting or necessary. 
+
+Examples are a proof, a long derivation of a formula and a code. 
+
+Attachments are individually numbered and each appendix has a title. All attachments must be referenced in the text.
+
+%--Second appendix-------------------------------------
+
+\chapter{Title of second appendix} %if you need more appendices, add in this manner. 
+\begin{verbatim}
+An example of how code can be inserted in LaTeX, 
+  with the use of `verbatim'.
+  This will preserve the spacing 
+    as in your original program,
+% and you can use characters that have a different meaning in \LaTeX.
+\end{verbatim}
+
+ 
+
+\end{document}

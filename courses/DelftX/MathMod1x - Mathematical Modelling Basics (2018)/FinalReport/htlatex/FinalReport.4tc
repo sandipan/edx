@@ -1,0 +1,63 @@
+\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-1000}{QQ2-1-1}{Summary}}{3}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-2}{}{Summary}}{3}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-2000}{QQ2-1-3}{Contents}}{6}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-3000}{QQ2-1-4}{List of variables}}{8}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-5}{}{List of variables}}{8}\relax 
+\doTocEntry\tocchapter{1}{\csname a:TocLink\endcsname{1}{x1-40001}{QQ2-1-6}{Introduction}}{12}\relax 
+\doTocEntry\tocchapter{2}{\csname a:TocLink\endcsname{1}{x1-50002}{QQ2-1-7}{SIR Epidemic Model}}{13}\relax 
+\doTocEntry\toclof{2.1}{\csname a:TocLink\endcsname{1}{x1-5001r1}{}{\ignorespaces Electron microscope image of the re-assorted H1N1 influenza virus photographed at the CDC Influenza Laboratory \cite  {bib:virus}}}{figure}\relax 
+\doTocEntry\tocsection{2.1}{\csname a:TocLink\endcsname{1}{x1-60002.1}{QQ2-1-9}{Basic Mathematical Model}}{16}\relax 
+\doTocEntry\tocsubsection{2.1.1}{\csname a:TocLink\endcsname{1}{x1-70002.1.1}{QQ2-1-10}{Differential Equations}}{16}\relax 
+\doTocEntry\tocsubsection{2.1.2}{\csname a:TocLink\endcsname{1}{x1-80002.1.2}{QQ2-1-11}{Collected data, units and values for the constants}}{18}\relax 
+\doTocEntry\toclof{2.2}{\csname a:TocLink\endcsname{1}{x1-8001r2}{}{\ignorespaces Attack rate per 100,000 population of ILI by borough of Kolkata Metropolitan Corporation \cite  {bib:ijmr}}}{figure}\relax 
+\doTocEntry\tocsection{2.2}{\csname a:TocLink\endcsname{1}{x1-90002.2}{QQ2-1-13}{Simplified Model 1 (with $\alpha =0$)}}{21}\relax 
+\doTocEntry\tocsubsection{2.2.1}{\csname a:TocLink\endcsname{1}{x1-100002.2.1}{QQ2-1-14}{Analytic Solution}}{22}\relax 
+\doTocEntry\toclof{2.3}{\csname a:TocLink\endcsname{1}{x1-10002r3}{}{\ignorespaces Growth of the number of infected persons}}{figure}\relax 
+\doTocEntry\tocsubsection{2.2.2}{\csname a:TocLink\endcsname{1}{x1-110002.2.2}{QQ2-1-16}{Finding the equilibrium points for $I$}}{22}\relax 
+\doTocEntry\toclof{2.4}{\csname a:TocLink\endcsname{1}{x1-11005r4}{}{\ignorespaces Equilibrium points at $I = 0$ and $I = 4500$ (in thousand persons)}}{figure}\relax 
+\doTocEntry\toclof{2.5}{\csname a:TocLink\endcsname{1}{x1-11006r5}{}{\ignorespaces Direction Field for I(t)}}{figure}\relax 
+\doTocEntry\tocsubsection{2.2.3}{\csname a:TocLink\endcsname{1}{x1-120002.2.3}{QQ2-1-19}{Numerical Solution with the Euler Method}}{24}\relax 
+\doTocEntry\toclof{2.6}{\csname a:TocLink\endcsname{1}{x1-12001r6}{}{\ignorespaces Numerical Solution with Euler method \cite  {bib:edx}}}{figure}\relax 
+\doTocEntry\tocsubsubsection{2.2.3.1}{\csname a:TocLink\endcsname{1}{x1-130002.2.3.1}{QQ2-1-21}{Finding the right step size (with $\beta =25 \times 10^{-6} / person /day$)}}{25}\relax 
+\doTocEntry\toclot{2.1}{\csname a:TocLink\endcsname{1}{x1-13001r1}{}{\ignorespaces Error in Euler method with different step sizes}}{table}\relax 
+\doTocEntry\toclof{2.7}{\csname a:TocLink\endcsname{1}{x1-13002r7}{}{\ignorespaces Solutions using different step sizes with Euler method (with $\beta =25 \times 10^{-6}$ /person /day)}}{figure}\relax 
+\doTocEntry\tocsubsubsection{2.2.3.2}{\csname a:TocLink\endcsname{1}{x1-140002.2.3.2}{QQ2-1-24}{Computing the (stable) equilibrium point}}{25}\relax 
+\doTocEntry\toclof{2.8}{\csname a:TocLink\endcsname{1}{x1-14001r8}{}{\ignorespaces Comparing $t_{eq}$ obtained using Euler method with the analytic solution}}{figure}\relax 
+\doTocEntry\tocsubsubsection{2.2.3.3}{\csname a:TocLink\endcsname{1}{x1-150002.2.3.3}{QQ2-1-26}{Results with $\beta =29 \times 10^{-6}$ / person / day, $I(0)=1$ person}}{26}\relax 
+\doTocEntry\toclof{2.9}{\csname a:TocLink\endcsname{1}{x1-15001r9}{}{\ignorespaces Solutions using different step sizes with Euler method (with $\beta =29 \times 10^{-6}$ / person / day)}}{figure}\relax 
+\doTocEntry\tocsubsubsection{2.2.3.4}{\csname a:TocLink\endcsname{1}{x1-160002.2.3.4}{QQ2-1-28}{Results with $\beta =25 \times 10^{-6}$ / person / day, with different initial values for infected persons ($I(0)$)}}{27}\relax 
+\doTocEntry\toclof{2.10}{\csname a:TocLink\endcsname{1}{x1-16001r10}{}{\ignorespaces Solutions using different values of $I(0)$ with Euler method}}{figure}\relax 
+\doTocEntry\tocsection{2.3}{\csname a:TocLink\endcsname{1}{x1-170002.3}{QQ2-1-30}{Simplified Model 2 (with $\beta =0$)}}{28}\relax 
+\doTocEntry\tocsubsection{2.3.1}{\csname a:TocLink\endcsname{1}{x1-180002.3.1}{QQ2-1-31}{Analytic Solution}}{28}\relax 
+\doTocEntry\toclof{2.11}{\csname a:TocLink\endcsname{1}{x1-18002r11}{}{\ignorespaces Decay of the number of infected persons}}{figure}\relax 
+\doTocEntry\toclof{2.12}{\csname a:TocLink\endcsname{1}{x1-18004r12}{}{\ignorespaces Growth of the number of recovered persons}}{figure}\relax 
+\doTocEntry\tocsubsection{2.3.2}{\csname a:TocLink\endcsname{1}{x1-190002.3.2}{QQ2-1-34}{Numerical Solution with the Euler Method}}{30}\relax 
+\doTocEntry\tocsubsubsection{2.3.2.1}{\csname a:TocLink\endcsname{1}{x1-200002.3.2.1}{QQ2-1-35}{Solution with $\alpha =167 \times 10^{-3}$ / day}}{30}\relax 
+\doTocEntry\tocsubsubsection{2.3.2.2}{\csname a:TocLink\endcsname{1}{x1-210002.3.2.2}{QQ2-1-36}{Results}}{31}\relax 
+\doTocEntry\toclof{2.13}{\csname a:TocLink\endcsname{1}{x1-21001r13}{}{\ignorespaces Solutions using different step sizes with Euler method (with $\alpha =167$ / day)}}{figure}\relax 
+\doTocEntry\tocsection{2.4}{\csname a:TocLink\endcsname{1}{x1-220002.4}{QQ2-1-38}{Generic Model (with $\alpha , \beta > 0$)}}{31}\relax 
+\doTocEntry\tocsubsection{2.4.1}{\csname a:TocLink\endcsname{1}{x1-230002.4.1}{QQ2-1-39}{Numerical Solution with the Euler Method}}{31}\relax 
+\doTocEntry\toclof{2.14}{\csname a:TocLink\endcsname{1}{x1-23001r14}{}{\ignorespaces Euler method for System of Differential Equations \cite  {bib:edx}}}{figure}\relax 
+\doTocEntry\tocsubsubsection{2.4.1.1}{\csname a:TocLink\endcsname{1}{x1-240002.4.1.1}{QQ2-1-41}{Equilibrium points}}{32}\relax 
+\doTocEntry\toclof{2.15}{\csname a:TocLink\endcsname{1}{x1-24001r15}{}{\ignorespaces Equilibrium point $S=I=0$, $R=N$}}{figure}\relax 
+\doTocEntry\tocsubsubsection{2.4.1.2}{\csname a:TocLink\endcsname{1}{x1-250002.4.1.2}{QQ2-1-43}{Results with Euler method}}{35}\relax 
+\doTocEntry\toclof{2.16}{\csname a:TocLink\endcsname{1}{x1-25001r16}{}{\ignorespaces Numerical Solution with Euler method}}{figure}\relax 
+\doTocEntry\toclof{2.17}{\csname a:TocLink\endcsname{1}{x1-25002r17}{}{\ignorespaces Numerical Solution with Euler method}}{figure}\relax 
+\doTocEntry\toclof{2.18}{\csname a:TocLink\endcsname{1}{x1-25003r18}{}{\ignorespaces Numerical Solution with Euler method}}{figure}\relax 
+\doTocEntry\toclof{2.19}{\csname a:TocLink\endcsname{1}{x1-25004r19}{}{\ignorespaces Numerical Solution with Euler method}}{figure}\relax 
+\doTocEntry\toclof{2.20}{\csname a:TocLink\endcsname{1}{x1-25005r20}{}{\ignorespaces Phase planes for the generic model}}{figure}\relax 
+\doTocEntry\tocsubsection{2.4.2}{\csname a:TocLink\endcsname{1}{x1-260002.4.2}{QQ2-1-49}{Analytic Solution and Insights}}{36}\relax 
+\doTocEntry\tocsubsubsection{2.4.2.1}{\csname a:TocLink\endcsname{1}{x1-270002.4.2.1}{QQ2-1-50}{Basic Reproduction Number ($R_0$)}}{36}\relax 
+\doTocEntry\tocsubsubsection{2.4.2.2}{\csname a:TocLink\endcsname{1}{x1-280002.4.2.2}{QQ2-1-51}{The dynamics of the system as a function of $R_0$}}{37}\relax 
+\doTocEntry\toclof{2.21}{\csname a:TocLink\endcsname{1}{x1-28002r21}{}{\ignorespaces Numerical Solution with Euler method}}{figure}\relax 
+\doTocEntry\toclof{2.22}{\csname a:TocLink\endcsname{1}{x1-28003r22}{}{\ignorespaces Numerical Solution with Euler method}}{figure}\relax 
+\doTocEntry\toclof{2.23}{\csname a:TocLink\endcsname{1}{x1-28005r23}{}{\ignorespaces Numerical Solution with Euler method}}{figure}\relax 
+\doTocEntry\toclof{2.24}{\csname a:TocLink\endcsname{1}{x1-28006r24}{}{\ignorespaces Numerical Solution with Euler method}}{figure}\relax 
+\doTocEntry\tocchapter{3}{\csname a:TocLink\endcsname{1}{x1-290003}{QQ2-1-56}{Conclusions}}{42}\relax 
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-300003}{QQ2-1-57}{Bibliography}}{44}\relax 
+\doTocEntry\tocchapter{}{\csname a:TocLink\endcsname{1}{Q1-1-58}{}{Bibliography}}{44}\relax 
+\doTocEntry\tocappendix{A}{\csname a:TocLink\endcsname{1}{x1-31000A}{QQ2-1-59}{Analytic derivation of the solution of the simplified SIR Model1 ($\alpha =0$)}}{46}\relax 
+\doTocEntry\tocappendix{B}{\csname a:TocLink\endcsname{1}{x1-32000B}{QQ2-1-60}{Error table for Euler method}}{47}\relax 
+\doTocEntry\tocappendix{C}{\csname a:TocLink\endcsname{1}{x1-33000C}{QQ2-1-61}{Python code for Euler method}}{51}\relax 
+\doTocEntry\tocappendix{D}{\csname a:TocLink\endcsname{1}{x1-34000D}{QQ2-1-62}{R code for Euler method and Visualization}}{52}\relax 

@@ -1,0 +1,12 @@
+\(\dfrac{dP}{dt}=0.007P^2(t)-0.04P(t)G(t)+\sqrt{G(t)-\int\limits_{0}^{T}P(t)dt}\)
+
+\(\begin{equation*}\dfrac{dP}{dt}=0.007P^2(t)-0.04P(t)G(t)+\sqrt{G(t)-\int_{0}^{T}P(t)dt}\end{equation*}\)
+
+\(\left.\dfrac{\partial f_1}{\partial P}\right|_{(P_0,G_0)} \)
+
+\(\left[\begin{array}{c}\dfrac{dP}{dt} \\ 
+\dfrac{dG}{dt} \end{array}\right] = \left[\begin{array}{cc}
+  \left.\dfrac{\partial f_1}{\partial P}\right|_{(P_0,G_0)} & \left.\dfrac{\partial f_1}{\partial G}\right|_{(P_0,G_0)}\\
+  \\
+  \left.\dfrac{\partial f_2}{\partial P}\right|_{(P_0,G_0)} & \left.\dfrac{\partial f_2}{\partial G}\right|_{(P_0,G_0)}
+  \end{array}\right] \left[\begin{array}{c}P-P_0 \\ G-G_0 \end{array}\right]\)

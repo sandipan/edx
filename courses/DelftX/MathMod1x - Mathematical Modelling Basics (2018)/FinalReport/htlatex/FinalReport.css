@@ -1,0 +1,468 @@
+ 
+/* start css.sty */
+.cmr-10x-x-109{}
+.t1xbtt-x-x-120{font-size:109%;font-weight: bold; font-family: monospace;}
+.t1xbtt-x-x-120{font-weight: bold; font-family: monospace;}
+.t1xtt-x-x-120{font-size:109%;font-family: monospace;}
+.t1xtt-x-x-120{font-family: monospace;}
+.cmcsc-10x-x-172{font-size:156%;}
+.cmcsc-10x-x-144{font-size:130%;}
+.cmr-12{font-size:109%;}
+.cmcsc-10x-x-120{font-size:109%;}
+.cmr-8{font-size:72%;}
+.cmr-6{font-size:54%;}
+.cmmi-10x-x-109{font-style: italic;}
+.cmmi-8{font-size:72%;font-style: italic;}
+.cmmi-6{font-size:54%;font-style: italic;}
+.cmsy-10x-x-109{}
+.cmsy-8{font-size:72%;}
+.cmsy-6{font-size:54%;}
+.cmex-10x-x-109{}
+.cmtt-10x-x-109{font-family: monospace;}
+.cmtt-10x-x-109{font-family: monospace;}
+.cmbx-10x-x-109{ font-weight: bold;}
+.cmti-10x-x-109{ font-style: italic;}
+.cmitt-10x-x-109{font-family: monospace; font-style: italic;}
+.small-caps{font-variant: small-caps; }
+p.noindent { text-indent: 0em }
+td p.noindent { text-indent: 0em; margin-top:0em; }
+p.nopar { text-indent: 0em; }
+p.indent{ text-indent: 1.5em }
+@media print {div.crosslinks {visibility:hidden;}}
+a img { border-top: 0; border-left: 0; border-right: 0; }
+center { margin-top:1em; margin-bottom:1em; }
+td center { margin-top:0em; margin-bottom:0em; }
+.Canvas { position:relative; }
+img.math{vertical-align:middle;}
+li p.indent { text-indent: 0em }
+li p:first-child{ margin-top:0em; }
+li p:last-child, li div:last-child { margin-bottom:0.5em; }
+li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }
+.enumerate1 {list-style-type:decimal;}
+.enumerate2 {list-style-type:lower-alpha;}
+.enumerate3 {list-style-type:lower-roman;}
+.enumerate4 {list-style-type:upper-alpha;}
+div.newtheorem { margin-bottom: 2em; margin-top: 2em;}
+.obeylines-h,.obeylines-v {white-space: nowrap; }
+div.obeylines-v p { margin-top:0; margin-bottom:0; }
+.overline{ text-decoration:overline; }
+.overline img{ border-top: 1px solid black; }
+td.displaylines {text-align:center; white-space:nowrap;}
+.centerline {text-align:center;}
+.rightline {text-align:right;}
+div.verbatim {font-family: monospace; white-space: nowrap; text-align:left; clear:both; }
+.fbox {padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
+div.fbox {display:table}
+div.center div.fbox {text-align:center; clear:both; padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
+div.minipage{width:100%;}
+div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}
+div.center div {text-align: left;}
+div.flushright, div.flushright div.flushright {text-align: right;}
+div.flushright div {text-align: left;}
+div.flushleft {text-align: left;}
+.underline{ text-decoration:underline; }
+.underline img{ border-bottom: 1px solid black; margin-bottom:1pt; }
+.framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
+.framebox-c {text-align:center;}
+.framebox-l {text-align:left;}
+.framebox-r {text-align:right;}
+span.thank-mark{ vertical-align: super }
+span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }
+div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }
+table.tabular td p{margin-top:0em;}
+table.tabular {margin-left: auto; margin-right: auto;}
+td p:first-child{ margin-top:0em; }
+td p:last-child{ margin-bottom:0em; }
+div.td00{ margin-left:0pt; margin-right:0pt; }
+div.td01{ margin-left:0pt; margin-right:5pt; }
+div.td10{ margin-left:5pt; margin-right:0pt; }
+div.td11{ margin-left:5pt; margin-right:5pt; }
+table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+td.td00{ padding-left:0pt; padding-right:0pt; }
+td.td01{ padding-left:0pt; padding-right:5pt; }
+td.td10{ padding-left:5pt; padding-right:0pt; }
+td.td11{ padding-left:5pt; padding-right:5pt; }
+table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+.hline hr, .cline hr{ height : 1px; margin:0px; }
+.tabbing-right {text-align:right;}
+span.TEX {letter-spacing: -0.125em; }
+span.TEX span.E{ position:relative;top:0.5ex;left:-0.0417em;}
+a span.TEX span.E {text-decoration: none; }
+span.LATEX span.A{ position:relative; top:-0.5ex; left:-0.4em; font-size:85%;}
+span.LATEX span.TEX{ position:relative; left: -0.4em; }
+div.float, div.figure {margin-left: auto; margin-right: auto;}
+div.float img {text-align:center;}
+div.figure img {text-align:center;}
+.marginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}
+.marginpar p{margin-top:0.4em; margin-bottom:0.4em;}
+table.equation {width:100%;}
+.equation td{text-align:center; }
+td.equation { margin-top:1em; margin-bottom:1em; } 
+td.equation-label { width:5%; text-align:center; }
+td.eqnarray4 { width:5%; white-space: normal; }
+td.eqnarray2 { width:5%; }
+table.eqnarray-star, table.eqnarray {width:100%;}
+div.eqnarray{text-align:center;}
+div.array {text-align:center;}
+div.pmatrix {text-align:center;}
+table.pmatrix {width:100%;}
+span.pmatrix img{vertical-align:middle;}
+div.pmatrix {text-align:center;}
+table.pmatrix {width:100%;}
+span.bar-css {text-decoration:overline;}
+img.cdots{vertical-align:middle;}
+.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}
+.chapterToc a, .chapterToc, .likechapterToc a, .likechapterToc, .appendixToc a, .appendixToc {line-height: 200%; font-weight:bold;}
+.index-item, .index-subitem, .index-subsubitem {display:block}
+div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}
+div.caption span.id{font-weight: bold; white-space: nowrap; }
+h1.partHead{text-align: center}
+p.bibitem { text-indent: -2em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
+p.bibitem-p { text-indent: 0em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
+.paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}
+.subparagraphHead, .likesubparagraphHead { font-weight: bold;}
+.quote {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; margin-right:1em; text-align:justify;}
+.verse{white-space:nowrap; margin-left:2em}
+div.maketitle {text-align:center;}
+h2.titleHead{text-align:center;}
+div.maketitle{ margin-bottom: 2em; }
+div.author, div.date {text-align:center;}
+div.thanks{text-align:left; margin-left:10%; font-size:85%; font-style:italic; }
+div.author{white-space: nowrap;}
+.quotation {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; }
+h1.partHead{text-align: center}
+.abstract p {margin-left:5%; margin-right:5%;}
+div.abstract {width:100%;}
+.lstlisting .label{margin-right:0.5em; }
+div.lstlisting{font-family: monospace; white-space: nowrap; margin-top:0.5em; margin-bottom:0.5em; }
+div.lstinputlisting{ font-family: monospace; white-space: nowrap; }
+.lstinputlisting .label{margin-right:0.5em;}
+.alltt P { margin-bottom : 0em; margin-top : 0em; }
+.alltt { margin-bottom : 1em; margin-top : 1em; }
+.equation td{text-align:center; }
+.equation-star td{text-align:center; }
+table.equation-star { width:100%; }
+table.equation { width:100%; }
+table.align, table.alignat, table.xalignat, table.xxalignat, table.flalign {width:100%; margin-left:5%; white-space: nowrap;}
+table.align-star, table.alignat-star, table.xalignat-star, table.flalign-star {margin-left:auto; margin-right:auto; white-space: nowrap;}
+td.align-label { width:5%; text-align:center; }
+td.align-odd { text-align:right; padding-right:0.3em;}
+td.align-even { text-align:left; padding-right:0.6em;}
+table.multline, table.multline-star {width:100%;}
+td.gather {text-align:center; }
+table.gather {width:100%;}
+div.gather-star {text-align:center;}
+.figure img.graphics {margin-left:10%;}
+span#colorbox312{background-color:rgb(247,247,0);}
+span#textcolor2{color:rgb(87,87,87)}
+span#textcolor3{color:rgb(175,90,100)}
+span#textcolor4{color:rgb(41,95,147)}
+span#textcolor5{color:rgb(87,87,87)}
+span#textcolor6{color:rgb(84,170,84)}
+span#textcolor7{color:rgb(87,87,87)}
+span#textcolor8{color:rgb(187,90,100)}
+span#textcolor9{color:rgb(87,87,87)}
+span#textcolor10{color:rgb(187,90,100)}
+span#textcolor11{color:rgb(87,87,87)}
+span#textcolor12{color:rgb(84,170,84)}
+span#textcolor13{color:rgb(87,87,87)}
+span#textcolor14{color:rgb(0,0,0)}
+span#textcolor15{color:rgb(87,87,87)}
+span#textcolor16{color:rgb(0,0,0)}
+span#textcolor17{color:rgb(87,87,87)}
+span#textcolor18{color:rgb(0,0,0)}
+span#textcolor19{color:rgb(87,87,87)}
+span#textcolor20{color:rgb(0,0,0)}
+span#textcolor21{color:rgb(87,87,87)}
+span#textcolor22{color:rgb(0,0,0)}
+span#textcolor23{color:rgb(87,87,87)}
+span#textcolor24{color:rgb(84,170,84)}
+span#textcolor25{color:rgb(87,87,87)}
+span#textcolor26{color:rgb(0,0,0)}
+span#textcolor27{color:rgb(87,87,87)}
+span#textcolor28{color:rgb(0,0,0)}
+span#textcolor29{color:rgb(87,87,87)}
+span#textcolor30{color:rgb(0,0,0)}
+span#textcolor31{color:rgb(87,87,87)}
+span#textcolor32{color:rgb(0,0,0)}
+span#textcolor33{color:rgb(87,87,87)}
+span#textcolor34{color:rgb(0,0,0)}
+span#textcolor35{color:rgb(87,87,87)}
+span#textcolor36{color:rgb(0,0,0)}
+span#textcolor37{color:rgb(87,87,87)}
+span#textcolor38{color:rgb(0,0,0)}
+span#textcolor39{color:rgb(87,87,87)}
+span#textcolor40{color:rgb(84,170,84)}
+span#textcolor41{color:rgb(87,87,87)}
+span#textcolor42{color:rgb(0,0,0)}
+span#textcolor43{color:rgb(87,87,87)}
+span#textcolor44{color:rgb(0,0,0)}
+span#textcolor45{color:rgb(87,87,87)}
+span#textcolor46{color:rgb(87,87,87)}
+span#textcolor47{color:rgb(87,87,87)}
+span#textcolor48{color:rgb(175,90,100)}
+span#textcolor49{color:rgb(174,15,145)}
+span#textcolor50{color:rgb(0,0,0)}
+span#textcolor51{color:rgb(174,15,145)}
+span#textcolor52{color:rgb(0,0,0)}
+span#textcolor53{color:rgb(87,87,87)}
+span#textcolor54{color:rgb(0,0,0)}
+span#textcolor55{color:rgb(174,15,145)}
+span#textcolor56{color:rgb(87,87,87)}
+span#textcolor57{color:rgb(87,87,87)}
+span#textcolor58{color:rgb(175,90,100)}
+span#textcolor59{color:rgb(174,15,145)}
+span#textcolor60{color:rgb(0,0,0)}
+span#textcolor61{color:rgb(174,15,145)}
+span#textcolor62{color:rgb(0,0,0)}
+span#textcolor63{color:rgb(87,87,87)}
+span#textcolor64{color:rgb(0,0,0)}
+span#textcolor65{color:rgb(174,15,145)}
+span#textcolor66{color:rgb(87,87,87)}
+span#textcolor67{color:rgb(172,148,174)}
+span#textcolor68{color:rgb(87,87,87)}
+span#textcolor69{color:rgb(175,90,100)}
+span#textcolor70{color:rgb(174,15,145)}
+span#textcolor71{color:rgb(87,87,87)}
+span#textcolor72{color:rgb(175,90,100)}
+span#textcolor73{color:rgb(174,15,145)}
+span#textcolor74{color:rgb(0,0,0)}
+span#textcolor75{color:rgb(174,15,145)}
+span#textcolor76{color:rgb(0,0,0)}
+span#textcolor77{color:rgb(174,15,145)}
+span#textcolor78{color:rgb(172,148,174)}
+span#textcolor79{color:rgb(87,87,87)}
+span#textcolor80{color:rgb(175,90,100)}
+span#textcolor81{color:rgb(187,90,100)}
+span#textcolor82{color:rgb(87,87,87)}
+span#textcolor83{color:rgb(84,170,84)}
+span#textcolor84{color:rgb(87,87,87)}
+span#textcolor85{color:rgb(174,15,145)}
+span#textcolor86{color:rgb(87,87,87)}
+span#textcolor87{color:rgb(84,170,84)}
+span#textcolor88{color:rgb(87,87,87)}
+span#textcolor89{color:rgb(174,15,145)}
+span#textcolor90{color:rgb(87,87,87)}
+span#textcolor91{color:rgb(84,170,84)}
+span#textcolor92{color:rgb(87,87,87)}
+span#textcolor93{color:rgb(174,15,145)}
+span#textcolor94{color:rgb(87,87,87)}
+span#textcolor95{color:rgb(87,87,87)}
+span#textcolor96{color:rgb(175,90,100)}
+span#textcolor97{color:rgb(87,87,87)}
+span#textcolor98{color:rgb(187,90,100)}
+span#textcolor99{color:rgb(87,87,87)}
+span#textcolor100{color:rgb(187,90,100)}
+span#textcolor101{color:rgb(87,87,87)}
+span#textcolor102{color:rgb(41,95,147)}
+span#textcolor103{color:rgb(87,87,87)}
+span#textcolor104{color:rgb(0,0,0)}
+span#textcolor105{color:rgb(174,15,145)}
+span#textcolor106{color:rgb(87,87,87)}
+span#textcolor107{color:rgb(87,87,87)}
+span#textcolor108{color:rgb(175,90,100)}
+span#textcolor109{color:rgb(87,87,87)}
+span#textcolor110{color:rgb(0,0,0)}
+span#textcolor111{color:rgb(87,87,87)}
+span#textcolor112{color:rgb(0,0,0)}
+span#textcolor113{color:rgb(187,90,100)}
+span#textcolor114{color:rgb(87,87,87)}
+span#textcolor115{color:rgb(87,87,87)}
+span#textcolor116{color:rgb(175,90,100)}
+span#textcolor117{color:rgb(87,87,87)}
+span#textcolor118{color:rgb(0,0,0)}
+span#textcolor119{color:rgb(87,87,87)}
+span#textcolor120{color:rgb(87,87,87)}
+span#textcolor121{color:rgb(175,90,100)}
+span#textcolor122{color:rgb(187,90,100)}
+span#textcolor123{color:rgb(87,87,87)}
+span#textcolor124{color:rgb(172,148,174)}
+span#textcolor125{color:rgb(87,87,87)}
+span#textcolor126{color:rgb(87,87,87)}
+span#textcolor127{color:rgb(0,0,0)}
+span#textcolor128{color:rgb(87,87,87)}
+span#textcolor129{color:rgb(175,90,100)}
+span#textcolor130{color:rgb(174,15,145)}
+span#textcolor131{color:rgb(0,0,0)}
+span#textcolor132{color:rgb(87,87,87)}
+span#textcolor133{color:rgb(187,90,100)}
+span#textcolor134{color:rgb(87,87,87)}
+span#textcolor135{color:rgb(0,0,0)}
+span#textcolor136{color:rgb(174,15,145)}
+span#textcolor137{color:rgb(87,87,87)}
+span#colorbox315{background-color:rgb(247,247,0);}
+span#textcolor138{color:rgb(187,90,100)}
+span#textcolor139{color:rgb(87,87,87)}
+span#textcolor140{color:rgb(187,90,100)}
+span#textcolor141{color:rgb(87,87,87)}
+span#textcolor142{color:rgb(187,90,100)}
+span#textcolor143{color:rgb(87,87,87)}
+span#textcolor144{color:rgb(187,90,100)}
+span#textcolor145{color:rgb(87,87,87)}
+span#textcolor146{color:rgb(187,90,100)}
+span#textcolor147{color:rgb(87,87,87)}
+span#textcolor148{color:rgb(0,0,0)}
+span#textcolor149{color:rgb(187,90,100)}
+span#textcolor150{color:rgb(87,87,87)}
+span#textcolor151{color:rgb(84,170,84)}
+span#textcolor152{color:rgb(87,87,87)}
+span#textcolor153{color:rgb(48,125,204)}
+span#textcolor154{color:rgb(87,87,87)}
+span#textcolor155{color:rgb(0,0,0)}
+span#textcolor156{color:rgb(187,90,100)}
+span#textcolor157{color:rgb(87,87,87)}
+span#textcolor158{color:rgb(84,170,84)}
+span#textcolor159{color:rgb(87,87,87)}
+span#textcolor160{color:rgb(187,90,100)}
+span#textcolor161{color:rgb(87,87,87)}
+span#textcolor162{color:rgb(84,170,84)}
+span#textcolor163{color:rgb(87,87,87)}
+span#textcolor164{color:rgb(187,90,100)}
+span#textcolor165{color:rgb(87,87,87)}
+span#textcolor166{color:rgb(174,15,145)}
+span#textcolor167{color:rgb(87,87,87)}
+span#textcolor168{color:rgb(48,125,204)}
+span#textcolor169{color:rgb(87,87,87)}
+span#textcolor170{color:rgb(0,0,0)}
+span#textcolor171{color:rgb(187,90,100)}
+span#textcolor172{color:rgb(87,87,87)}
+span#textcolor173{color:rgb(187,90,100)}
+span#textcolor174{color:rgb(87,87,87)}
+span#textcolor175{color:rgb(187,90,100)}
+span#textcolor176{color:rgb(87,87,87)}
+span#textcolor177{color:rgb(0,0,0)}
+span#textcolor178{color:rgb(187,90,100)}
+span#textcolor179{color:rgb(87,87,87)}
+span#textcolor180{color:rgb(84,170,84)}
+span#textcolor181{color:rgb(87,87,87)}
+span#textcolor182{color:rgb(48,125,204)}
+span#textcolor183{color:rgb(87,87,87)}
+span#textcolor184{color:rgb(0,0,0)}
+span#textcolor185{color:rgb(187,90,100)}
+span#textcolor186{color:rgb(87,87,87)}
+span#textcolor187{color:rgb(84,170,84)}
+span#textcolor188{color:rgb(87,87,87)}
+span#textcolor189{color:rgb(187,90,100)}
+span#textcolor190{color:rgb(87,87,87)}
+span#textcolor191{color:rgb(84,170,84)}
+span#textcolor192{color:rgb(87,87,87)}
+span#textcolor193{color:rgb(187,90,100)}
+span#textcolor194{color:rgb(87,87,87)}
+span#textcolor195{color:rgb(174,15,145)}
+span#textcolor196{color:rgb(87,87,87)}
+span#textcolor197{color:rgb(48,125,204)}
+span#textcolor198{color:rgb(87,87,87)}
+span#textcolor199{color:rgb(0,0,0)}
+span#textcolor200{color:rgb(187,90,100)}
+span#textcolor201{color:rgb(87,87,87)}
+span#textcolor202{color:rgb(187,90,100)}
+span#textcolor203{color:rgb(87,87,87)}
+span#textcolor204{color:rgb(187,90,100)}
+span#textcolor205{color:rgb(87,87,87)}
+span#textcolor206{color:rgb(0,0,0)}
+span#textcolor207{color:rgb(187,90,100)}
+span#textcolor208{color:rgb(87,87,87)}
+span#textcolor209{color:rgb(84,170,84)}
+span#textcolor210{color:rgb(87,87,87)}
+span#textcolor211{color:rgb(48,125,204)}
+span#textcolor212{color:rgb(87,87,87)}
+span#textcolor213{color:rgb(0,0,0)}
+span#textcolor214{color:rgb(187,90,100)}
+span#textcolor215{color:rgb(87,87,87)}
+span#textcolor216{color:rgb(84,170,84)}
+span#textcolor217{color:rgb(87,87,87)}
+span#textcolor218{color:rgb(187,90,100)}
+span#textcolor219{color:rgb(87,87,87)}
+span#textcolor220{color:rgb(84,170,84)}
+span#textcolor221{color:rgb(87,87,87)}
+span#textcolor222{color:rgb(187,90,100)}
+span#textcolor223{color:rgb(87,87,87)}
+span#textcolor224{color:rgb(174,15,145)}
+span#textcolor225{color:rgb(87,87,87)}
+span#textcolor226{color:rgb(48,125,204)}
+span#textcolor227{color:rgb(87,87,87)}
+span#textcolor228{color:rgb(0,0,0)}
+span#textcolor229{color:rgb(187,90,100)}
+span#textcolor230{color:rgb(87,87,87)}
+span#textcolor231{color:rgb(84,170,84)}
+span#textcolor232{color:rgb(87,87,87)}
+span#textcolor233{color:rgb(174,15,145)}
+span#textcolor234{color:rgb(87,87,87)}
+span#textcolor235{color:rgb(187,90,100)}
+span#textcolor236{color:rgb(87,87,87)}
+span#textcolor237{color:rgb(87,87,87)}
+span#textcolor238{color:rgb(0,0,0)}
+span#textcolor239{color:rgb(87,87,87)}
+span#textcolor240{color:rgb(175,90,100)}
+span#textcolor241{color:rgb(87,87,87)}
+span#textcolor242{color:rgb(0,0,0)}
+span#textcolor243{color:rgb(87,87,87)}
+span#textcolor244{color:rgb(0,0,0)}
+span#textcolor245{color:rgb(174,15,145)}
+span#textcolor246{color:rgb(0,0,0)}
+span#textcolor247{color:rgb(174,15,145)}
+span#textcolor248{color:rgb(87,87,87)}
+span#textcolor249{color:rgb(0,0,0)}
+span#textcolor250{color:rgb(187,90,100)}
+span#textcolor251{color:rgb(87,87,87)}
+span#textcolor252{color:rgb(0,0,0)}
+span#textcolor253{color:rgb(87,87,87)}
+span#textcolor254{color:rgb(0,0,0)}
+span#textcolor255{color:rgb(187,90,100)}
+span#textcolor256{color:rgb(87,87,87)}
+span#textcolor257{color:rgb(187,90,100)}
+span#textcolor258{color:rgb(87,87,87)}
+span#textcolor259{color:rgb(84,170,84)}
+span#textcolor260{color:rgb(87,87,87)}
+span#textcolor261{color:rgb(0,0,0)}
+span#textcolor262{color:rgb(187,90,100)}
+span#textcolor263{color:rgb(87,87,87)}
+span#textcolor264{color:rgb(0,0,0)}
+span#textcolor265{color:rgb(187,90,100)}
+span#textcolor266{color:rgb(87,87,87)}
+span#textcolor267{color:rgb(0,0,0)}
+span#textcolor268{color:rgb(187,90,100)}
+span#textcolor269{color:rgb(87,87,87)}
+span#textcolor270{color:rgb(0,0,0)}
+span#textcolor271{color:rgb(87,87,87)}
+span#textcolor272{color:rgb(84,170,84)}
+span#textcolor273{color:rgb(87,87,87)}
+span#textcolor274{color:rgb(48,125,204)}
+span#textcolor275{color:rgb(87,87,87)}
+span#textcolor276{color:rgb(84,170,84)}
+span#textcolor277{color:rgb(87,87,87)}
+span#textcolor278{color:rgb(174,15,145)}
+span#textcolor279{color:rgb(87,87,87)}
+span#textcolor280{color:rgb(187,90,100)}
+span#textcolor281{color:rgb(87,87,87)}
+span#colorbox317{background-color:rgb(247,247,0);}
+span#textcolor282{color:rgb(187,90,100)}
+span#textcolor283{color:rgb(87,87,87)}
+span#textcolor284{color:rgb(0,0,0)}
+span#textcolor285{color:rgb(87,87,87)}
+span#textcolor286{color:rgb(0,0,0)}
+span#textcolor287{color:rgb(87,87,87)}
+span#textcolor288{color:rgb(0,0,0)}
+span#textcolor289{color:rgb(87,87,87)}
+span#textcolor290{color:rgb(84,170,84)}
+span#textcolor291{color:rgb(87,87,87)}
+span#textcolor292{color:rgb(174,15,145)}
+span#textcolor293{color:rgb(87,87,87)}
+span#textcolor294{color:rgb(84,170,84)}
+span#textcolor295{color:rgb(87,87,87)}
+span#textcolor296{color:rgb(48,125,204)}
+span#textcolor297{color:rgb(87,87,87)}
+span#textcolor298{color:rgb(84,170,84)}
+span#textcolor299{color:rgb(87,87,87)}
+span#textcolor300{color:rgb(48,125,204)}
+span#textcolor301{color:rgb(87,87,87)}
+span#textcolor302{color:rgb(84,170,84)}
+span#textcolor303{color:rgb(87,87,87)}
+span#textcolor304{color:rgb(48,125,204)}
+span#textcolor305{color:rgb(87,87,87)}
+span#textcolor306{color:rgb(84,170,84)}
+span#textcolor307{color:rgb(87,87,87)}
+span#textcolor308{color:rgb(48,125,204)}
+span#textcolor309{color:rgb(87,87,87)}
+/* end css.sty */
+

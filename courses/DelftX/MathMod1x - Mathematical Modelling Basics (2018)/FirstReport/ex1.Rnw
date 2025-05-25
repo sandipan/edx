@@ -1,0 +1,62 @@
+\documentclass[a4paper]{article}
+\parindent0pt
+\begin{document}
+Knitr test in \LaTeX.
+
+<<Test>>= 
+
+F <- function(X) {
+  return (data.frame(S=-beta*X$S*X$I, 
+                     I=beta*X$S*X$I-alpha*X$I, 
+                     R=alpha*X$I)) 
+}
+
+beta <- 25*10^(-5)
+alpha <- 167*10^(-3) # 0.05
+t <- 0
+del_t <- 1/2^9 #8 #1
+X_t <- data.frame(S=4499, I=1, R=0)
+X <- X_t
+print(cbind(t, X_t))
+while (t <= 50) {
+  X_t <- X_t + del_t * F(X_t)
+  t <- t + del_t
+  X <- rbind(X, X_t)
+  #print(cbind(t, X_t))
+}
+X$t <- 0:(nrow(X)-1)
+library(ggplot2)
+library(gridExtra)
+grid.arrange(
+  ggplot(X, aes(S, I)) + 
+    geom_point(col='blue') + 
+    geom_line(arrow = arrow(length = unit(0.5, "cm"))) + 
+    theme_bw(),
+  ggplot(X, aes(S, R)) + 
+    geom_point(col='blue') + 
+    geom_line(arrow = arrow(length = unit(0.5, "cm"))) + 
+    theme_bw(), 
+  ggplot(X, aes(R, I)) + 
+    geom_point(col='blue') + 
+    geom_line(arrow = arrow(length = unit(0.5, "cm"))) + 
+    theme_bw(), 
+  ncol = 2)
+X$t <- X$t / 2^8
+X %>% gather(variable, value, -t) %>% 
+  ggplot(aes(t, value, col=variable)) + 
+  geom_point() + geom_line() + 
+  facet_wrap(~variable, scales = 'free_y', ncol = 1)
+
+library(scatterplot3d)
+scatterplot3d(X$S, X$I, X$R, pch = 19, 
+    color='blue', xlab='S', ylab='I', zlab='R')
+colfunc <- colorRampPalette(c("blue", "red"))
+palette(colfunc(1000))
+scatterplot3d(X$S, X$I, X$R, pch = 19, 
+    color=X$t+1, xlab='S', ylab='I', zlab='R')
+
+#Rscript -e "library(knitr); knit('ex1.Rnw')"
+@ 
+
+Done. 
+\end{document}
